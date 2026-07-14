@@ -9,19 +9,20 @@
 <x-dc>
 <helmet>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link href="mobile.css" rel="stylesheet">
 <style>body{margin:0}</style>
 </helmet>
 <div style="font-family:'Alegreya Sans',sans-serif">
-  <div style="background:#23423F;color:#D9E2DD;font-size:13.5px;letter-spacing:0.02em;display:flex;justify-content:space-between;gap:16px;padding:7px 40px;flex-wrap:wrap">
+  <div class="m-topbar" style="background:#23423F;color:#D9E2DD;font-size:13.5px;letter-spacing:0.02em;display:flex;justify-content:space-between;gap:16px;padding:7px 40px;flex-wrap:wrap">
     <span>Kostenfreie Telefonsprechzeiten: Di 20.00–21.00 Uhr · Do 12.00–13.00 Uhr (n. V.) · 04725 800 61 69</span>
     <a href="mailto:info@neu-atlantis.de" style="color:#D9E2DD;text-decoration:none">info@neu-atlantis.de</a>
   </div>
-  <div style="background:#FAF7F1;border-bottom:1px solid #E5DECF;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px 40px;flex-wrap:wrap">
+  <div class="m-headrow" style="background:#FAF7F1;border-bottom:1px solid #E5DECF;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px 40px;flex-wrap:wrap">
     <a href="Startseite.dc.html" style="text-decoration:none;display:flex;flex-direction:column;gap:5px;align-items:flex-start">
-      <img src="bg_head_mobile.png" alt="Neu-Atlantis" style="height:58px;width:auto;display:block;filter:brightness(0) invert(20%) sepia(16%) saturate(1100%) hue-rotate(125deg) brightness(95%)">
+      <img class="m-logo" src="bg_head_mobile.png" alt="Neu-Atlantis" style="height:58px;width:auto;display:block;filter:brightness(0) invert(20%) sepia(16%) saturate(1100%) hue-rotate(125deg) brightness(95%)">
       <span style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#8A7E68">Zentrum für Lebensbegleitung &amp; Naturheilkunde</span>
     </a>
-    <nav style="display:flex;align-items:center;gap:22px;flex-wrap:wrap">
+    <nav class="m-nav" style="display:flex;align-items:center;gap:22px;flex-wrap:wrap">
       <sc-for list="{{ nav }}" as="item" hint-placeholder-count="8">
         <a href="{{ item.href }}" style="text-decoration:none;font-size:15.5px;font-weight:500;color:{{ item.color }};border-bottom:{{ item.border }};padding:4px 0" style-hover="color:#B0703C">{{ item.label }}</a>
       </sc-for>

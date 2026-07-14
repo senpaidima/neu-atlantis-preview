@@ -16,9 +16,9 @@
 <dc-import name="SiteHeader" active="wissen" hint-size="100%,130px"></dc-import>
 
 <section style="background:linear-gradient(155deg,#2A4B47,#3D615A 70%,#527568)">
-  <div style="max-width:1160px;margin:0 auto;padding:72px 40px;display:flex;flex-direction:column;gap:16px">
+  <div class="m-pad" style="max-width:1160px;margin:0 auto;padding:72px 40px;display:flex;flex-direction:column;gap:16px">
     <span style="font-size:14px;letter-spacing:0.22em;text-transform:uppercase;color:#C8B98F">Wissenswertes</span>
-    <h1 style="margin:0;font-family:'Cormorant Garamond',serif;font-size:48px;line-height:1.12;font-weight:600;color:#F6F2E8">Aktuelles, Geistreiches &amp; Empfehlungen</h1>
+    <h1 class="m-hero" style="margin:0;font-family:'Cormorant Garamond',serif;font-size:48px;line-height:1.12;font-weight:600;color:#F6F2E8">Aktuelles, Geistreiches &amp; Empfehlungen</h1>
     <div style="display:flex;gap:12px;flex-wrap:wrap;padding-top:8px">
       <a href="#aktuelles" style="text-decoration:none;font-size:15px;font-weight:700;color:#EDF1EA;border:1px solid #6B857D;border-radius:99px;padding:8px 20px" style-hover="background:rgba(255,255,255,0.1)">Aktuelles</a>
       <a href="#geistreich" style="text-decoration:none;font-size:15px;font-weight:700;color:#EDF1EA;border:1px solid #6B857D;border-radius:99px;padding:8px 20px" style-hover="background:rgba(255,255,255,0.1)">Geistreich</a>
@@ -30,9 +30,9 @@
 </section>
 
 <!-- AKTUELLES -->
-<section id="aktuelles" style="max-width:1160px;margin:0 auto;padding:88px 40px 64px;display:flex;flex-direction:column;gap:32px">
-  <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:600;color:#23423F">Aktuelles</h2>
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:26px">
+<section id="aktuelles" class="m-pad m-pady" style="max-width:1160px;margin:0 auto;padding:88px 40px 64px;display:flex;flex-direction:column;gap:32px">
+  <h2 class="m-h2" style="margin:0;font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:600;color:#23423F">Aktuelles</h2>
+  <div class="m-col" style="display:grid;grid-template-columns:repeat(3,1fr);gap:26px">
     <div style="background:#FCFAF5;border:1px solid #E5DECF;border-radius:5px;padding:28px;display:flex;flex-direction:column;gap:10px">
       <span style="font-size:12.5px;letter-spacing:0.14em;text-transform:uppercase;color:#B0703C;font-weight:700">Gruppe</span>
       <span style="font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:600;color:#23423F">Frauengruppe Braunschweig</span>
@@ -55,12 +55,12 @@
 
 <!-- GEISTREICH -->
 <section id="geistreich" style="background:#F1EBDF;border-top:1px solid #E5DECF;border-bottom:1px solid #E5DECF">
-  <div style="max-width:1160px;margin:0 auto;padding:80px 40px;display:flex;flex-direction:column;gap:32px">
+  <div class="m-pad m-pady" style="max-width:1160px;margin:0 auto;padding:80px 40px;display:flex;flex-direction:column;gap:32px">
     <div style="display:flex;flex-direction:column;gap:10px">
-      <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:600;color:#23423F">Geistreich</h2>
+      <h2 class="m-h2" style="margin:0;font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:600;color:#23423F">Geistreich</h2>
       <p style="margin:0;font-size:16.5px;line-height:1.65;color:#4C463D;max-width:720px">Erläuterungen zu Bert Hellinger, dem neuen geistigen Familienstellen und den Zusammenhängen hinter unserer Arbeit.</p>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px">
+    <div class="m-col" style="display:grid;grid-template-columns:1fr 1fr;gap:22px">
       <sc-for list="{{ artikel }}" as="a" hint-placeholder-count="4">
         <div style="background:#FCFAF5;border:1px solid #E5DECF;border-radius:5px;padding:26px 30px;display:flex;flex-direction:column;gap:10px">
           <span style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:#23423F;line-height:1.2">{{ a.titel }}</span>
@@ -72,9 +72,9 @@
 </section>
 
 <!-- EMPFEHLUNGEN -->
-<section id="empfehlungen" style="max-width:1160px;margin:0 auto;padding:88px 40px 64px;display:flex;flex-direction:column;gap:32px">
-  <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:600;color:#23423F">Empfehlungen</h2>
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
+<section id="empfehlungen" class="m-pad m-pady" style="max-width:1160px;margin:0 auto;padding:88px 40px 64px;display:flex;flex-direction:column;gap:32px">
+  <h2 class="m-h2" style="margin:0;font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:600;color:#23423F">Empfehlungen</h2>
+  <div class="m-col" style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
     <sc-for list="{{ empfehlungen }}" as="e" hint-placeholder-count="9">
       <a href="#" style="text-decoration:none;background:#FCFAF5;border:1px solid #E5DECF;border-radius:5px;padding:18px 22px;display:flex;flex-direction:column;gap:3px" style-hover="box-shadow:0 8px 20px rgba(51,65,60,0.1)">
         <span style="font-size:16px;font-weight:700;color:#23423F;line-height:1.35">{{ e.name }}</span>
@@ -86,9 +86,9 @@
 
 <!-- BUCHTIPPS -->
 <section id="buchtipps" style="background:#F1EBDF;border-top:1px solid #E5DECF;border-bottom:1px solid #E5DECF">
-  <div style="max-width:1160px;margin:0 auto;padding:80px 40px;display:flex;flex-direction:column;gap:32px">
-    <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:600;color:#23423F">Buchtipps</h2>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:22px">
+  <div class="m-pad m-pady" style="max-width:1160px;margin:0 auto;padding:80px 40px;display:flex;flex-direction:column;gap:32px">
+    <h2 class="m-h2" style="margin:0;font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:600;color:#23423F">Buchtipps</h2>
+    <div class="m-col" style="display:grid;grid-template-columns:repeat(3,1fr);gap:22px">
       <sc-for list="{{ buecher }}" as="b" hint-placeholder-count="6">
         <div style="background:#FCFAF5;border:1px solid #E5DECF;border-radius:5px;padding:24px 28px;display:flex;flex-direction:column;gap:5px">
           <span style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:#23423F;line-height:1.25">{{ b.titel }}</span>
@@ -102,8 +102,8 @@
 </section>
 
 <!-- NEWSLETTER -->
-<section id="newsletter" style="max-width:1160px;margin:0 auto;padding:96px 40px 110px">
-  <div style="background:linear-gradient(140deg,#2A4B47,#3D615A);border-radius:8px;padding:56px 64px;display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:center">
+<section id="newsletter" class="m-pad m-pady" style="max-width:1160px;margin:0 auto;padding:96px 40px 110px">
+  <div class="m-col m-gap m-innerpad" style="background:linear-gradient(140deg,#2A4B47,#3D615A);border-radius:8px;padding:56px 64px;display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:center">
     <div style="display:flex;flex-direction:column;gap:14px">
       <span style="font-size:13px;letter-spacing:0.2em;text-transform:uppercase;color:#C8B98F;font-weight:700">Newsletter / Rundbriefe</span>
       <span style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;color:#F6F2E8;line-height:1.2">Neue Impulse direkt in dein Postfach</span>

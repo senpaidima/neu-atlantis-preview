@@ -1,0 +1,17 @@
+/* Mobile-Optimierung Neu-Atlantis — Utility-Overrides für Inline-Styles */
+@media (max-width: 820px) {
+  .m-col { grid-template-columns: 1fr !important; }
+  .m-col2 { grid-template-columns: 1fr 1fr !important; }
+  .m-flexcol { flex-direction: column !important; align-items: stretch !important; }
+  .m-pad { padding-left: 20px !important; padding-right: 20px !important; }
+  .m-pady { padding-top: 60px !important; padding-bottom: 64px !important; }
+  .m-hero { font-size: 36px !important; }
+  .m-h1 { font-size: 31px !important; }
+  .m-h2 { font-size: 26px !important; }
+  .m-gap { gap: 32px !important; }
+  .m-innerpad { padding: 36px 24px !important; }
+  .m-nav { gap: 10px 16px !important; }
+  .m-logo { height: 44px !important; }
+  .m-topbar { padding: 6px 16px !important; font-size: 12px !important; }
+  .m-headrow { padding: 14px 16px !important; gap: 12px !important; }
+}

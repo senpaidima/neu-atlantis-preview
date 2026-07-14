@@ -16,15 +16,15 @@
 <dc-import name="SiteHeader" active="veranstaltungen" hint-size="100%,130px"></dc-import>
 
 <section style="background:linear-gradient(155deg,#2A4B47,#3D615A 70%,#527568)">
-  <div style="max-width:1160px;margin:0 auto;padding:72px 40px;display:flex;flex-direction:column;gap:16px">
+  <div class="m-pad" style="max-width:1160px;margin:0 auto;padding:72px 40px;display:flex;flex-direction:column;gap:16px">
     <span style="font-size:14px;letter-spacing:0.22em;text-transform:uppercase;color:#C8B98F">Veranstaltungskalender</span>
-    <h1 style="margin:0;font-family:'Cormorant Garamond',serif;font-size:48px;line-height:1.12;font-weight:600;color:#F6F2E8">Veranstaltungen 2026</h1>
+    <h1 class="m-hero" style="margin:0;font-family:'Cormorant Garamond',serif;font-size:48px;line-height:1.12;font-weight:600;color:#F6F2E8">Veranstaltungen 2026</h1>
     <p style="margin:0;font-size:17.5px;line-height:1.65;color:#DCE4DD;max-width:680px">Seminare, Themenabende und Einzeltermine. Für alle Veranstaltungen ist aufgrund der begrenzten Teilnehmerzahl eine Anmeldung erforderlich.</p>
   </div>
 </section>
 
 <!-- LISTE -->
-<section style="max-width:1160px;margin:0 auto;padding:64px 40px 110px;display:{{ listDisplay }};flex-direction:column;gap:32px">
+<section class="m-pad m-pady" style="max-width:1160px;margin:0 auto;padding:64px 40px 110px;display:{{ listDisplay }};flex-direction:column;gap:32px">
   <div style="display:flex;gap:10px;flex-wrap:wrap">
     <sc-for list="{{ filters }}" as="f" hint-placeholder-count="4">
       <button onClick="{{ f.onClick }}" style="cursor:pointer;font-family:'Alegreya Sans',sans-serif;font-size:15px;font-weight:700;padding:9px 20px;border-radius:99px;border:1px solid {{ f.borderColor }};background:{{ f.bg }};color:{{ f.color }}">{{ f.label }}</button>
@@ -32,7 +32,7 @@
   </div>
   <div style="display:flex;flex-direction:column;gap:16px">
     <sc-for list="{{ events }}" as="ev" hint-placeholder-count="6">
-      <div style="background:#FCFAF5;border:1px solid #E5DECF;border-radius:6px;padding:26px 30px;display:grid;grid-template-columns:180px 1fr auto;gap:24px;align-items:center" style-hover="box-shadow:0 10px 28px rgba(51,65,60,0.1)">
+      <div class="m-col" style="background:#FCFAF5;border:1px solid #E5DECF;border-radius:6px;padding:26px 30px;display:grid;grid-template-columns:180px 1fr auto;gap:24px;align-items:center" style-hover="box-shadow:0 10px 28px rgba(51,65,60,0.1)">
         <div style="display:flex;flex-direction:column;gap:3px">
           <span style="font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:600;color:#23423F;line-height:1.15">{{ ev.datum }}</span>
           <span style="font-size:13.5px;color:#8A7E68">{{ ev.zeitKurz }}</span>
@@ -49,13 +49,13 @@
 </section>
 
 <!-- DETAIL -->
-<section style="max-width:1160px;margin:0 auto;padding:56px 40px 110px;display:{{ detailDisplay }};flex-direction:column;gap:36px">
+<section class="m-pad m-pady" style="max-width:1160px;margin:0 auto;padding:56px 40px 110px;display:{{ detailDisplay }};flex-direction:column;gap:36px">
   <div><button onClick="{{ onBack }}" style="cursor:pointer;font-family:'Alegreya Sans',sans-serif;font-size:15.5px;font-weight:700;color:#B0703C;background:none;border:none;padding:0">← Zurück zur Übersicht</button></div>
-  <div style="display:grid;grid-template-columns:1.55fr 1fr;gap:56px;align-items:start">
+  <div class="m-col m-gap" style="display:grid;grid-template-columns:1.55fr 1fr;gap:56px;align-items:start">
     <div style="display:flex;flex-direction:column;gap:26px">
       <div style="display:flex;flex-direction:column;gap:10px">
         <span style="font-size:13px;letter-spacing:0.18em;text-transform:uppercase;color:#B0703C;font-weight:700">{{ sel.kategorie }}</span>
-        <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:600;color:#23423F;line-height:1.15">{{ sel.titel }}</h2>
+        <h2 class="m-h2" style="margin:0;font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:600;color:#23423F;line-height:1.15">{{ sel.titel }}</h2>
       </div>
       <sc-for list="{{ selParas }}" as="p" hint-placeholder-count="3">
         <p style="margin:0;font-size:17px;line-height:1.75;color:#4C463D">{{ p }}</p>
@@ -94,17 +94,17 @@
               <label style="display:flex;gap:6px;align-items:center;cursor:pointer"><input type="radio" name="anrede" value="Herr" onChange="{{ onField }}" style="accent-color:#23423F">Herr</label>
               <label style="display:flex;gap:6px;align-items:center;cursor:pointer"><input type="radio" name="anrede" value="Person" onChange="{{ onField }}" style="accent-color:#23423F">Person</label>
             </div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+            <div class="m-col" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
               <input name="vorname" placeholder="Vorname*" onChange="{{ onField }}" style="font-family:'Alegreya Sans',sans-serif;font-size:15px;padding:11px 13px;border:1px solid #D8D0BE;border-radius:4px;background:#FFFFFF;color:#3A3733">
               <input name="nachname" placeholder="Nachname*" onChange="{{ onField }}" style="font-family:'Alegreya Sans',sans-serif;font-size:15px;padding:11px 13px;border:1px solid #D8D0BE;border-radius:4px;background:#FFFFFF;color:#3A3733">
               <input name="email" placeholder="E-Mail*" onChange="{{ onField }}" style="font-family:'Alegreya Sans',sans-serif;font-size:15px;padding:11px 13px;border:1px solid #D8D0BE;border-radius:4px;background:#FFFFFF;color:#3A3733">
               <input name="telefon" placeholder="Telefon*" onChange="{{ onField }}" style="font-family:'Alegreya Sans',sans-serif;font-size:15px;padding:11px 13px;border:1px solid #D8D0BE;border-radius:4px;background:#FFFFFF;color:#3A3733">
             </div>
-            <div style="display:grid;grid-template-columns:2fr 1fr;gap:10px">
+            <div class="m-col" style="display:grid;grid-template-columns:2fr 1fr;gap:10px">
               <input name="strasse" placeholder="Straße*" onChange="{{ onField }}" style="font-family:'Alegreya Sans',sans-serif;font-size:15px;padding:11px 13px;border:1px solid #D8D0BE;border-radius:4px;background:#FFFFFF;color:#3A3733">
               <input name="hausnummer" placeholder="Hausnummer*" onChange="{{ onField }}" style="font-family:'Alegreya Sans',sans-serif;font-size:15px;padding:11px 13px;border:1px solid #D8D0BE;border-radius:4px;background:#FFFFFF;color:#3A3733">
             </div>
-            <div style="display:grid;grid-template-columns:1fr 2fr;gap:10px">
+            <div class="m-col" style="display:grid;grid-template-columns:1fr 2fr;gap:10px">
               <input name="plz" placeholder="PLZ*" onChange="{{ onField }}" style="font-family:'Alegreya Sans',sans-serif;font-size:15px;padding:11px 13px;border:1px solid #D8D0BE;border-radius:4px;background:#FFFFFF;color:#3A3733">
               <input name="ort" placeholder="Ort*" onChange="{{ onField }}" style="font-family:'Alegreya Sans',sans-serif;font-size:15px;padding:11px 13px;border:1px solid #D8D0BE;border-radius:4px;background:#FFFFFF;color:#3A3733">
             </div>

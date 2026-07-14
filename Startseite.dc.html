@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Ganzheitliche Lebensbegleitung | Spirituelle Begleitung für Körper, Geist &amp; Seele</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#FAF7F1}html{scroll-behavior:auto}</style>
+</helmet>
+<div style="font-family:'Alegreya Sans',sans-serif;color:#3A3733;background:#FAF7F1" data-screen-label="Startseite">
+<dc-import name="SiteHeader" active="start" hint-size="100%,130px"></dc-import>
+
+<!-- HERO -->
+<section style="position:relative;background:linear-gradient(155deg,rgba(30,54,50,0.92) 0%,rgba(42,75,71,0.82) 45%,rgba(59,89,82,0.62) 78%,rgba(83,105,96,0.55) 100%),url('bg_body.jpg') center/cover no-repeat;overflow:hidden">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 75% 110%,rgba(240,232,214,0.22),transparent 60%)"></div>
+  <div style="position:relative;max-width:1160px;margin:0 auto;padding:110px 40px 120px;display:grid;grid-template-columns:1.5fr 1fr;gap:64px;align-items:center">
+    <div style="display:flex;flex-direction:column;gap:26px">
+      <span style="font-size:14px;letter-spacing:0.22em;text-transform:uppercase;color:#C8B98F">Ganzheitliche Lebensbegleitung</span>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:60px;line-height:1.1;font-weight:600;color:#F6F2E8;text-wrap:balance">Alles in deinem Leben ist ein Wegweiser</div>
+      <p style="margin:0;font-size:19px;line-height:1.65;color:#DCE4DD;max-width:540px">Ob körperliche oder seelische Erkrankung, berufliche Herausforderungen oder Probleme in Beziehungen – alles, was uns im Leben begegnet, ist ein Wegweiser. Wir begleiten dich dabei, seine Botschaft zu entschlüsseln.</p>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:6px">
+        <a href="Kontakt.dc.html" style="text-decoration:none;background:#C08A4E;color:#241A0E;font-weight:700;font-size:16px;padding:14px 28px;border-radius:3px" style-hover="background:#D09A5C">Gehe den ersten Schritt</a>
+        <a href="Veranstaltungen.dc.html" style="text-decoration:none;border:1px solid #9FB4AA;color:#EDF1EA;font-weight:500;font-size:16px;padding:14px 28px;border-radius:3px" style-hover="background:rgba(255,255,255,0.08)">Zu den Veranstaltungen</a>
+      </div>
+    </div>
+    <aside style="background:rgba(250,247,241,0.97);border-radius:6px;padding:28px 28px 22px;box-shadow:0 20px 50px rgba(15,32,28,0.35);display:flex;flex-direction:column;gap:0">
+      <span style="font-size:12.5px;letter-spacing:0.18em;text-transform:uppercase;color:#B0703C;font-weight:700;padding-bottom:14px;border-bottom:1px solid #E8E0CF">Nächste Termine</span>
+      <sc-for list="{{ termine }}" as="t" hint-placeholder-count="4">
+        <a href="Veranstaltungen.dc.html" style="text-decoration:none;display:flex;gap:14px;align-items:baseline;padding:13px 0;border-bottom:1px solid #EEE7D8">
+          <span style="font-size:14px;font-weight:700;color:#23423F;white-space:nowrap;min-width:96px">{{ t.datum }}</span>
+          <span style="display:flex;flex-direction:column;gap:1px">
+            <span style="font-size:15.5px;font-weight:500;color:#3A3733;line-height:1.3">{{ t.titel }}</span>
+            <span style="font-size:13.5px;color:#8A7E68">{{ t.ort }}</span>
+          </span>
+        </a>
+      </sc-for>
+      <a href="Veranstaltungen.dc.html" style="text-decoration:none;color:#B0703C;font-weight:700;font-size:15px;padding-top:14px" style-hover="color:#8F5A2E">Alle Termine ansehen →</a>
+    </aside>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section style="max-width:860px;margin:0 auto;padding:96px 40px 72px;text-align:center;display:flex;flex-direction:column;gap:24px">
+  <h1 style="margin:0;font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:600;color:#23423F;line-height:1.2;text-wrap:balance">Ganzheitliche Lebensbegleitung, Seminare und Intensivcoachings</h1>
+  <p style="margin:0;font-size:18px;line-height:1.75;color:#4C463D">Ob körperliche oder seelische Erkrankung, berufliche Herausforderungen oder Probleme in Beziehungen – alles, was uns im Leben begegnet, ist ein Wegweiser. Doch nur selten verstehen wir seine ursächliche Botschaft.</p>
+  <p style="margin:0;font-size:18px;line-height:1.75;color:#4C463D">Mit unserer ganzheitlichen Lebensbegleitung sind wir gern für dich da, um diese Wegweiser (Symptome) zu entschlüsseln und dich auf deinem ganz persönlichen Erkenntnisweg zu begleiten. Gemeinsam finden wir den nächsten fälligen Schritt, der dir die Tür in ein für dich stimmiges und erfülltes Leben öffnet.</p>
+  <p style="margin:0;font-size:18px;line-height:1.75;color:#4C463D;font-weight:500">Bist du bereit? Dann gehe jetzt den ersten entscheidenden Schritt.</p>
+</section>
+
+<!-- ZITAT -->
+<section style="max-width:760px;margin:0 auto;padding:0 40px 96px;text-align:center">
+  <div style="width:56px;height:1px;background:#C08A4E;margin:0 auto 28px"></div>
+  <p style="margin:0;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:31px;line-height:1.45;color:#33514C">„Das Leben stellt uns nicht vor Hindernisse, sondern zeigt uns Wegweiser.“</p>
+  <p style="margin:18px 0 0;font-size:14px;letter-spacing:0.16em;text-transform:uppercase;color:#8A7E68">Ralf Baars</p>
+</section>
+
+<!-- ANGEBOTE -->
+<section style="background:#F1EBDF;border-top:1px solid #E5DECF;border-bottom:1px solid #E5DECF">
+  <div style="max-width:1160px;margin:0 auto;padding:88px 40px 96px;display:flex;flex-direction:column;gap:48px">
+    <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;color:#23423F;text-align:center;text-wrap:balance">Unsere ganzheitliche Lebensbegleitung hat viele Formen</h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:26px">
+      <sc-for list="{{ kacheln }}" as="k" hint-placeholder-count="6">
+        <a href="{{ k.href }}" style="text-decoration:none;background:#FCFAF5;border:1px solid #E5DECF;border-radius:5px;padding:30px 28px;display:flex;flex-direction:column;gap:13px;transition:box-shadow 0.2s,transform 0.2s" style-hover="box-shadow:0 14px 34px rgba(51,65,60,0.12);transform:translateY(-3px)">
+          <span style="font-size:12.5px;letter-spacing:0.16em;text-transform:uppercase;color:#B0703C;font-weight:700">{{ k.kicker }}</span>
+          <span style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:600;color:#23423F;line-height:1.2">{{ k.titel }}</span>
+          <span style="font-size:15.5px;line-height:1.65;color:#4C463D">{{ k.text }}</span>
+          <span style="margin-top:auto;padding-top:8px;font-size:15px;font-weight:700;color:#23423F">{{ k.cta }}</span>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- ÜBER RALF -->
+<section style="max-width:1160px;margin:0 auto;padding:96px 40px;display:grid;grid-template-columns:0.9fr 1.3fr;gap:64px;align-items:center">
+  <div style="aspect-ratio:4/5;border-radius:6px;background:linear-gradient(165deg,#D9D2C0,#B9C4BB 60%,#9FB0A4);display:flex;align-items:center;justify-content:center;text-align:center;padding:24px">
+    <span style="font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#5C6A60">Foto: Ralf Baars<br>(Porträt folgt)</span>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:18px">
+    <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;color:#23423F">Über Ralf Baars</h2>
+    <h3 style="margin:0;font-size:17px;letter-spacing:0.1em;text-transform:uppercase;color:#B0703C;font-weight:700">Das Leben als Lehrmeister</h3>
+    <p style="margin:0;font-size:17.5px;line-height:1.75;color:#4C463D">Jeder Mensch hat ein besonderes Talent. Meine Berufung ist es, Menschen auf ihrem Lebensweg zu begleiten, damit sie ein glückliches und erfolgreiches – vor allem jedoch ein für sie selbst stimmiges und erfülltes Leben gestalten können. Geboren im Jahr 1965 wurde ich durch mehrjährige eigene Erkrankung auf den Weg zum Heilpraktiker geführt.</p>
+    <p style="margin:0;font-size:17.5px;line-height:1.75;color:#4C463D">Nach meiner Tätigkeit in eigener Naturheilpraxis erfüllte sich 2009 ein Herzensprojekt: Gemeinsam mit meiner damaligen Frau Petra-Susanne gründete ich das Zentrum für Lebensbegleitung und Naturheilkunde, das seit 2026 den Namenszusatz „Neu-Atlantis“ trägt. Ich freue mich schon sehr darauf, dir mehr darüber zu erzählen!</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px 24px;padding:20px 24px;background:#F1EBDF;border-radius:5px">
+      <span style="grid-column:1/-1;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#8A7E68;font-weight:700;padding-bottom:4px">Qualifikationen</span>
+      <span style="font-size:15px;line-height:1.5;color:#4C463D">· Heilpraktiker für Psychotherapie</span>
+      <span style="font-size:15px;line-height:1.5;color:#4C463D">· Ausbildung im Familienstellen bei Bert Hellinger</span>
+      <span style="font-size:15px;line-height:1.5;color:#4C463D">· Weiterbildungen in Quantenheilung, Heilhypnose, Rückführungstherapie, craniosacraler Körpertherapie u. v. m.</span>
+      <span style="font-size:15px;line-height:1.5;color:#4C463D">· Weiterentwicklung des geistigen Familienstellens</span>
+      <span style="font-size:15px;line-height:1.5;color:#4C463D">· Über 20 Jahre Coachingerfahrung in eigener Praxis</span>
+      <span style="font-size:15px;line-height:1.5;color:#4C463D">· Supervision im geistigen Familienstellen</span>
+    </div>
+    <a href="Ueber-uns.dc.html" style="text-decoration:none;color:#B0703C;font-weight:700;font-size:16px" style-hover="color:#8F5A2E">Mehr erfahren →</a>
+  </div>
+</section>
+
+<!-- BILDERLEISTE -->
+<section style="max-width:1160px;margin:0 auto;padding:0 40px 96px;display:flex;flex-direction:column;gap:32px">
+  <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;color:#23423F;text-align:center">Impressionen aus der ganzheitlichen Lebensbegleitung</h2>
+  <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:14px">
+    <sc-for list="{{ impressionen }}" as="b" hint-placeholder-count="5">
+      <div style="aspect-ratio:4/5;border-radius:5px;background:{{ b.bg }};display:flex;align-items:flex-end;padding:14px">
+        <span style="font-size:11.5px;letter-spacing:0.1em;text-transform:uppercase;color:#54625A;line-height:1.45">{{ b.label }}</span>
+      </div>
+    </sc-for>
+  </div>
+  <div style="border:1.5px dashed #C08A4E;background:#FBF3E7;color:#8A5A22;font-size:14px;line-height:1.5;padding:10px 14px;border-radius:4px;display:{{ redak }}">✎ Redaktion: Hier folgen echte Fotos – Vorträge und Beratung auf Messen, Standensemble, individuelle Beratungssituation, mindestens zwei Aufstellungsbilder in der Gruppe.</div>
+</section>
+
+<!-- AKTUELLES -->
+<section style="background:#F1EBDF;border-top:1px solid #E5DECF;border-bottom:1px solid #E5DECF">
+  <div style="max-width:1160px;margin:0 auto;padding:88px 40px;display:flex;flex-direction:column;gap:40px">
+    <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;color:#23423F;text-align:center">Aktuelles aus Neu-Atlantis</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:26px;align-items:stretch">
+      <div style="background:#FCFAF5;border:1px solid #E5DECF;border-radius:5px;padding:28px;display:flex;flex-direction:column;gap:12px">
+        <span style="font-size:12.5px;letter-spacing:0.16em;text-transform:uppercase;color:#B0703C;font-weight:700">Aktuelles</span>
+        <span style="font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:600;color:#23423F">Lebensfreudemesse Travemünde 2026</span>
+        <span style="font-size:15.5px;line-height:1.6;color:#4C463D">Besuche uns an unserem Stand – mit Vorträgen von Ralf Baars und der Möglichkeit für ein persönliches Gespräch.</span>
+        <div style="margin-top:auto;border:1.5px dashed #C08A4E;background:#FBF3E7;color:#8A5A22;font-size:13px;line-height:1.5;padding:8px 11px;border-radius:4px;display:{{ redak }}">✎ Redaktion: Wird automatisch aus „Wissenswertes → Aktuelles“ befüllt.</div>
+      </div>
+      <div style="background:#FCFAF5;border:1px solid #E5DECF;border-radius:5px;padding:28px;display:flex;flex-direction:column;gap:12px">
+        <span style="font-size:12.5px;letter-spacing:0.16em;text-transform:uppercase;color:#B0703C;font-weight:700">Aktuelles</span>
+        <span style="font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:600;color:#23423F">Frauengruppe Braunschweig</span>
+        <span style="font-size:15.5px;line-height:1.6;color:#4C463D">Termine im ersten Halbjahr: 15. März, 19. April, 21. Juni und 23. August 2026. Leitung: Melanie Tracums-Hinke.</span>
+        <div style="margin-top:auto;border:1.5px dashed #C08A4E;background:#FBF3E7;color:#8A5A22;font-size:13px;line-height:1.5;padding:8px 11px;border-radius:4px;display:{{ redak }}">✎ Redaktion: Wird automatisch aus „Wissenswertes → Aktuelles“ befüllt.</div>
+      </div>
+      <div style="background:#23423F;border-radius:5px;padding:28px;display:flex;flex-direction:column;gap:12px">
+        <span style="font-size:12.5px;letter-spacing:0.16em;text-transform:uppercase;color:#C8B98F;font-weight:700">Aktuelle Flyer</span>
+        <span style="font-size:15.5px;line-height:1.6;color:#D9E2DD">Hier kannst du dir die aktuellen Veranstaltungsflyer von Neu-Atlantis als PDF herunterladen. Nimm dir gern Zeit und schau, welches Angebot dich gerade anspricht.</span>
+        <a href="#" style="text-decoration:none;color:#F6F2E8;font-weight:700;font-size:15px;border:1px solid #4E6B65;border-radius:4px;padding:10px 14px" style-hover="background:#2E524E">↓ Programmflyer Seminarangebote 2026</a>
+        <a href="#" style="text-decoration:none;color:#F6F2E8;font-weight:700;font-size:15px;border:1px solid #4E6B65;border-radius:4px;padding:10px 14px" style-hover="background:#2E524E">↓ Neu-Atlantis Hamburg, Angebote 2026</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STEINORAKEL -->
+<section style="max-width:1160px;margin:0 auto;padding:96px 40px">
+  <div style="background:linear-gradient(140deg,#2A4B47,#3D615A);border-radius:8px;padding:64px 72px;display:grid;grid-template-columns:1.6fr 1fr;gap:48px;align-items:center">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <span style="font-size:13px;letter-spacing:0.2em;text-transform:uppercase;color:#C8B98F;font-weight:700">Kostenloses Steinorakel</span>
+      <span style="font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;color:#F6F2E8;line-height:1.2">15 Minuten Klarheit für (d)eine Lebensfrage</span>
+      <p style="margin:0;font-size:17px;line-height:1.7;color:#DCE4DD">Du wünschst dir Antwort auf eine für dich wesentliche Frage? Schreib dir diese Frage auf, such dir in der Natur einen etwa faustgroßen Stein, der dich anspricht – und buch dir dein schamanisches Steinorakel. Kostenfrei. Persönlich. Per Zoom.</p>
+      <div><a href="Kontakt.dc.html" style="text-decoration:none;display:inline-block;background:#C08A4E;color:#241A0E;font-weight:700;font-size:16px;padding:13px 26px;border-radius:3px" style-hover="background:#D09A5C">Jetzt anmelden</a></div>
+    </div>
+    <div style="aspect-ratio:1/1;border-radius:50%;max-width:260px;justify-self:center;background:radial-gradient(circle at 35% 30%,#D9D2C0,#9FB0A4 70%,#7E948A);display:flex;align-items:center;justify-content:center;text-align:center">
+      <span style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#48564E">Foto: Steinorakel<br>(folgt)</span>
+    </div>
+  </div>
+</section>
+
+<!-- KLIENTENSTIMMEN -->
+<section style="max-width:1160px;margin:0 auto;padding:0 40px 96px;display:flex;flex-direction:column;gap:40px">
+  <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;color:#23423F;text-align:center">Persönliche Erfahrungen unserer Klienten</h2>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:26px">
+    <sc-for list="{{ stimmen }}" as="s" hint-placeholder-count="3">
+      <figure style="margin:0;background:#FCFAF5;border:1px solid #E5DECF;border-radius:5px;padding:30px 28px;display:flex;flex-direction:column;gap:16px">
+        <span style="font-family:'Cormorant Garamond',serif;font-size:40px;line-height:0.5;color:#C08A4E;padding-top:10px">„</span>
+        <blockquote style="margin:0;font-size:16px;line-height:1.7;color:#4C463D;font-style:italic">{{ s.text }}</blockquote>
+        <figcaption style="margin-top:auto;font-size:14px;letter-spacing:0.1em;text-transform:uppercase;color:#8A7E68;font-weight:700">{{ s.name }}</figcaption>
+      </figure>
+    </sc-for>
+  </div>
+  <div style="text-align:center"><a href="Ueber-uns.dc.html#klientenstimmen" style="text-decoration:none;color:#B0703C;font-weight:700;font-size:16px" style-hover="color:#8F5A2E">Alle Klientenstimmen lesen →</a></div>
+</section>
+
+<!-- KONTAKT TEASER -->
+<section style="background:#F1EBDF;border-top:1px solid #E5DECF;border-bottom:1px solid #E5DECF">
+  <div style="max-width:820px;margin:0 auto;padding:88px 40px;text-align:center;display:flex;flex-direction:column;gap:20px;align-items:center">
+    <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;color:#23423F">Du möchtest am liebsten sofort starten?</h2>
+    <p style="margin:0;font-size:17.5px;line-height:1.75;color:#4C463D">Du möchtest Blockaden und Muster auflösen, uralte karmische Verstrickungen hinter dir lassen, Wegweiser (Symptome) gemeinsam entschlüsseln und Impulse mitnehmen, die für dich heilsam sein könnten? Melde dich gern per E-Mail bei uns oder sprich uns auf den Anrufbeantworter! Wir rufen dich an und vereinbaren einen Termin für ein Erstgespräch mit dir.</p>
+    <p style="margin:0;font-size:15px;line-height:1.6;color:#8A7E68">Bitte beachte: Unsere Kontaktaufnahme kann ggf. ein, zwei Tage dauern, da wir unermüdlich für unsere Klienten im Dienst sind.</p>
+    <a href="Kontakt.dc.html" style="text-decoration:none;background:#23423F;color:#F6F2E8;font-weight:700;font-size:16px;padding:14px 30px;border-radius:3px" style-hover="background:#2E524E">Jetzt Termin vereinbaren</a>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="max-width:860px;margin:0 auto;padding:96px 40px 110px;display:flex;flex-direction:column;gap:34px">
+  <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:600;color:#23423F;text-align:center;text-wrap:balance">Häufig gestellte Fragen zur ganzheitlichen Lebensbegleitung</h2>
+  <div style="display:flex;flex-direction:column;gap:0;border-top:1px solid #E5DECF">
+    <details style="border-bottom:1px solid #E5DECF;padding:6px 0">
+      <summary style="cursor:pointer;font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:#23423F;padding:16px 8px;list-style-position:outside">Was ist ganzheitliche Lebensbegleitung?</summary>
+      <div style="padding:0 8px 22px;display:flex;flex-direction:column;gap:14px">
+        <p style="margin:0;font-size:16.5px;line-height:1.75;color:#4C463D">Ganzheitliche Lebensbegleitung in unserer Definition geht davon aus, dass menschliche Erfahrungen und insbesondere „Symptome“ keineswegs isoliert betrachtet werden sollten. Gedanken, Gefühle, körperliche Empfindungen, von Menschen gelebte Beziehungen und innere Haltungen und „Glaubensfragen“ stehen in einem engen Zusammenhang mit frühkindlichen Erfahrungen, Prägungen, Verstrickungen in unseren Familiensystemen, karmischen UR-Sachen etc. Herausforderungen bzw. Wegweiser (Symptome) zeigen sich daher oft auf mehreren Ebenen gleichzeitig.</p>
+        <p style="margin:0;font-size:16.5px;line-height:1.75;color:#4C463D">In der ganzheitlichen Lebensbegleitung fragen wir somit nicht nur „Was ist gerade herausfordernd?“, sondern auch „Wodurch könnte es entstanden sein?“ und „Was möchte sich darin zeigen?“ Der von uns begleitete Mensch wird dadurch nicht auf ein individuelles Problem reduziert, sondern in seiner gesamten Lebenssituation wahrgenommen. Ziel ist es, die Botschaft, die hinter dem Wegweiser (Symptom) wirkt, ursächlich gemeinsam zu entschlüsseln und dadurch Impulse bzw. Wandel von der belastenden in eine erfüllte Lebenssituation herbeizuführen.</p>
+        <p style="margin:0;font-size:16.5px;line-height:1.75;color:#4C463D">Erste Hinweise zu möglichen Ursachen und Verstrickungen findest du in der Rubrik <a href="Wissenswertes.dc.html" style="color:#B0703C;font-weight:700">„Wissenswertes“</a>.</p>
+      </div>
+    </details>
+    <details style="border-bottom:1px solid #E5DECF;padding:6px 0">
+      <summary style="cursor:pointer;font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:#23423F;padding:16px 8px">Welche Themen können in der ganzheitlichen Lebensbegleitung betrachtet werden?</summary>
+      <div style="padding:0 8px 22px;display:flex;flex-direction:column;gap:14px">
+        <p style="margin:0;font-size:16.5px;line-height:1.75;color:#4C463D">Unsere ganzheitliche Lebensbegleitung eignet sich für alle Lebenssituationen. Dazu gehören Erkrankungen aller Art, emotionale Belastungen, innere Unruhe, Erschöpfung, depressive Verstimmungen, Ängste, Beziehungskonflikte, familiäre Spannungen und wiederkehrende Lebensmuster ebenso wie berufliche Anliegen, Sinnfragen oder Phasen der Neuorientierung.</p>
+        <p style="margin:0;font-size:16.5px;line-height:1.75;color:#4C463D">Körperliche Beschwerden betrachten wir dabei als Ausdruck innerer Prozesse – untergeordnet im Sinne einer Diagnose, jedoch vielmehr als Hinweis darauf, dass etwas im Leben aus dem Gleichgewicht geraten ist. Unsere Arbeit lädt dazu ein, diesen Hinweisen (Wegweisern) achtsam zu begegnen und sie in einen größeren Zusammenhang einzuordnen, um letztlich heilsame Impulse für die Wandlung zu erfahren.</p>
+      </div>
+    </details>
+    <details style="border-bottom:1px solid #E5DECF;padding:6px 0">
+      <summary style="cursor:pointer;font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:#23423F;padding:16px 8px">Worin unterscheidet sich ganzheitliche Lebensbegleitung von klassischer Beratung oder Therapie?</summary>
+      <div style="padding:0 8px 22px;display:flex;flex-direction:column;gap:14px">
+        <p style="margin:0;font-size:16.5px;line-height:1.75;color:#4C463D">Ganzheitliche Lebensbegleitung ist keine Therapie im klassischen Sinn. Sie fokussiert sich auf Ursachen (die z. B. auch aus früheren Leben oder dem Familiensystem stammen können), Zusammenhänge und Prozesse, statt auf Symptome.</p>
+        <p style="margin:0;font-size:16.5px;line-height:1.75;color:#4C463D">Im Mittelpunkt steht dabei kein „Reparaturgedanke“. Es ist vielmehr das Sichtbarmachen, Begleiten und Wandeln von bisher belastend wirkenden bzw. „krankmachenden“ Faktoren – hin zu einem (wieder) freien Fluss der Lebensenergie (Gesundheit/Wohlbefinden). Dabei ist es für uns Gewissheit, dass es keine „unheilbaren Dinge“ gibt, sondern grundsätzlich ALLES gewandelt werden kann.</p>
+      </div>
+    </details>
+    <details style="border-bottom:1px solid #E5DECF;padding:6px 0">
+      <summary style="cursor:pointer;font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:#23423F;padding:16px 8px">Welche Rolle spielt Spiritualität in der ganzheitlichen Lebensbegleitung?</summary>
+      <div style="padding:0 8px 22px">
+        <p style="margin:0;font-size:16.5px;line-height:1.75;color:#4C463D">Spiritualität wird bei uns nicht als Glaubenssystem verstanden. Wir sind zutiefst davon überzeugt, dass es im Universum etwas gibt, das weitaus größer ist als wir und dass unser eigenes Leben in einem größeren Zusammenhang zu sehen ist. Einem Zusammenhang, der sich über frühere Leben und unser gesamtes Familiensystem erstreckt. Für uns ist es Gewissheit, dass alles schöpferische DA-SEIN aus EINER URKRAFT stammt und zwar unabhängig von jeglichen menschlichen Betrachtungsweisen und Religionen.</p>
+      </div>
+    </details>
+    <details style="border-bottom:1px solid #E5DECF;padding:6px 0">
+      <summary style="cursor:pointer;font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:#23423F;padding:16px 8px">Was ist systemische Aufstellungsarbeit und warum ist sie Teil der Begleitung?</summary>
+      <div style="padding:0 8px 22px;display:flex;flex-direction:column;gap:14px">
+        <p style="margin:0;font-size:16.5px;line-height:1.75;color:#4C463D">Systemische Aufstellungsarbeit macht u. a. innere und äußere Muster in menschlichen Beziehungen sichtbar. Sie kann helfen zu verstehen, wie familiäre Prägungen, Loyalitäten oder unbewusste Bindungen das eigene Leben beeinflussen. Das reicht tatsächlich so weit, dass Menschen anstelle eines selbst-bestimmten Lebens ein „Skript“ leben.</p>
+        <p style="margin:0;font-size:16.5px;line-height:1.75;color:#4C463D">Im Rahmen der ganzheitlichen Lebensbegleitung ist die systemische Aufstellungsarbeit in multiplen Dimensionen (Geistiges Familienstellen) für uns ein wesentlicher Dreh- und Angelpunkt. Eine einzigartige Möglichkeit, Zusammenhänge zu erkennen und neue Blickwinkel zu erschließen. Oftmals entstehen daraus tiefgreifende Lösungen, Ordnung und erweitertes Bewusst-Sein für das eigene (ER-)Leben.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showRedaktion&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Redaktion&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const showRedak = this.props.showRedaktion ?? true;
+    return {
+      redak: showRedak ? "block" : "none",
+      termine: [
+        { datum: "21.02.2026", titel: "Gehen mit Geist und Seele", ort: "Gronau OT Heinum" },
+        { datum: "22.02.2026", titel: "Aufbruch nach Neu-Atlantis", ort: "Gronau OT Heinum" },
+        { datum: "14.03.2026", titel: "Aufbruch nach Neu-Atlantis", ort: "Hamburg" },
+        { datum: "01.–03.05.2026", titel: "Gehen mit Geist und Seele", ort: "Mölln" },
+        { datum: "18.–21.06.2026", titel: "Aufbruch nach Neu-Atlantis", ort: "Helgoland" }
+      ],
+      kacheln: [
+        { kicker: "Aufstellungsarbeit", titel: "Geistiges Familienstellen", href: "Aufstellungsarbeit.dc.html", cta: "Mehr erfahren →",
+          text: "In unseren Aufstellungsseminaren kommst du den Ursachen deiner gesundheitlichen, privaten und beruflichen Herausforderungen (den Wegweisern in deinem Leben) auf die Spur. So erhältst du Einsichten, über die du Konflikte, Muster und Verhaltensweisen jedweder Art multidimensional erkennen und anschließend wandeln kannst." },
+        { kicker: "Einzelarbeit", titel: "Individuelle Begleitung", href: "Individuelle-Begleitung.dc.html", cta: "Mehr erfahren →",
+          text: "Neben unseren Seminaren bieten wir dir gern Einzeltermine an. In einfühlsamen Gesprächen schauen wir ganz individuell auf deine Themen. Gemeinsam gewinnen wir Klarheit darüber, was dich in deinem nächsten Schritt am besten unterstützt – und gehen anschließend, zum Beispiel in Coachinggesprächen, Hypnose oder Rückführungen, weiter in die Tiefe." },
+        { kicker: "Einzelarbeit", titel: "Intensivcoaching", href: "Intensivcoaching.dc.html", cta: "Mehr erfahren →",
+          text: "Tiefgreifende Erkenntnisse und Veränderungen brauchen Raum und Zeit zur Entfaltung. Fernab vom Festland gewinnst du auf Helgoland neue Einsichten, erfährst Heilungsimpulse und erweiterst dein Bewusst-Sein. Ralf Baars begleitet dich in diesem 5-tägigen Intensivcoaching in all deinen individuellen Anliegen nach Veränderung." },
+        { kicker: "Tiefgreifende Transformation", titel: "Helgoland-Seminare", href: "Aufstellungsarbeit.dc.html", cta: "Mehr erfahren →",
+          text: "Tiefe (Seelen-)Blockaden in unserem Zellgedächtnis führen uns oftmals an einen besonderen Kraftplatz. Auf Helgoland binden wir uns an unser Ur-Stammesgedächtnis an – und finden Schlüssel für wesentliche Blockaden, die zahlreiche Menschen in ihrem heutigen Leben beeinträchtigen. Erlebe es selbst und vertraue der Weisheit, die in dir ist." },
+        { kicker: "Themenabende im Jahreskreis", titel: "Wir Männer und das Thema erfüllte Beziehungen", href: "Spezialangebote.dc.html", cta: "Mehr erfahren →",
+          text: "Welche Anliegen bzw. Veränderungswünsche du als Mann in Bezug auf deine Beziehung(en) zu anderen oder dir selbst auch immer hast: Vertraue dich der Weisheit unserer Ahnen an. Es erwartet dich in unserem Kreis von Männern an 6 Terminen tiefe Verbundenheit und Zugang zu wahrhaftigem Selbst-Vertrauen!" },
+        { kicker: "Im Gespräch SEIN", titel: "Kostenfreie Telefonsprechzeiten", href: "Kontakt.dc.html", cta: "Zum Kontakt →",
+          text: "Ob im Nachgang zu einem Seminar oder als Erstkontakt: Ruf uns gern zu unseren Telefonsprechzeiten an! Wir sind für dich da und unterstützen dich bei allem, was dich bewegt. Di.: 20.00–21.00 Uhr | Do. (n. V.): 12.00–13.00 Uhr" }
+      ],
+      impressionen: [
+        { label: "Vortrag auf der Messe", bg: "linear-gradient(165deg,#DCD5C3,#BEC8BE)" },
+        { label: "Beratung am Stand", bg: "linear-gradient(165deg,#D3CDBB,#AEBDB2)" },
+        { label: "Standensemble", bg: "linear-gradient(165deg,#CFD6CB,#A5B5A9)" },
+        { label: "Individuelle Beratung", bg: "linear-gradient(165deg,#D8D1BF,#B4C1B5)" },
+        { label: "Aufstellung in der Gruppe", bg: "linear-gradient(165deg,#D0CBBA,#9FB0A4)" }
+      ],
+      stimmen: [
+        { text: "Das Intensivcoaching war für mich eine wunderbar begleitete Reise zu mir, bei der ich die Tiefe meiner Seele kennenlernen durfte. Dank der intensiven Arbeit mit Dir ist es gelungen, schmerzvolle, belastende Themen loszulassen. (…)", name: "Elke aus Hamburg" },
+        { text: "Ich habe schon einige gute Familiensteller erlebt und war von Ralfs Präsenz und seiner Intuition sehr beeindruckt. Er bringt Familienstellen von diesem Leben in andere Zeiten und mehrere Dimensionen und damit ins nächste Level. Daher löst sich in einem Wochenende so viel mehr als man sich vorstellen kann. (…)", name: "B. aus Hamburg" },
+        { text: "Es ist durch die Arbeit mit dir eine große Kraft, Klarheit, Besonnenheit, Zuversicht, Einsicht, Mut eröffnet worden, die mich sehr stabil durch die nicht gerade leichter gewordenen Begebenheiten in meinem Leben tragen. Dafür von Herzen DANKE!", name: "Angelika aus dem Harz" }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Veranstaltungen – Neu-Atlantis</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#FAF7F1}</style>
+</helmet>
+<div style="font-family:'Alegreya Sans',sans-serif;color:#3A3733;background:#FAF7F1" data-screen-label="Veranstaltungen">
+<dc-import name="SiteHeader" active="veranstaltungen" hint-size="100%,130px"></dc-import>
+
+<section style="background:linear-gradient(155deg,#2A4B47,#3D615A 70%,#527568)">
+  <div style="max-width:1160px;margin:0 auto;padding:72px 40px;display:flex;flex-direction:column;gap:16px">
+    <span style="font-size:14px;letter-spacing:0.22em;text-transform:uppercase;color:#C8B98F">Veranstaltungskalender</span>
+    <h1 style="margin:0;font-family:'Cormorant Garamond',serif;font-size:48px;line-height:1.12;font-weight:600;color:#F6F2E8">Veranstaltungen 2026</h1>
+    <p style="margin:0;font-size:17.5px;line-height:1.65;color:#DCE4DD;max-width:680px">Seminare, Themenabende und Einzeltermine. Für alle Veranstaltungen ist aufgrund der begrenzten Teilnehmerzahl eine Anmeldung erforderlich.</p>
+  </div>
+</section>
+
+<!-- LISTE -->
+<section style="max-width:1160px;margin:0 auto;padding:64px 40px 110px;display:{{ listDisplay }};flex-direction:column;gap:32px">
+  <div style="display:flex;gap:10px;flex-wrap:wrap">
+    <sc-for list="{{ filters }}" as="f" hint-placeholder-count="4">
+      <button onClick="{{ f.onClick }}" style="cursor:pointer;font-family:'Alegreya Sans',sans-serif;font-size:15px;font-weight:700;padding:9px 20px;border-radius:99px;border:1px solid {{ f.borderColor }};background:{{ f.bg }};color:{{ f.color }}">{{ f.label }}</button>
+    </sc-for>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:16px">
+    <sc-for list="{{ events }}" as="ev" hint-placeholder-count="6">
+      <div style="background:#FCFAF5;border:1px solid #E5DECF;border-radius:6px;padding:26px 30px;display:grid;grid-template-columns:180px 1fr auto;gap:24px;align-items:center" style-hover="box-shadow:0 10px 28px rgba(51,65,60,0.1)">
+        <div style="display:flex;flex-direction:column;gap:3px">
+          <span style="font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:600;color:#23423F;line-height:1.15">{{ ev.datum }}</span>
+          <span style="font-size:13.5px;color:#8A7E68">{{ ev.zeitKurz }}</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:5px">
+          <span style="font-size:12.5px;letter-spacing:0.14em;text-transform:uppercase;color:#B0703C;font-weight:700">{{ ev.kategorie }}</span>
+          <span style="font-size:18px;font-weight:700;color:#3A3733;line-height:1.3">{{ ev.titel }}</span>
+          <span style="font-size:14.5px;color:#8A7E68">{{ ev.ortKurz }} · Leitung: {{ ev.leitung }}</span>
+        </div>
+        <button onClick="{{ ev.onOpen }}" style="cursor:pointer;font-family:'Alegreya Sans',sans-serif;font-size:15px;font-weight:700;color:#F6F2E8;background:#23423F;border:none;border-radius:3px;padding:11px 22px;white-space:nowrap" style-hover="background:#2E524E">Details &amp; Anmeldung</button>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<!-- DETAIL -->
+<section style="max-width:1160px;margin:0 auto;padding:56px 40px 110px;display:{{ detailDisplay }};flex-direction:column;gap:36px">
+  <div><button onClick="{{ onBack }}" style="cursor:pointer;font-family:'Alegreya Sans',sans-serif;font-size:15.5px;font-weight:700;color:#B0703C;background:none;border:none;padding:0">← Zurück zur Übersicht</button></div>
+  <div style="display:grid;grid-template-columns:1.55fr 1fr;gap:56px;align-items:start">
+    <div style="display:flex;flex-direction:column;gap:26px">
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <span style="font-size:13px;letter-spacing:0.18em;text-transform:uppercase;color:#B0703C;font-weight:700">{{ sel.kategorie }}</span>
+        <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:600;color:#23423F;line-height:1.15">{{ sel.titel }}</h2>
+      </div>
+      <sc-for list="{{ selParas }}" as="p" hint-placeholder-count="3">
+        <p style="margin:0;font-size:17px;line-height:1.75;color:#4C463D">{{ p }}</p>
+      </sc-for>
+      <sc-for list="{{ selBlocks }}" as="b" hint-placeholder-count="2">
+        <div style="background:#F1EBDF;border-radius:5px;padding:22px 26px;display:flex;flex-direction:column;gap:8px">
+          <span style="font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#B0703C;font-weight:700">{{ b.h }}</span>
+          <span style="font-size:16px;line-height:1.7;color:#4C463D">{{ b.text }}</span>
+        </div>
+      </sc-for>
+      <sc-if value="{{ selRedak }}" hint-placeholder-val="{{ false }}">
+        <div style="border:1.5px dashed #C08A4E;background:#FBF3E7;color:#8A5A22;font-size:14px;line-height:1.5;padding:10px 14px;border-radius:4px">✎ Redaktion: {{ sel.redak }}</div>
+      </sc-if>
+    </div>
+    <aside style="display:flex;flex-direction:column;gap:24px;position:sticky;top:24px">
+      <div style="background:#23423F;border-radius:6px;padding:30px 30px;display:flex;flex-direction:column;gap:13px">
+        <span style="font-size:13px;letter-spacing:0.18em;text-transform:uppercase;color:#C8B98F;font-weight:700">Auf einen Blick</span>
+        <div style="display:flex;flex-direction:column;gap:9px;font-size:15.5px;line-height:1.5;color:#E4E9E3">
+          <span><strong style="color:#C8B98F;font-weight:700">Datum:</strong> {{ sel.datum }}</span>
+          <span><strong style="color:#C8B98F;font-weight:700">Zeit:</strong> {{ sel.zeit }}</span>
+          <span><strong style="color:#C8B98F;font-weight:700">Leitung:</strong> {{ sel.leitung }}</span>
+          <span><strong style="color:#C8B98F;font-weight:700">Ort:</strong> {{ sel.ort }}</span>
+          <span><strong style="color:#C8B98F;font-weight:700">Ausgleich:</strong> {{ sel.ausgleich }}</span>
+        </div>
+      </div>
+
+      <!-- ANMELDEFORMULAR -->
+      <div style="background:#FCFAF5;border:1px solid #E5DECF;border-radius:6px;padding:30px;display:flex;flex-direction:column;gap:14px">
+        <span style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:#23423F">Anmeldung</span>
+        <p style="margin:0;font-size:14px;line-height:1.6;color:#8A7E68">Bitte melde dich über dieses Anmeldeformular verbindlich zu deinem Seminar an. Die angegebenen Seminarzeiten sind Ca.-Zeiten – seelisch-geistige Prozesse lassen sich nicht mit Zentimetermaß und Stoppuhr messen.</p>
+        <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="display:flex;gap:16px;font-size:15px;color:#4C463D;align-items:center;flex-wrap:wrap">
+              <span style="font-weight:700;font-size:13.5px;letter-spacing:0.08em;text-transform:uppercase;color:#8A7E68">Anrede*</span>
+              <label style="display:flex;gap:6px;align-items:center;cursor:pointer"><input type="radio" name="anrede" value="Frau" onChange="{{ onField }}" style="accent-color:#23423F">Frau</label>
+              <label style="display:flex;gap:6px;align-items:center;cursor:pointer"><input type="radio" name="anrede" value="Herr" onChange="{{ onField }}" style="accent-color:#23423F">Herr</label>
+              <label style="display:flex;gap:6px;align-items:center;cursor:pointer"><input type="radio" name="anrede" value="Person" onChange="{{ onField }}" style="accent-color:#23423F">Person</label>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+              <input name="vorname" placeholder="Vorname*" onChange="{{ onField }}" style="font-family:'Alegreya Sans',sans-serif;font-size:15px;padding:11px 13px;border:1px solid #D8D0BE;border-radius:4px;background:#FFFFFF;color:#3A3733">
+              <input name="nachname" placeholder="Nachname*" onChange="{{ onField }}" style="font-family:'Alegreya Sans',sans-serif;font-size:15px;padding:11px 13px;border:1px solid #D8D0BE;border-radius:4px;background:#FFFFFF;color:#3A3733">
+              <input name="email" placeholder="E-Mail*" onChange="{{ onField }}" style="font-family:'Alegreya Sans',sans-serif;font-size:15px;padding:11px 13px;border:1px solid #D8D0BE;border-radius:4px;background:#FFFFFF;color:#3A3733">
+              <input name="telefon" placeholder="Telefon*" onChange="{{ onField }}" style="font-family:'Alegreya Sans',sans-serif;font-size:15px;padding:11px 13px;border:1px solid #D8D0BE;border-radius:4px;background:#FFFFFF;color:#3A3733">
+            </div>
+            <div style="display:grid;grid-template-columns:2fr 1fr;gap:10px">
+              <input name="strasse" placeholder="Straße*" onChange="{{ onField }}" style="font-family:'Alegreya Sans',sans-serif;font-size:15px;padding:11px 13px;border:1px solid #D8D0BE;border-radius:4px;background:#FFFFFF;color:#3A3733">
+              <input name="hausnummer" placeholder="Hausnummer*" onChange="{{ onField }}" style="font-family:'Alegreya Sans',sans-serif;font-size:15px;padding:11px 13px;border:1px solid #D8D0BE;border-radius:4px;background:#FFFFFF;color:#3A3733">
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 2fr;gap:10px">
+              <input name="plz" placeholder="PLZ*" onChange="{{ onField }}" style="font-family:'Alegreya Sans',sans-serif;font-size:15px;padding:11px 13px;border:1px solid #D8D0BE;border-radius:4px;background:#FFFFFF;color:#3A3733">
+              <input name="ort" placeholder="Ort*" onChange="{{ onField }}" style="font-family:'Alegreya Sans',sans-serif;font-size:15px;padding:11px 13px;border:1px solid #D8D0BE;border-radius:4px;background:#FFFFFF;color:#3A3733">
+            </div>
+            <textarea name="bemerkung" placeholder="Persönliche Bemerkungen" rows="3" onChange="{{ onField }}" style="font-family:'Alegreya Sans',sans-serif;font-size:15px;padding:11px 13px;border:1px solid #D8D0BE;border-radius:4px;background:#FFFFFF;color:#3A3733;resize:vertical"></textarea>
+            <span style="font-size:13px;color:#8A7E68">* Pflichtfeld</span>
+            <label style="display:flex;gap:9px;align-items:flex-start;cursor:pointer;font-size:14.5px;line-height:1.5;color:#4C463D">
+              <input type="checkbox" name="agb" onChange="{{ onAgb }}" style="accent-color:#23423F;margin-top:3px">
+              <span>Ich bestätige, die AGB gelesen zu haben. <a href="#" style="color:#B0703C;font-weight:700">AGB lesen</a></span>
+            </label>
+            <sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}">
+              <div style="background:#F7E3DC;border:1px solid #C97B5E;color:#8C3E22;font-size:14px;line-height:1.5;padding:10px 14px;border-radius:4px">{{ errText }}</div>
+            </sc-if>
+            <button onClick="{{ onSubmit }}" style="cursor:pointer;font-family:'Alegreya Sans',sans-serif;font-size:16px;font-weight:700;color:#241A0E;background:#C08A4E;border:none;border-radius:3px;padding:14px" style-hover="background:#D09A5C">BUCHUNG (verbindlich)</button>
+          </div>
+        </sc-if>
+        <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+          <div style="background:#E7EEE4;border:1px solid #7E9B84;border-radius:5px;padding:22px;display:flex;flex-direction:column;gap:8px">
+            <span style="font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:600;color:#2E5237">Vielen Dank für deine Anmeldung!</span>
+            <span style="font-size:15px;line-height:1.6;color:#3E5A44">Wir haben deine verbindliche Buchung erhalten und melden uns in Kürze mit deiner Anmeldebestätigung bei dir. <em>(Prototyp: Es wurde keine echte Anmeldung versendet.)</em></span>
+          </div>
+        </sc-if>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { filter: "Alle", selId: null, form: {}, agb: false, submitted: false, err: "" };
+
+  events() {
+    const GUT = { h: "Gut zu wissen", text: "Bei unseren Aufstellungen gibt es keine Einteilung oder Trennung zwischen „Teilnehmern mit eigenem Anliegen“ und „Teilnehmern ohne eigenes Anliegen“. Jeder Teilnehmer kann und darf als Stellvertreter agieren und sich bei einem entsprechenden Impuls selbsttätig in eine Aufstellung begeben. Jede Aufstellung dient der ganzen Gruppe. Du wirst somit von jeder Aufstellung genau das mitnehmen, was für deinen eigenen Weg gerade wesentlich ist." };
+    const NACH = { h: "Nachbesprechung", text: "Nach Ende des Kurses besteht die Möglichkeit für kurze Einzelgespräche mit Ralf, die der persönlichen Integration der Seminarinhalte dienen. Alternativ kannst du gern auch zu unseren kostenlosen Telefonterminen anrufen." };
+    const CHAMUNDI = { h: "Übernachtung & Verpflegung", text: "Eine Übernachtung mit Frühstück ist ab 30,00 € pro Nacht möglich. Einzelheiten und Buchung erfolgen auf persönliche Anfrage im Seminarhaus Chamundi." };
+    const GG = [
+      "Weißt du, warum du so bist wie du bist? Warum dich manchmal ein scheinbar banaler Satz aus der Fassung bringt, du dich nicht zugehörig fühlst oder immer wieder vor denselben herausfordernden Situationen stehst? Ganz egal, ob im privaten oder beruflichen Alltag?",
+      "In unseren Aufstellungsseminaren kommst du den Ursachen auf die Spur. So kannst du Konflikte, Muster und Verhaltensweisen jedweder Art erkennen und auflösen. Und das multidimensional. Denn „Gehen mit Geist und Seele“ ist eine weiterentwickelte Form des von Bert Hellinger begründeten Familienstellens. Eine universale Bewusstseinsschulung, die über Zeit und Raum hinweg wirkt.",
+      "Allein durch das Miterleben und Teilhaben an diesem Energiefeld erhält jeder Mensch den Zugang zu den eigenen Kraftquellen sowie heilsame Wachstumsimpulse."
+    ];
+    const NA = [
+      "Fragst du dich auch manchmal, woher deine tiefsten Ängste kommen? Was dafür verantwortlich ist, dass du dir selbst andauernd Grenzen setzt oder mit Themen wie Ohnmacht und Machtmissbrauch konfrontiert wirst? Fühlst du dich heimlich schuldig oder „nie wirklich gut genug“? Neben anderen tiefgreifend wirkenden Mustern und Prägungen ist dafür ur-sächlich bei vielen zurzeit inkarnierten Seelen der Untergang der Hochkultur von Atlantis verantwortlich, der dementsprechende (Seelen-)Blockaden in unserem Zellgedächtnis hinterlassen hat.",
+      "Ralf begleitet uns in diesem Seminar in ein Feld, in dem sich selbst uralte, ur-karmisch bedingte prägende Muster, Blockaden oder sich selbst sabotierende innere Anteile wandeln können und dürfen. Die Basis für ein selbstbestimmtes und erfülltes Leben bildet hierbei die (Wieder-)Anbindung an das neun-wertige Tschakrensystem und das Wissen unserer atlantischen UR-Ahnen."
+    ];
+    const HELG = [
+      NA[0],
+      "Nach dem kosmischen Gesetz von Ursache und Wirkung wirken diese Erfahrungen bis heute nach. Viele von uns sind in dieser Zeit auf die Erde zurückgekehrt, um das Unvollendete zu heilen, um alte Gelübde, Schwüre und Verletzungen zu lösen und die innere Balance wiederherzustellen.",
+      "Auf Helgoland binden wir uns an unser Ur-Stammesgedächtnis an und erfahren an diesem weltweit einzigartigen Kraftplatz Transformation. Durch die (Wieder-)Anbindung an das sakrale Atlantiswissen sowie das 9-wertige Hauptchakrensystem unserer Ahnenstämme können wir entscheidende Schritte zu einem erfüllten Lebensweg finden. Dieser Bewusst-Seins-Schulungskurs dient uns, unser schöpferisches Potenzial zu entfalten und als Gemeinschaft die Vollkommenheit eines geistigen Feldes/Lebensraums von „Neu-Atlantis“ zu erschaffen."
+    ];
+    const ET = [
+      "In deinem 60–90-minütigen Einzeltermin begleitet dich Ralf in einem geschützten Raum, in dem du dich ganz deinen persönlichen Anliegen widmen kannst. Hier darf das, was auch immer dich bewegt, nicht nur gesehen und gefühlt, sondern auch auf einer tieferen Ebene verstanden und gelöst werden.",
+      "Ralf arbeitet in einem Quantenbewusstseinsfeld, in dem sich selbst uralte, ur-karmisch bedingte prägende Muster, innere Blockaden oder Anteile, die dich bisher – oft unbewusst – begrenzt oder zurückgehalten haben, wandeln können und dürfen.",
+      "Eine wesentliche Grundlage der Arbeit mit Ralf ist die (Wieder-)Anbindung an das neunwertige Tschakrensystem sowie an das Wissen unserer atlantischen UR-Ahnen. Aus dieser Verbindung heraus kann sich eine neue innere Ordnung entfalten – als Basis für ein selbstbestimmtes und erfülltes Leben."
+    ];
+    const ET_BLOCKS = [
+      { h: "Individuell und achtsam", text: "Jeder Termin ist so einzigartig wie der Mensch, der ihn wahrnimmt. Ralfs Begleitung richtet sich ganz nach deinem aktuellen Prozess im Hier und Jetzt und dem, was sich in diesem Moment zeigen möchte." },
+      { h: "Terminvergabe", text: "Wenn du spürst, dass jetzt ein guter Moment ist, dich deinem Anliegen zuzuwenden, bist du herzlich eingeladen, einen Termin zu vereinbaren. Die Terminvergabe erfolgt in der Reihenfolge der eingehenden Anmeldungen." }
+    ];
+    const WM = [
+      "In diesem Seminarzyklus öffnet sich ein Tor für Männer, in dem du tiefe Verbundenheit erfahren darfst – getragen von gegenseitigem Respekt und der Wertschätzung deiner ganz eigenen, individuellen Männlichkeit.",
+      "Im Mittelpunkt steht das Thema Beziehungen. Die Beziehung zur Familie, zu Freunden, zur Partnerin, dem Chef – und vor allem zu dir selbst.",
+      "Ralf begleitet uns dabei, den Blick auf die UR-Sachen zu richten, die erfüllten Beziehungen bisher entgegenstehen. In Verbindung mit den natürlichen Ordnungen der Liebe und den Qualitäten des Jahreskreises darf sich zeigen, was gesehen, verstanden und neu geordnet werden möchte."
+    ];
+    const WM_BLOCKS = [
+      { h: "Alle Seminartermine auf einen Blick", text: "18.02.2026 | 25.03.2026 | 06.05.2026 | 01.07.2026 | 02.09.2026 | 09.12.2026" },
+      { h: "Gut zu wissen", text: "Die sechs Termine im Jahresverlauf bauen aufeinander auf und sollten als Einheit gebucht werden. Nach persönlicher Absprache mit Ralf ist jedoch auch eine Teilnahme an einzelnen Terminen möglich. Die Termine fünf und sechs finden gegebenenfalls gemeinsam mit der Frauengruppe statt (Leitung: Ralf Baars und Melanie Tracums-Hinke)." }
+    ];
+    const GFS = "Geistiges Familienstellen", TS = "Themenseminare", EZ = "Einzeltermine";
+    const gronau = "Seminarhaus Chamundi, Gronauer Landstr. 12, 31028 Gronau/OT Heinum";
+    const wm = (datum) => ({ kategorie: TS, titel: "Wir Männer und das Thema Beziehungen", datum, zeit: "18:00–21:00 Uhr", zeitKurz: "18–21 Uhr", leitung: "Ralf Baars", ort: "Praxis Maja Prüße, Homburgstr. 36, 38116 Braunschweig", ortKurz: "Braunschweig", ausgleich: "99,00 € je Termin", paras: WM, blocks: WM_BLOCKS });
+    return [
+      { kategorie: GFS, titel: "Aufstellungsarbeit „Gehen mit Geist und Seele“ (Gronau)", datum: "21.02.2026", zeit: "10:00–18:00 Uhr", zeitKurz: "10–18 Uhr", leitung: "Ralf Baars", ort: gronau, ortKurz: "Gronau OT Heinum", ausgleich: "140,00 € + 15 € Tagungspauschale (bar vor Ort)", paras: GG, blocks: [GUT, NACH, CHAMUNDI, { h: "Buchung als 2-Tage-Seminar", text: "Du möchtest das am Sonntag stattfindende Aufstellungsseminar „Aufbruch nach Neu-Atlantis“ gleich mitbuchen? Dann kannst du es als zweite Veranstaltung direkt buchen oder bei der Anmeldung eine entsprechende Information im Kommentarfeld hinterlassen." }] },
+      { kategorie: GFS, titel: "Aufstellungsarbeit „Aufbruch nach Neu-Atlantis“ (Gronau)", datum: "22.02.2026", zeit: "10:00–17:00 Uhr", zeitKurz: "10–17 Uhr", leitung: "Ralf Baars", ort: gronau, ortKurz: "Gronau OT Heinum", ausgleich: "140,00 € + 15 € Tagungspauschale (bar vor Ort)", paras: NA, blocks: [{ h: "Buchung als 2-Tage-Seminar", text: "Du möchtest das am Samstag stattfindende Aufstellungsseminar „Gehen mit Geist und Seele“ gleich mitbuchen? Dann kannst du es als zweite Veranstaltung direkt buchen oder bei der Anmeldung eine Information im Kommentarfeld hinterlassen." }, GUT, NACH, CHAMUNDI] },
+      { kategorie: GFS, titel: "Aufstellungsarbeit „Aufbruch nach Neu-Atlantis“ (Hamburg-Harburg)", datum: "14.03.2026", zeit: "10:00–18:00 Uhr", zeitKurz: "10–18 Uhr", leitung: "Ralf Baars, Inge Below", ort: "Haus Lebensquell, Moisburger Weg 7a, 21149 Hamburg", ortKurz: "Hamburg-Harburg", ausgleich: "140,00 €", paras: NA, blocks: [GUT, NACH, { h: "Einzeltermine", text: "Am Freitag vor und am Sonntag nach der Veranstaltung besteht die Möglichkeit, Einzeltermine in den Räumlichkeiten des Hauses Lebensquell mit Ralf Baars zu buchen. Bitte melde dich dafür bei den Einzelterminen unter „Veranstaltungen“ an." }, { h: "Übernachtung & Verpflegung", text: "Übernachtungsmöglichkeiten sind vor Ort keine vorhanden. Tee und Wasser gibt es kostenlos. Bitte bringe eine Kleinigkeit in größerer Menge für ein gemeinsames Mittagsbuffet im Haus Lebensquell mit – etwas, das du selbst gern zum Mittag isst." }, { h: "Wichtiger Hinweis", text: "Um jeglichen Dienst im Haus Lebensquell nachhaltig zu unterstützen, bitten wir dich, dein Fahrzeug in der Parallelstraße Fischbeker Holtweg abzustellen. DANKE!" }] },
+      { kategorie: GFS, titel: "Aufstellungsarbeit „Gehen mit Geist und Seele“ (Mölln)", datum: "01.–03.05.2026", zeit: "Fr: 10:00–18:00 Uhr | Sa: 10:00–18:00 Uhr | So: 10:00–17:00 Uhr", zeitKurz: "Fr–So", leitung: "Ralf Baars", ort: "Seminarraum Mom's Bed & Breakfast, Dorfstraße 16, 23896 Panten", ortKurz: "Mölln/Panten", ausgleich: "350,00 €", paras: GG, blocks: [GUT, NACH, { h: "Übernachtung & Verpflegung", text: "Eine Übernachtung mit Frühstück ist ab 40,00 € EZ bzw. 60,00 € DZ pro Nacht möglich. Einzelheiten und Buchung auf persönliche Anfrage bei Mom's Bed & Breakfast: Tel. 04543 7446, moms-bedandbreakfast@gmx.de" }, { h: "Buchung einzelner Tage", text: "Dieses Seminar ist als Einheit zu verstehen. Nach persönlicher Rücksprache mit Ralf ist es ggf. möglich, nur einen oder zwei Seminartage zu besuchen." }] },
+      { kategorie: GFS, titel: "Aufstellungsarbeit „Aufbruch nach Neu-Atlantis“ (Helgoland) – Sommersonnenwende", datum: "18.–21.06.2026", zeit: "Details folgen", zeitKurz: "4 Tage", leitung: "Ralf Baars", ort: "Historische Hummerbuden am Binnenhafen, 27498 Helgoland", ortKurz: "Helgoland", ausgleich: "auf Anfrage", redak: "Zeiten und Ausgleich für das Sommersonnenwende-Seminar folgen.", paras: HELG, blocks: [GUT, NACH, { h: "Übernachtung & Verpflegung", text: "Für Übernachtung und Verpflegung sorgst du als Teilnehmer selbstständig. Bitte schaue z. B. bei der Helgoländer Tourismusinformation, Airbnb oder einem gewerblichen Zimmeranbieter nach freien Zimmern. Gegebenenfalls unterstützen wir dich mit unserer „mehrjährigen Inselerfahrung“ gern." }, { h: "Buchung verkürzter Seminartage", text: "Dieses Seminar ist als zusammenhängende Einheit zu verstehen. Nach vorheriger Abstimmung mit Ralf besteht ggf. die Möglichkeit, das Seminar verkürzt zu besuchen (z. B. durch spätere Anreise oder frühere Abreise)." }] },
+      { kategorie: GFS, titel: "Aufstellungsarbeit „Gehen mit Geist und Seele“ (Gronau)", datum: "05.09.2026", zeit: "10:00–18:00 Uhr", zeitKurz: "10–18 Uhr", leitung: "Ralf Baars", ort: gronau, ortKurz: "Gronau OT Heinum", ausgleich: "140,00 € + 15 € Tagungspauschale (bar vor Ort)", paras: GG, blocks: [GUT, NACH, CHAMUNDI, { h: "Buchung als 2-Tage-Seminar", text: "Dieses Seminar kann zusammen mit dem Seminar am Sonntag als 2-Tages-Kurs gebucht werden." }] },
+      { kategorie: GFS, titel: "Aufstellungsarbeit „Aufbruch nach Neu-Atlantis“ (Gronau)", datum: "06.09.2026", zeit: "10:00–17:00 Uhr", zeitKurz: "10–17 Uhr", leitung: "Ralf Baars", ort: gronau, ortKurz: "Gronau OT Heinum", ausgleich: "140,00 € + 15 € Tagungspauschale (bar vor Ort)", paras: NA, blocks: [GUT, NACH, CHAMUNDI] },
+      { kategorie: GFS, titel: "Aufstellungsarbeit „Aufbruch nach Neu-Atlantis“ (Hamburg-Harburg)", datum: "26.09.2026", zeit: "10:00–18:00 Uhr", zeitKurz: "10–18 Uhr", leitung: "Ralf Baars, Inge Below", ort: "Haus Lebensquell, Moisburger Weg 7a, 21149 Hamburg", ortKurz: "Hamburg-Harburg", ausgleich: "140,00 €", paras: NA, blocks: [GUT, NACH] },
+      { kategorie: GFS, titel: "Aufstellungsarbeit „Aufbruch nach Neu-Atlantis“ (Helgoland) – Samhain", datum: "20.–25.10.2026", zeit: "Di: 17:00–21:00 Uhr | Mi–Sa: 10:00–18:00 Uhr | So: 10:00–12:00 Uhr", zeitKurz: "6 Tage", leitung: "Ralf Baars", ort: "Historische Hummerbuden am Binnenhafen, 27498 Helgoland", ortKurz: "Helgoland", ausgleich: "700,00 €", redak: "Genaue Hummerbude/Hausnummer wird noch ergänzt.", paras: HELG, blocks: [GUT, NACH, { h: "Übernachtung & Verpflegung", text: "Für Übernachtung und Verpflegung sorgst du als Teilnehmer selbstständig. Bitte schaue z. B. bei der Helgoländer Tourismusinformation, Airbnb oder einem gewerblichen Zimmeranbieter nach freien Zimmern. Lebensmittelgeschäfte und Restaurants sind auf der Insel vorhanden. Gegebenenfalls unterstützen wir dich mit unserer „mehrjährigen Inselerfahrung“ gern." }, { h: "Buchung verkürzter Seminartage", text: "Dieses Seminar ist als zusammenhängende Einheit zu verstehen. Nach vorheriger Abstimmung mit Ralf besteht ggf. die Möglichkeit, das Seminar verkürzt zu besuchen (z. B. durch spätere Anreise oder frühere Abreise)." }] },
+      { kategorie: GFS, titel: "Aufstellungsarbeit „Aufbruch nach Neu-Atlantis“ (Hamburg-Harburg)", datum: "28.11.2026", zeit: "10:00–18:00 Uhr", zeitKurz: "10–18 Uhr", leitung: "Ralf Baars, Inge Below", ort: "Haus Lebensquell, Moisburger Weg 7a, 21149 Hamburg", ortKurz: "Hamburg-Harburg", ausgleich: "140,00 €", paras: NA, blocks: [GUT, NACH] },
+      { kategorie: GFS, titel: "Aufstellungsarbeit „Gehen mit Geist und Seele“ (Gronau) – 2 Tage, auch einzeln buchbar", datum: "12.+13.12.2026", zeit: "jeweils 10:00–18:00 Uhr", zeitKurz: "Sa + So", leitung: "Ralf Baars", ort: gronau, ortKurz: "Gronau OT Heinum", ausgleich: "140,00 € je Tag + 15 € Tagungspauschale", paras: GG, blocks: [GUT, NACH, CHAMUNDI, { h: "Ritual zur Wintersonnenwende", text: "Im Anschluss an den ersten Seminartag (Samstag, 12.12.2026) findet das Ritual zur Wintersonnenwende statt. Einzelheiten folgen." }] },
+      wm("18.02.2026"), wm("25.03.2026"), wm("06.05.2026"), wm("01.07.2026"), wm("02.09.2026"), wm("09.12.2026"),
+      { kategorie: EZ, titel: "Einzeltermine Hamburg", datum: "Termine folgen", zeit: "n. V.", zeitKurz: "60–90 Min.", leitung: "Ralf Baars", ort: "Haus Lebensquell, Moisburger Weg 7a, Hamburg", ortKurz: "Hamburg", ausgleich: "90,00 € / 60 Minuten", redak: "Konkrete Termine und Zeiten folgen.", paras: ET, blocks: ET_BLOCKS },
+      { kategorie: EZ, titel: "Einzeltermine Braunschweig", datum: "Termine folgen", zeit: "n. V.", zeitKurz: "60–90 Min.", leitung: "Ralf Baars", ort: "Praxis Maja Prüße, Homburgstr. 36, 38116 Braunschweig", ortKurz: "Braunschweig", ausgleich: "90,00 € / 60 Minuten", redak: "Konkrete Termine und Zeiten folgen.", paras: ET, blocks: ET_BLOCKS },
+      { kategorie: EZ, titel: "Einzeltermine Panten/Hammer Grund (Mölln)", datum: "Termine folgen", zeit: "n. V.", zeitKurz: "60–90 Min.", leitung: "Ralf Baars", ort: "Praxis Ralf Baars, Scharr 1, 23896 Panten, Hammer", ortKurz: "Panten/Mölln", ausgleich: "90,00 € / 60 Minuten", redak: "Konkrete Termine und Zeiten folgen.", paras: ET, blocks: ET_BLOCKS }
+    ].map((e, i) => ({ ...e, id: i }));
+  }
+
+  renderVals() {
+    const all = this.events();
+    const cats = ["Alle", "Geistiges Familienstellen", "Themenseminare", "Einzeltermine"];
+    const filter = this.state.filter;
+    const shown = all.filter(e => filter === "Alle" || e.kategorie === filter);
+    const sel = all.find(e => e.id === this.state.selId) || null;
+    return {
+      filters: cats.map(c => ({
+        label: c,
+        bg: c === filter ? "#23423F" : "#FCFAF5",
+        color: c === filter ? "#F6F2E8" : "#4C463D",
+        borderColor: c === filter ? "#23423F" : "#D8D0BE",
+        onClick: () => this.setState({ filter: c })
+      })),
+      events: shown.map(e => ({ ...e, onOpen: () => { this.setState({ selId: e.id, submitted: false, err: "", form: {}, agb: false }); window.scrollTo(0, 0); } })),
+      listDisplay: sel ? "none" : "flex",
+      detailDisplay: sel ? "flex" : "none",
+      sel: sel || {},
+      selParas: sel ? sel.paras : [],
+      selBlocks: sel ? sel.blocks : [],
+      selRedak: !!(sel && sel.redak),
+      onBack: () => this.setState({ selId: null }),
+      onField: (e) => this.setState(s => ({ form: { ...s.form, [e.target.name]: e.target.value } })),
+      onAgb: (e) => this.setState({ agb: e.target.checked }),
+      notSubmitted: !this.state.submitted,
+      submitted: this.state.submitted,
+      hasError: !!this.state.err,
+      errText: this.state.err,
+      onSubmit: () => {
+        const f = this.state.form;
+        const required = ["anrede", "vorname", "nachname", "email", "telefon", "strasse", "hausnummer", "plz", "ort"];
+        const missing = required.filter(k => !f[k] || !String(f[k]).trim());
+        if (missing.length) { this.setState({ err: "Bitte fülle alle Pflichtfelder (*) aus." }); return; }
+        if (!/.+@.+\..+/.test(f.email)) { this.setState({ err: "Bitte gib eine gültige E-Mail-Adresse an." }); return; }
+        if (!this.state.agb) { this.setState({ err: "Bitte bestätige, dass du die AGB gelesen hast." }); return; }
+        this.setState({ err: "", submitted: true });
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

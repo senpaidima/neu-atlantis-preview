@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>body{margin:0}</style>
+</helmet>
+<div style="font-family:'Alegreya Sans',sans-serif">
+  <div style="background:#23423F;color:#D9E2DD;font-size:13.5px;letter-spacing:0.02em;display:flex;justify-content:space-between;gap:16px;padding:7px 40px;flex-wrap:wrap">
+    <span>Kostenfreie Telefonsprechzeiten: Di 20.00–21.00 Uhr · Do 12.00–13.00 Uhr (n. V.) · 04725 800 61 69</span>
+    <a href="mailto:info@neu-atlantis.de" style="color:#D9E2DD;text-decoration:none">info@neu-atlantis.de</a>
+  </div>
+  <div style="background:#FAF7F1;border-bottom:1px solid #E5DECF;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px 40px;flex-wrap:wrap">
+    <a href="Startseite.dc.html" style="text-decoration:none;display:flex;flex-direction:column;gap:5px;align-items:flex-start">
+      <img src="bg_head_mobile.png" alt="Neu-Atlantis" style="height:58px;width:auto;display:block;filter:brightness(0) invert(20%) sepia(16%) saturate(1100%) hue-rotate(125deg) brightness(95%)">
+      <span style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#8A7E68">Zentrum für Lebensbegleitung &amp; Naturheilkunde</span>
+    </a>
+    <nav style="display:flex;align-items:center;gap:22px;flex-wrap:wrap">
+      <sc-for list="{{ nav }}" as="item" hint-placeholder-count="8">
+        <a href="{{ item.href }}" style="text-decoration:none;font-size:15.5px;font-weight:500;color:{{ item.color }};border-bottom:{{ item.border }};padding:4px 0" style-hover="color:#B0703C">{{ item.label }}</a>
+      </sc-for>
+      <a href="Kontakt.dc.html" style="text-decoration:none;font-size:15px;font-weight:700;color:{{ kontaktColor }};background:{{ kontaktBg }};border:1px solid #23423F;padding:8px 18px;border-radius:3px" style-hover="background:#2E524E;color:#FFFFFF;border-color:#2E524E">Kontakt</a>
+    </nav>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:130},&quot;active&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;start&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const items = [
+      ["Start", "Startseite.dc.html", "start"],
+      ["Aufstellungsarbeit", "Aufstellungsarbeit.dc.html", "aufstellung"],
+      ["Individuelle Begleitung", "Individuelle-Begleitung.dc.html", "begleitung"],
+      ["Intensivcoaching", "Intensivcoaching.dc.html", "coaching"],
+      ["Spezialangebote", "Spezialangebote.dc.html", "spezial"],
+      ["Veranstaltungen", "Veranstaltungen.dc.html", "veranstaltungen"],
+      ["Über uns", "Ueber-uns.dc.html", "ueber"],
+      ["Wissenswertes", "Wissenswertes.dc.html", "wissen"]
+    ];
+    const active = this.props.active ?? "";
+    return {
+      nav: items.map(([label, href, key]) => ({
+        label, href,
+        color: key === active ? "#B0703C" : "#33413C",
+        border: key === active ? "2px solid #B0703C" : "2px solid transparent"
+      })),
+      kontaktColor: active === "kontakt" ? "#FFFFFF" : "#23423F",
+      kontaktBg: active === "kontakt" ? "#23423F" : "transparent"
+    };
+  }
+}
+</script>
+</body>
+</html>

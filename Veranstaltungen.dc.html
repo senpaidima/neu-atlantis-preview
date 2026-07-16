@@ -60,6 +60,9 @@
       <sc-for list="{{ selParas }}" as="p" hint-placeholder-count="3">
         <p style="margin:0;font-size:17px;line-height:1.75;color:#4C463D">{{ p }}</p>
       </sc-for>
+      <sc-if value="{{ selMehr }}" hint-placeholder-val="{{ false }}">
+        <a href="Aufstellungsarbeit.dc.html" style="text-decoration:none;color:#B0703C;font-weight:700;font-size:16px" style-hover="color:#8F5A2E">Mehr zum Thema „neues geistiges Familienstellen“ →</a>
+      </sc-if>
       <sc-for list="{{ selBlocks }}" as="b" hint-placeholder-count="2">
         <div style="background:#F1EBDF;border-radius:5px;padding:22px 26px;display:flex;flex-direction:column;gap:8px">
           <span style="font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#B0703C;font-weight:700">{{ b.h }}</span>
@@ -215,6 +218,7 @@ class Component extends DCLogic {
       detailDisplay: sel ? "flex" : "none",
       sel: sel || {},
       selParas: sel ? sel.paras : [],
+      selMehr: sel ? sel.titel.includes("Gehen mit Geist und Seele") : false,
       selBlocks: sel ? sel.blocks : [],
       selRedak: !!(sel && sel.redak),
       onBack: () => this.setState({ selId: null }),

@@ -34,11 +34,12 @@
       key: "na-nav",
       title: "Navigation",
       options: [
-        { id: "flach",    label: "Flach",                 sub: "Alle Punkte nebeneinander (aktuell)",   dot1: "#33413C", dot2: "#B0703C", cls: "" },
-        { id: "dropdown", label: "Dropdown Aufstellung",  sub: "Weiterbildung als Unterpunkt",          dot1: "#23423F", dot2: "#F1EBDF", cls: "nav-drop" },
-        { id: "gruppe",   label: "Gruppe „Angebote“",     sub: "Alle Angebote gebündelt im Menü",       dot1: "#B0703C", dot2: "#F1EBDF", cls: "nav-gruppe" }
+        { id: "flach",    label: "Flach",                 sub: "Alle Punkte nebeneinander (aktuell)",     dot1: "#33413C", dot2: "#B0703C", cls: "" },
+        { id: "dropdown", label: "Dropdown Aufstellung",  sub: "Weiterbildung & Orakel als Unterpunkte",  dot1: "#23423F", dot2: "#F1EBDF", cls: "nav-drop" },
+        { id: "gruppe",   label: "Gruppe „Angebote“",     sub: "Alle Angebote gebündelt im Menü",         dot1: "#B0703C", dot2: "#F1EBDF", cls: "nav-gruppe" },
+        { id: "sitemap",  label: "Sitemap-Struktur V09",  sub: "3 Gruppen wie in der Kunden-Sitemap",     dot1: "#254954", dot2: "#B0A07D", cls: "nav-sitemap" }
       ],
-      allClasses: ["nav-drop", "nav-gruppe"]
+      allClasses: ["nav-drop", "nav-gruppe", "nav-sitemap"]
     }
   ];
 

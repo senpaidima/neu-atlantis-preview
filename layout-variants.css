@@ -170,6 +170,10 @@ html.nav-drop .na-nav-drop { display: flex !important; }
 html.nav-gruppe .na-nav-flat { display: none !important; }
 html.nav-gruppe .na-nav-gruppe { display: flex !important; }
 
+html.nav-sitemap .na-nav-flat { display: none !important; }
+html.nav-sitemap .na-nav-sitemap { display: flex !important; }
+.na-nav-sitemap { display: none; }
+
 /* ---------- Dropdown-Menü ---------- */
 .na-dd { position: relative; display: inline-flex; }
 

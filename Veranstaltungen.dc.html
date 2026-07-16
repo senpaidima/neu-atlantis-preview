@@ -25,10 +25,19 @@
 
 <!-- LISTE -->
 <section class="m-pad m-pady" style="max-width:1160px;margin:0 auto;padding:64px 40px 110px;display:{{ listDisplay }};flex-direction:column;gap:32px">
-  <div style="display:flex;gap:10px;flex-wrap:wrap">
-    <sc-for list="{{ filters }}" as="f" hint-placeholder-count="4">
-      <button onClick="{{ f.onClick }}" style="cursor:pointer;font-family:'Alegreya Sans',sans-serif;font-size:15px;font-weight:700;padding:9px 20px;border-radius:99px;border:1px solid {{ f.borderColor }};background:{{ f.bg }};color:{{ f.color }}">{{ f.label }}</button>
-    </sc-for>
+  <div style="display:flex;flex-direction:column;gap:12px">
+    <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+      <span style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#8A7E68;font-weight:700;min-width:38px">Art</span>
+      <sc-for list="{{ filters }}" as="f" hint-placeholder-count="4">
+        <button onClick="{{ f.onClick }}" style="cursor:pointer;font-family:'Alegreya Sans',sans-serif;font-size:15px;font-weight:700;padding:9px 20px;border-radius:99px;border:1px solid {{ f.borderColor }};background:{{ f.bg }};color:{{ f.color }}">{{ f.label }}</button>
+      </sc-for>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+      <span style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#8A7E68;font-weight:700;min-width:38px">Ort</span>
+      <sc-for list="{{ ortFilters }}" as="f" hint-placeholder-count="5">
+        <button onClick="{{ f.onClick }}" style="cursor:pointer;font-family:'Alegreya Sans',sans-serif;font-size:13.5px;font-weight:700;padding:7px 16px;border-radius:99px;border:1px solid {{ f.borderColor }};background:{{ f.bg }};color:{{ f.color }}">{{ f.label }}</button>
+      </sc-for>
+    </div>
   </div>
   <div style="display:flex;flex-direction:column;gap:16px">
     <sc-for list="{{ events }}" as="ev" hint-placeholder-count="6">
@@ -115,7 +124,7 @@
             <span style="font-size:13px;color:#8A7E68">* Pflichtfeld</span>
             <label style="display:flex;gap:9px;align-items:flex-start;cursor:pointer;font-size:14.5px;line-height:1.5;color:#4C463D">
               <input type="checkbox" name="agb" onChange="{{ onAgb }}" style="accent-color:#23423F;margin-top:3px">
-              <span>Ich bestätige, die AGB gelesen zu haben. <a href="#" style="color:#B0703C;font-weight:700">AGB lesen</a></span>
+              <span>Ich bestätige, die AGB gelesen zu haben. <a href="AGB.dc.html" target="_blank" rel="noopener" style="color:#B0703C;font-weight:700">AGB lesen</a></span>
             </label>
             <sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}">
               <div style="background:#F7E3DC;border:1px solid #C97B5E;color:#8C3E22;font-size:14px;line-height:1.5;padding:10px 14px;border-radius:4px">{{ errText }}</div>
@@ -203,7 +212,17 @@ class Component extends DCLogic {
     const all = this.events();
     const cats = ["Alle", "Geistiges Familienstellen", "Themenseminare", "Einzeltermine"];
     const filter = this.state.filter;
-    const shown = all.filter(e => filter === "Alle" || e.kategorie === filter);
+    const ortGruppe = (e) => {
+      const o = e.ortKurz;
+      if (o.includes("Gronau")) return "Gronau";
+      if (o.includes("Hamburg")) return "Hamburg";
+      if (o.includes("Helgoland")) return "Helgoland";
+      if (o.includes("Braunschweig")) return "Braunschweig";
+      return "Mölln/Panten";
+    };
+    const orte = ["Alle Orte", "Gronau", "Hamburg", "Mölln/Panten", "Helgoland", "Braunschweig"];
+    const ortFilter = this.state.ortFilter || "Alle Orte";
+    const shown = all.filter(e => (filter === "Alle" || e.kategorie === filter) && (ortFilter === "Alle Orte" || ortGruppe(e) === ortFilter));
     const sel = all.find(e => e.id === this.state.selId) || null;
     return {
       filters: cats.map(c => ({
@@ -212,6 +231,13 @@ class Component extends DCLogic {
         color: c === filter ? "#F6F2E8" : "#4C463D",
         borderColor: c === filter ? "#23423F" : "#D8D0BE",
         onClick: () => this.setState({ filter: c })
+      })),
+      ortFilters: orte.map(c => ({
+        label: c,
+        bg: c === ortFilter ? "#23423F" : "#FCFAF5",
+        color: c === ortFilter ? "#F6F2E8" : "#4C463D",
+        borderColor: c === ortFilter ? "#23423F" : "#D8D0BE",
+        onClick: () => this.setState({ ortFilter: c })
       })),
       events: shown.map(e => ({ ...e, onOpen: () => { this.setState({ selId: e.id, submitted: false, err: "", form: {}, agb: false }); window.scrollTo(0, 0); } })),
       listDisplay: sel ? "none" : "flex",

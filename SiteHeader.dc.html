@@ -41,6 +41,7 @@
         <span class="na-dd-menu">
           <a href="Aufstellungsarbeit.dc.html">Geistiges Familienstellen</a>
           <a href="Weiterbildung.dc.html">Weiterbildung</a>
+          <a href="Steinorakel.dc.html">Schamanisches Stein-Orakel</a>
         </span>
       </span>
       <a href="Individuelle-Begleitung.dc.html" style="text-decoration:none;font-size:15.5px;font-weight:500;color:{{ cBegl }};border-bottom:{{ bBegl }};padding:4px 0" style-hover="color:#B0703C">Individuelle Begleitung</a>
@@ -64,6 +65,37 @@
           <a href="Intensivcoaching.dc.html">Intensivcoaching</a>
           <a href="Spezialangebote.dc.html">Spezialangebote</a>
           <a href="Steinorakel.dc.html">Kostenloses Steinorakel</a>
+        </span>
+      </span>
+      <a href="Veranstaltungen.dc.html" style="text-decoration:none;font-size:15.5px;font-weight:500;color:{{ cVer }};border-bottom:{{ bVer }};padding:4px 0" style-hover="color:#B0703C">Veranstaltungen</a>
+      <a href="Ueber-uns.dc.html" style="text-decoration:none;font-size:15.5px;font-weight:500;color:{{ cUeber }};border-bottom:{{ bUeber }};padding:4px 0" style-hover="color:#B0703C">Über uns</a>
+      <a href="Wissenswertes.dc.html" style="text-decoration:none;font-size:15.5px;font-weight:500;color:{{ cWissen }};border-bottom:{{ bWissen }};padding:4px 0" style-hover="color:#B0703C">Wissenswertes</a>
+      <a href="Kontakt.dc.html" style="text-decoration:none;font-size:15px;font-weight:700;color:{{ kontaktColor }};background:{{ kontaktBg }};border:1px solid #23423F;padding:8px 18px;border-radius:3px" style-hover="background:#2E524E;color:#FFFFFF;border-color:#2E524E">Kontakt</a>
+    </nav>
+
+    <!-- Nav-Variante 4: SITEMAP-STRUKTUR V09 (3 Gruppen wie Kunden-Sitemap, umschaltbar via Panel) -->
+    <nav class="m-nav na-nav-sitemap" style="display:none;align-items:center;gap:22px;flex-wrap:wrap">
+      <a href="Startseite.dc.html" style="text-decoration:none;font-size:15.5px;font-weight:500;color:{{ cStart }};border-bottom:{{ bStart }};padding:4px 0" style-hover="color:#B0703C">Start</a>
+      <span class="na-dd">
+        <a href="Aufstellungsarbeit.dc.html" style="text-decoration:none;font-size:15.5px;font-weight:500;color:{{ cAuf }};border-bottom:{{ bAuf }};padding:4px 0" style-hover="color:#B0703C">Geistiges Familienstellen <span class="na-caret">▾</span></a>
+        <span class="na-dd-menu">
+          <a href="Aufstellungsarbeit.dc.html">Aufstellungsarbeit</a>
+          <a href="Weiterbildung.dc.html">Weiterbildung</a>
+          <a href="Steinorakel.dc.html">Schamanisches Stein-Orakel</a>
+        </span>
+      </span>
+      <span class="na-dd">
+        <a href="Individuelle-Begleitung.dc.html" style="text-decoration:none;font-size:15.5px;font-weight:500;color:{{ cEinzel }};border-bottom:{{ bEinzel }};padding:4px 0" style-hover="color:#B0703C">Einzelbegleitung <span class="na-caret">▾</span></a>
+        <span class="na-dd-menu">
+          <a href="Individuelle-Begleitung.dc.html">Individuelle Begleitung</a>
+          <a href="Intensivcoaching.dc.html">Intensivcoaching</a>
+        </span>
+      </span>
+      <span class="na-dd">
+        <a href="Spezialangebote.dc.html" style="text-decoration:none;font-size:15.5px;font-weight:500;color:{{ cSpez }};border-bottom:{{ bSpez }};padding:4px 0" style-hover="color:#B0703C">Spezielle Angebote <span class="na-caret">▾</span></a>
+        <span class="na-dd-menu">
+          <a href="Spezialangebote.dc.html">Wir Männer &amp; Beziehungen</a>
+          <a href="Spezialangebote.dc.html#ritualarbeit">Ritualarbeit</a>
         </span>
       </span>
       <a href="Veranstaltungen.dc.html" style="text-decoration:none;font-size:15.5px;font-weight:500;color:{{ cVer }};border-bottom:{{ bVer }};padding:4px 0" style-hover="color:#B0703C">Veranstaltungen</a>
@@ -109,7 +141,9 @@ class Component extends DCLogic {
       cUeber: col("ueber"), bUeber: bor("ueber"),
       cWissen: col("wissen"), bWissen: bor("wissen"),
       cAng: angActive ? "#B0703C" : "#33413C",
-      bAng: angActive ? "2px solid #B0703C" : "2px solid transparent"
+      bAng: angActive ? "2px solid #B0703C" : "2px solid transparent",
+      cEinzel: ["begleitung", "coaching"].includes(active) ? "#B0703C" : "#33413C",
+      bEinzel: ["begleitung", "coaching"].includes(active) ? "2px solid #B0703C" : "2px solid transparent"
     };
   }
 }

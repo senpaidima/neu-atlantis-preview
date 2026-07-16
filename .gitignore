@@ -2,3 +2,4 @@
 .remember/
 .thumbnail/
 doc-extracted.txt
+*.stackdump

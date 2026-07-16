@@ -58,31 +58,38 @@
   <img class="na-split-img" src="img/wellen.jpg" alt="Wellen-Gemälde" style="width:100%;height:100%;object-fit:cover;display:block;min-height:520px">
 </section>
 
-<!-- HERO (Layout-Variante: Banner — Text auf Creme, Welle darunter als volles Band) -->
+<!-- HERO (Layout-Variante: Banner — Text auf Creme, Welle darunter als gerahmtes Gemälde) -->
 <section class="na-hero-banner" style="display:none">
-  <div class="m-pad m-pady" style="max-width:880px;margin:0 auto;padding:76px 40px 56px;text-align:center;display:flex;flex-direction:column;gap:22px;align-items:center">
+  <div class="m-pad" style="max-width:880px;margin:0 auto;padding:64px 40px 44px;text-align:center;display:flex;flex-direction:column;gap:20px;align-items:center">
     <span style="font-size:14px;letter-spacing:0.22em;text-transform:uppercase;color:#B0703C;font-weight:700">Ganzheitliche Lebensbegleitung</span>
-    <div class="m-hero" style="font-family:'Cormorant Garamond',serif;font-size:56px;line-height:1.1;font-weight:600;color:#23423F;text-wrap:balance">Alles in deinem Leben ist ein Wegweiser</div>
-    <p style="margin:0;font-size:19px;line-height:1.65;color:#4C463D;max-width:640px">Ob körperliche oder seelische Erkrankung, berufliche Herausforderungen oder Probleme in Beziehungen – alles, was uns im Leben begegnet, ist ein Wegweiser. Wir begleiten dich dabei, seine Botschaft zu entschlüsseln.</p>
+    <div class="m-hero" style="font-family:'Cormorant Garamond',serif;font-size:54px;line-height:1.1;font-weight:600;color:#23423F;text-wrap:balance">Alles in deinem Leben ist ein Wegweiser</div>
+    <p style="margin:0;font-size:18.5px;line-height:1.65;color:#4C463D;max-width:620px">Ob körperliche oder seelische Erkrankung, berufliche Herausforderungen oder Probleme in Beziehungen – alles, was uns im Leben begegnet, ist ein Wegweiser. Wir begleiten dich dabei, seine Botschaft zu entschlüsseln.</p>
     <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:4px">
       <a href="Kontakt.dc.html" style="text-decoration:none;background:#C08A4E;color:#241A0E;font-weight:700;font-size:16px;padding:14px 28px;border-radius:3px" style-hover="background:#D09A5C">Gehe den ersten Schritt</a>
       <a href="Veranstaltungen.dc.html" style="text-decoration:none;border:1px solid #23423F;color:#23423F;font-weight:500;font-size:16px;padding:14px 28px;border-radius:3px" style-hover="background:rgba(35,66,63,0.06)">Zu den Veranstaltungen</a>
     </div>
   </div>
-  <img src="img/wellen.jpg" alt="Wellen-Gemälde" style="display:block;width:100%;height:min(52vw,540px);object-fit:cover">
+  <div class="m-pad" style="max-width:1160px;margin:0 auto;padding:0 40px 64px">
+    <img src="img/wellen.jpg" alt="Wellen-Gemälde" style="display:block;width:100%;height:min(46vw,500px);object-fit:cover;border-radius:10px;box-shadow:0 24px 60px rgba(35,66,63,0.28)">
+  </div>
 </section>
 
 <!-- TERMINE-LEISTE (sichtbar bei Split- & Banner-Hero, ersetzt die Termine-Karte im Hero) -->
 <section class="na-termine-bar" style="display:none;background:#F1EBDF;border-top:1px solid #E5DECF;border-bottom:1px solid #E5DECF">
-  <div class="m-pad" style="max-width:1160px;margin:0 auto;padding:22px 40px;display:flex;gap:10px 30px;flex-wrap:wrap;align-items:baseline">
-    <span style="font-size:12.5px;letter-spacing:0.18em;text-transform:uppercase;color:#B0703C;font-weight:700;flex:none">Nächste Termine</span>
-    <sc-for list="{{ termine }}" as="t" hint-placeholder-count="3">
-      <a href="Veranstaltungen.dc.html" style="text-decoration:none;display:flex;gap:9px;align-items:baseline">
-        <span style="font-size:13.5px;font-weight:700;color:#23423F;white-space:nowrap">{{ t.datum }}</span>
-        <span style="font-size:14.5px;color:#4C463D">{{ t.titel }} · {{ t.ort }}</span>
-      </a>
-    </sc-for>
-    <a href="Veranstaltungen.dc.html" style="text-decoration:none;color:#B0703C;font-weight:700;font-size:14.5px" style-hover="color:#8F5A2E">Alle →</a>
+  <div class="m-pad" style="max-width:1160px;margin:0 auto;padding:34px 40px 38px;display:flex;flex-direction:column;gap:18px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap">
+      <span style="font-size:12.5px;letter-spacing:0.18em;text-transform:uppercase;color:#B0703C;font-weight:700">Nächste Termine</span>
+      <a href="Veranstaltungen.dc.html" style="text-decoration:none;color:#B0703C;font-weight:700;font-size:15px" style-hover="color:#8F5A2E">Alle Termine ansehen →</a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px">
+      <sc-for list="{{ termine }}" as="t" hint-placeholder-count="5">
+        <a href="Veranstaltungen.dc.html" style="text-decoration:none;background:#FCFAF5;border:1px solid #E5DECF;border-radius:5px;padding:16px 18px;display:flex;flex-direction:column;gap:6px;transition:box-shadow 0.2s,transform 0.2s" style-hover="box-shadow:0 10px 26px rgba(51,65,60,0.12);transform:translateY(-2px)">
+          <span style="font-size:13.5px;font-weight:700;color:#B0703C;letter-spacing:0.04em">{{ t.datum }}</span>
+          <span style="font-size:15.5px;font-weight:500;color:#23423F;line-height:1.35">{{ t.titel }}</span>
+          <span style="font-size:13.5px;color:#8A7E68">{{ t.ort }}</span>
+        </a>
+      </sc-for>
+    </div>
   </div>
 </section>
 

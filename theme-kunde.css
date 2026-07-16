@@ -1,0 +1,225 @@
+/* ============================================================
+   Kunden-Farbwelten (aus Assets/Manual.pdf) — umschaltbar
+   Aktiv, sobald <html> die Klasse "theme-kunde" plus eine
+   Varianten-Klasse trägt: variant-blau | variant-sand | variant-hell
+   Die bestehenden Inline-Styles (unsere Empfehlung) bleiben
+   unangetastet und gelten ohne diese Klassen weiterhin.
+
+   Kunden-Palette:
+     #80592C  Braun (Akzent)
+     #B0A07D  Gold/Sand
+     #254954  Petrolblau
+     #D5E9EF  Hellblau
+     #9FC3E1  Mittelblau
+   Fonts: Source Serif 4 (Headlines), Open Sans (Fließtext)
+
+   Hinweis: Das dc-Framework serialisiert style-Attribute um,
+   Hex-Farben werden zu "rgb(r, g, b)". Die Selektoren matchen
+   daher die serialisierte Form; Hex-Varianten als Fallback.
+   ============================================================ */
+
+/* ---------- Variante 1: BLAU — Petrolblau dominant, Braun als Akzent ---------- */
+html.theme-kunde.variant-blau {
+  --k-primary: #254954;        /* Headlines, dunkle Textfarbe */
+  --k-dark-bg: #254954;        /* Footer, dunkle Flächen */
+  --k-dark-divider: #4E7787;   /* Linien/Buttons auf dunklem Grund */
+  --k-accent: #80592C;         /* Kicker, Links, Akzente */
+  --k-accent-deep: #6B4A24;
+  --k-cta-bg: #80592C;         /* Call-to-Action-Buttons */
+  --k-cta-text: #FFFFFF;
+  --k-ondark-kicker: #B0A07D;  /* Kicker auf dunklem Grund */
+  --k-muted: #5F7682;          /* gedämpfte Labels */
+  --k-page: #F5FAFC;           /* Seitenhintergrund */
+  --k-surface: #D5E9EF;        /* getönte Sektionen */
+  --k-card: #FFFFFF;           /* Karten */
+  --k-border: #BAD4E0;
+  --k-border-soft: #CFE2EB;
+  --k-ondark-1: #F2F8FB;       /* hellste Schrift auf Dunkel */
+  --k-ondark-2: #D5E9EF;
+  --k-ondark-3: #9FC3E1;
+  --k-body: #3C4850;
+  --k-body-strong: #333B40;
+  --k-dark-gradient: linear-gradient(150deg, #2B5361, #3D6B7C);
+  --k-hero-bg: linear-gradient(155deg, rgba(30, 52, 64, 0.92) 0%, rgba(43, 83, 97, 0.80) 45%, rgba(62, 104, 122, 0.60) 78%, rgba(82, 128, 143, 0.50) 100%), url('img/wellen.jpg') center/cover no-repeat;
+}
+
+/* ---------- Variante 2: SAND — Braun/Gold dominant, Petrolblau als Akzent ---------- */
+html.theme-kunde.variant-sand {
+  --k-primary: #80592C;
+  --k-dark-bg: #6E4C25;
+  --k-dark-divider: #8A6A3F;
+  --k-accent: #254954;
+  --k-accent-deep: #1B3944;
+  --k-cta-bg: #254954;
+  --k-cta-text: #FFFFFF;
+  --k-ondark-kicker: #D5E9EF;
+  --k-muted: #8A7B5E;
+  --k-page: #FBF8F1;
+  --k-surface: #E9E0CC;
+  --k-card: #FFFFFF;
+  --k-border: #D9CDAF;
+  --k-border-soft: #E5DCC5;
+  --k-ondark-1: #F7F2E7;
+  --k-ondark-2: #E8DCC3;
+  --k-ondark-3: #C8B48D;
+  --k-body: #463D2F;
+  --k-body-strong: #3B3428;
+  --k-dark-gradient: linear-gradient(150deg, #6E4C25, #8A6A3F);
+  --k-hero-bg: linear-gradient(155deg, rgba(74, 50, 21, 0.92) 0%, rgba(110, 76, 37, 0.80) 45%, rgba(138, 106, 63, 0.62) 78%, rgba(176, 160, 125, 0.50) 100%), url('img/wellen.jpg') center/cover no-repeat;
+}
+
+/* ---------- Variante 3: HELL — Hellblau/Mittelblau, luftig & leicht ---------- */
+html.theme-kunde.variant-hell {
+  --k-primary: #254954;
+  --k-dark-bg: #2F5D74;
+  --k-dark-divider: #537F94;
+  --k-accent: #254954;
+  --k-accent-deep: #17333F;
+  --k-cta-bg: #9FC3E1;
+  --k-cta-text: #17333F;
+  --k-ondark-kicker: #9FC3E1;
+  --k-muted: #5B7A8A;
+  --k-page: #F4FAFD;
+  --k-surface: #D5E9EF;
+  --k-card: #FFFFFF;
+  --k-border: #B7D5E5;
+  --k-border-soft: #CBE1ED;
+  --k-ondark-1: #EAF4F9;
+  --k-ondark-2: #D5E9EF;
+  --k-ondark-3: #9FC3E1;
+  --k-body: #37505C;
+  --k-body-strong: #24404D;
+  --k-dark-gradient: linear-gradient(150deg, #3A6172, #54809A);
+  --k-hero-bg: linear-gradient(155deg, rgba(37, 73, 84, 0.88) 0%, rgba(58, 97, 114, 0.72) 45%, rgba(120, 165, 198, 0.48) 78%, rgba(159, 195, 225, 0.36) 100%), url('img/wellen.jpg') center/cover no-repeat;
+}
+
+/* ---------- Variante 4: GOLD — Gold/Sand-Flächen, Petrol-Text, Braun-CTAs ---------- */
+html.theme-kunde.variant-gold {
+  --k-primary: #254954;
+  --k-dark-bg: #B0A07D;        /* Footer/dunkle Flächen werden GOLD mit dunkler Schrift */
+  --k-dark-divider: #8F805F;
+  --k-accent: #80592C;
+  --k-accent-deep: #6B4A24;
+  --k-cta-bg: #80592C;
+  --k-cta-text: #FFFFFF;
+  --k-ondark-kicker: #254954;
+  --k-muted: #857759;
+  --k-page: #FAF7F0;
+  --k-surface: #DCD2B4;
+  --k-card: #FFFFFF;
+  --k-border: #CFC3A0;
+  --k-border-soft: #DDD3B8;
+  --k-ondark-1: #1E3D4A;       /* auf Gold-Flächen ist die "helle" Schrift dunkles Petrol */
+  --k-ondark-2: #254954;
+  --k-ondark-3: #3E5F6E;
+  --k-body: #423A2B;
+  --k-body-strong: #362F22;
+  --k-dark-gradient: linear-gradient(150deg, #A89872, #C0B292);
+  --k-hero-bg: linear-gradient(155deg, rgba(107, 93, 60, 0.55) 0%, rgba(140, 124, 88, 0.45) 45%, rgba(176, 160, 125, 0.40) 78%, rgba(200, 188, 155, 0.38) 100%), url('img/wellen.jpg') center/cover no-repeat;
+}
+/* Weißes Footer-Logo auf Gold abdunkeln */
+html.theme-kunde.variant-gold img[src*="logo-weiss"] { filter: brightness(0.25); }
+/* Hero-Text bleibt auf dem hellen Gold-Overlay dunkel lesbar — ondark-Variablen greifen automatisch */
+
+/* ---------- Variante 5: MITTELBLAU — kräftige #9FC3E1-Flächen, dunkler Footer ---------- */
+html.theme-kunde.variant-mittelblau {
+  --k-primary: #254954;
+  --k-dark-bg: #254954;
+  --k-dark-divider: #4E7787;
+  --k-accent: #80592C;
+  --k-accent-deep: #6B4A24;
+  --k-cta-bg: #254954;
+  --k-cta-text: #FFFFFF;
+  --k-ondark-kicker: #9FC3E1;
+  --k-muted: #4E6E80;
+  --k-page: #EDF5FB;
+  --k-surface: #9FC3E1;
+  --k-card: #FFFFFF;
+  --k-border: #9FC3E1;
+  --k-border-soft: #B9D5EA;
+  --k-ondark-1: #F2F8FB;
+  --k-ondark-2: #D5E9EF;
+  --k-ondark-3: #9FC3E1;
+  --k-body: #2F4552;
+  --k-body-strong: #24404D;
+  --k-dark-gradient: linear-gradient(150deg, #254954, #3A6D89);
+  --k-hero-bg: linear-gradient(155deg, rgba(37, 73, 84, 0.92) 0%, rgba(58, 109, 137, 0.78) 45%, rgba(120, 165, 198, 0.55) 78%, rgba(159, 195, 225, 0.45) 100%), url('img/wellen.jpg') center/cover no-repeat;
+}
+
+/* ============================================================
+   Override-Regeln (gelten für alle Kunden-Varianten)
+   ============================================================ */
+
+/* ---------- Typografie ---------- */
+html.theme-kunde [style*="Cormorant Garamond"] { font-family: 'Source Serif 4', 'Source Serif Pro', Georgia, serif !important; }
+html.theme-kunde [style*="Alegreya Sans"] { font-family: 'Open Sans', Arial, sans-serif !important; }
+
+/* ---------- Dunkles Petrolgrün -> Primärfarbe ---------- */
+/* #23423F */
+html.theme-kunde [style*="color: rgb(35, 66, 63)"], html.theme-kunde [style*="color:#23423F"] { color: var(--k-primary) !important; }
+html.theme-kunde [style*="background: rgb(35, 66, 63)"], html.theme-kunde [style*="background:#23423F"] { background: var(--k-dark-bg) !important; }
+html.theme-kunde [style*="solid rgb(35, 66, 63)"], html.theme-kunde [style*="solid #23423F"] { border-color: var(--k-primary) !important; }
+/* #33514C Zitat */
+html.theme-kunde [style*="color: rgb(51, 81, 76)"] { color: var(--k-primary) !important; }
+/* #33413C Navigation */
+html.theme-kunde [style*="color: rgb(51, 65, 60)"] { color: var(--k-body-strong) !important; }
+/* #35544F Footer-Trennlinie */
+html.theme-kunde [style*="solid rgb(53, 84, 79)"] { border-color: var(--k-dark-divider) !important; }
+/* #4E6B65 Flyer-Buttons auf Dunkel */
+html.theme-kunde [style*="solid rgb(78, 107, 101)"] { border-color: var(--k-dark-divider) !important; }
+/* #5E7A72 Link-Unterstreichung im Footer */
+html.theme-kunde [style*="rgb(94, 122, 114)"] { text-decoration-color: var(--k-ondark-3) !important; }
+
+/* Verlaufsflächen (Steinorakel-Karte, Hero-Fallbacks) */
+html.theme-kunde [style*="linear-gradient(140deg, rgb(42, 75, 71)"], html.theme-kunde [style*="linear-gradient(140deg,#2A4B47"] { background: var(--k-dark-gradient) !important; }
+html.theme-kunde [style*="linear-gradient(155deg, rgb(42, 75, 71)"], html.theme-kunde [style*="linear-gradient(155deg,#2A4B47"] { background: var(--k-dark-gradient) !important; }
+
+/* Hero-Sektionen mit Wellenbild */
+html.theme-kunde section[style*="wellen.jpg"] { background: var(--k-hero-bg) !important; }
+
+/* ---------- Gold/Orange -> Akzent ---------- */
+/* #C08A4E CTA-Buttons */
+html.theme-kunde [style*="background: rgb(192, 138, 78)"], html.theme-kunde [style*="background:#C08A4E"] { background: var(--k-cta-bg) !important; color: var(--k-cta-text) !important; }
+html.theme-kunde [style*="color: rgb(192, 138, 78)"] { color: var(--k-accent) !important; }
+/* #B0703C Links/Kicker */
+html.theme-kunde [style*="color: rgb(176, 112, 60)"], html.theme-kunde [style*="color:#B0703C"] { color: var(--k-accent) !important; }
+html.theme-kunde [style*="background: rgb(176, 112, 60)"] { background: var(--k-accent) !important; }
+html.theme-kunde [style*="solid rgb(176, 112, 60)"] { border-color: var(--k-accent) !important; }
+/* #8F5A2E */
+html.theme-kunde [style*="color: rgb(143, 90, 46)"] { color: var(--k-accent-deep) !important; }
+/* #C8B98F Kicker auf Dunkel */
+html.theme-kunde [style*="color: rgb(200, 185, 143)"], html.theme-kunde [style*="color:#C8B98F"] { color: var(--k-ondark-kicker) !important; }
+html.theme-kunde [style*="solid rgb(200, 185, 143)"] { border-color: var(--k-ondark-kicker) !important; }
+/* #8A7E68 gedämpfte Labels */
+html.theme-kunde [style*="color: rgb(138, 126, 104)"], html.theme-kunde [style*="color:#8A7E68"] { color: var(--k-muted) !important; }
+
+/* ---------- Creme/Beige -> Flächen ---------- */
+/* #FAF7F1 Seite/Header */
+html.theme-kunde [style*="background: rgb(250, 247, 241)"], html.theme-kunde [style*="background:#FAF7F1"] { background: var(--k-page) !important; }
+/* #F1EBDF getönte Sektionen */
+html.theme-kunde [style*="background: rgb(241, 235, 223)"], html.theme-kunde [style*="background:#F1EBDF"] { background: var(--k-surface) !important; }
+/* #FCFAF5 Karten */
+html.theme-kunde [style*="background: rgb(252, 250, 245)"], html.theme-kunde [style*="background:#FCFAF5"] { background: var(--k-card) !important; }
+/* Ränder */
+html.theme-kunde [style*="solid rgb(229, 222, 207)"], html.theme-kunde [style*="solid #E5DECF"] { border-color: var(--k-border) !important; }
+html.theme-kunde [style*="solid rgb(232, 224, 207)"] { border-color: var(--k-border) !important; }
+html.theme-kunde [style*="solid rgb(238, 231, 216)"] { border-color: var(--k-border-soft) !important; }
+html.theme-kunde [style*="solid rgb(216, 208, 190)"] { border-color: var(--k-border) !important; }
+html.theme-kunde [style*="background: rgb(216, 208, 190)"] { background: var(--k-border) !important; }
+/* Helle Schrift auf Dunkel */
+html.theme-kunde [style*="color: rgb(246, 242, 232)"], html.theme-kunde [style*="color:#F6F2E8"] { color: var(--k-ondark-1) !important; }
+html.theme-kunde [style*="color: rgb(243, 239, 229)"] { color: var(--k-ondark-1) !important; }
+
+/* ---------- Helle Grüntöne (Text auf Dunkel) ---------- */
+html.theme-kunde [style*="color: rgb(220, 228, 221)"], html.theme-kunde [style*="color:#DCE4DD"] { color: var(--k-ondark-2) !important; }
+html.theme-kunde [style*="color: rgb(217, 226, 221)"] { color: var(--k-ondark-2) !important; }
+html.theme-kunde [style*="color: rgb(201, 214, 208)"] { color: var(--k-ondark-2) !important; }
+html.theme-kunde [style*="color: rgb(174, 192, 184)"] { color: var(--k-ondark-3) !important; }
+html.theme-kunde [style*="color: rgb(143, 167, 158)"] { color: var(--k-ondark-3) !important; }
+html.theme-kunde [style*="color: rgb(228, 233, 227)"] { color: var(--k-ondark-1) !important; }
+html.theme-kunde [style*="color: rgb(237, 241, 234)"] { color: var(--k-ondark-1) !important; }
+html.theme-kunde [style*="solid rgb(159, 180, 170)"] { border-color: var(--k-ondark-3) !important; }
+
+/* ---------- Fließtext ---------- */
+html.theme-kunde [style*="color: rgb(58, 55, 51)"], html.theme-kunde [style*="color:#3A3733"] { color: var(--k-body-strong) !important; }
+html.theme-kunde [style*="color: rgb(76, 70, 61)"], html.theme-kunde [style*="color:#4C463D"] { color: var(--k-body) !important; }

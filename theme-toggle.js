@@ -40,6 +40,15 @@
         { id: "sitemap",  label: "Sitemap-Struktur V09",  sub: "3 Gruppen wie in der Kunden-Sitemap",     dot1: "#254954", dot2: "#B0A07D", cls: "nav-sitemap" }
       ],
       allClasses: ["nav-drop", "nav-gruppe", "nav-sitemap"]
+    },
+    {
+      key: "na-umfang",
+      title: "Umfang",
+      options: [
+        { id: "voll",  label: "Vollausbau",                sub: "Alle Seiten inkl. Wissenswertes",              dot1: "#23423F", dot2: "#C8B98F", cls: "" },
+        { id: "step1", label: "Step 1 (ohne Wissenswertes)", sub: "Solange Inhalte fehlen — später nachrüstbar", dot1: "#8A7E68", dot2: "#F1EBDF", cls: "step1" }
+      ],
+      allClasses: ["step1"]
     }
   ];
 

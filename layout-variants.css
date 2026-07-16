@@ -8,26 +8,32 @@
    ============================================================ */
 
 /* ---------- Hero-Umschaltung (Startseite) ---------- */
-.na-hero-split, .na-hero-banner, .na-termine-bar { display: none; }
+.na-hero-split, .na-hero-panorama, .na-hero-portal, .na-hero-editorial, .na-termine-bar { display: none; }
 
 html.hero-split .na-hero-overlay,
-html.hero-banner .na-hero-overlay { display: none !important; }
+html.hero-panorama .na-hero-overlay,
+html.hero-portal .na-hero-overlay,
+html.hero-editorial .na-hero-overlay { display: none !important; }
 
 html.hero-split .na-hero-split { display: grid !important; }
-html.hero-banner .na-hero-banner { display: block !important; }
+html.hero-panorama .na-hero-panorama { display: block !important; }
+html.hero-portal .na-hero-portal { display: block !important; }
+html.hero-editorial .na-hero-editorial { display: block !important; }
 
-html.hero-split .na-termine-bar,
-html.hero-banner .na-termine-bar { display: block !important; }
+/* Termin-Karten-Leiste nur beim Split-Hero */
+html.hero-split .na-termine-bar { display: block !important; }
 
 /* Fade: Welle als Vollbild, Verlauf nur hinter dem Text links.
    Gilt auf der Startseite und auf allen Unterseiten-Heros.
-   Bei Split/Banner bekommen die Unterseiten ebenfalls den Fade,
-   damit die Welle dort auch nicht überlagert wirkt. */
+   Bei den anderen Layouts bekommen die Unterseiten ebenfalls den
+   Fade, damit die Welle dort auch nicht überlagert wirkt. */
 /* [style] doppelt angehängt = höhere Spezifität als die
    --k-hero-bg-Regel in theme-kunde.css (die später geladen wird) */
 html.hero-fade section[style*="wellen.jpg"][style],
-html.hero-split section[style*="wellen.jpg"][style]:not(.na-hero-overlay):not(.na-hero-split):not(.na-hero-banner),
-html.hero-banner section[style*="wellen.jpg"][style]:not(.na-hero-overlay):not(.na-hero-split):not(.na-hero-banner) {
+html.hero-split section[style*="wellen.jpg"][style]:not(.na-hero-overlay),
+html.hero-panorama section[style*="wellen.jpg"][style]:not(.na-hero-overlay),
+html.hero-portal section[style*="wellen.jpg"][style]:not(.na-hero-overlay),
+html.hero-editorial section[style*="wellen.jpg"][style]:not(.na-hero-overlay) {
   background:
     linear-gradient(100deg,
       var(--fade-c1, rgba(26, 48, 44, 0.94)) 0%,
@@ -37,11 +43,35 @@ html.hero-banner section[style*="wellen.jpg"][style]:not(.na-hero-overlay):not(.
     url('img/wellen.jpg') center 65% / cover no-repeat !important;
 }
 
-/* Split-Hero mobil: eine Spalte, Bild oben */
+/* Editorial: nummeriertes Programm (01, 02, 03 … in Cormorant-Ziffern) */
+.na-ed-programm { counter-reset: naprog; }
+.na-ed-item::before {
+  counter-increment: naprog;
+  content: counter(naprog, decimal-leading-zero);
+  font-family: 'Cormorant Garamond', 'Source Serif 4', serif;
+  font-size: 27px;
+  font-weight: 500;
+  line-height: 1;
+  color: #C8B98F;
+  min-width: 36px;
+  flex: none;
+}
+
+/* Mobile-Umbrüche der neuen Hero-Layouts */
 @media (max-width: 760px) {
   html.hero-split .na-hero-split { grid-template-columns: 1fr !important; }
   .na-hero-split .na-split-img { min-height: 240px !important; height: 42vh !important; order: -1; }
   .na-hero-split > div { padding: 48px 20px !important; }
+
+  .na-route { grid-template-columns: 1fr 1fr !important; }
+  .na-route-line { display: none; }
+  .na-route a { padding-top: 0 !important; }
+  .na-route a > span:first-child { display: none; }
+
+  html.hero-portal .na-portal-grid { grid-template-columns: 1fr !important; padding: 48px 20px 56px !important; gap: 40px !important; }
+  html.hero-portal .na-portal-grid > div:last-child { max-width: 320px; }
+
+  html.hero-editorial .na-ed-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
 }
 
 /* ---------- Navigations-Umschaltung ---------- */

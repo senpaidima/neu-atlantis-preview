@@ -24,7 +24,7 @@
         { id: "overlay",   label: "Überlagert",   sub: "Welle hinter Farbverlauf (aktuell)",        dot1: "#3D615A", dot2: "#8FB0A8", cls: "" },
         { id: "split",     label: "Split",        sub: "Text links, Welle pur · Termin-Karten",     dot1: "#23423F", dot2: "#9FC3E1", cls: "hero-split" },
         { id: "fade",      label: "Fade",         sub: "Welle pur, Verlauf nur hinterm Text",       dot1: "#2E524E", dot2: "#D5E9EF", cls: "hero-fade" },
-        { id: "panorama",  label: "Panorama",     sub: "Welle läuft weich aus · Termin-Route",      dot1: "#9FC3E1", dot2: "#C8B98F", cls: "hero-panorama" },
+        { id: "panorama",  label: "Panorama ✻ Unsere Empfehlung", sub: "Welle läuft weich aus · Termin-Route", dot1: "#9FC3E1", dot2: "#C8B98F", cls: "hero-panorama" },
         { id: "portal",    label: "Portal-Bogen", sub: "Welle im Rundbogen · kompakte Liste",       dot1: "#B0A17D", dot2: "#23423F", cls: "hero-portal" },
         { id: "editorial", label: "Editorial",    sub: "Magazin-Headline · nummeriertes Programm",  dot1: "#F1EBDF", dot2: "#B0703C", cls: "hero-editorial" }
       ],

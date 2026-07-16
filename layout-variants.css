@@ -24,16 +24,11 @@ html.hero-editorial .na-hero-editorial { display: block !important; }
 html.hero-split .na-termine-bar { display: block !important; }
 
 /* Fade: Welle als Vollbild, Verlauf nur hinter dem Text links.
-   Gilt auf der Startseite und auf allen Unterseiten-Heros.
-   Bei den anderen Layouts bekommen die Unterseiten ebenfalls den
-   Fade, damit die Welle dort auch nicht überlagert wirkt. */
+   Gilt auf der Startseite und (bei Fade & Split) auf den Unterseiten. */
 /* [style] doppelt angehängt = höhere Spezifität als die
    --k-hero-bg-Regel in theme-kunde.css (die später geladen wird) */
 html.hero-fade section[style*="wellen.jpg"][style],
-html.hero-split section[style*="wellen.jpg"][style]:not(.na-hero-overlay),
-html.hero-panorama section[style*="wellen.jpg"][style]:not(.na-hero-overlay),
-html.hero-portal section[style*="wellen.jpg"][style]:not(.na-hero-overlay),
-html.hero-editorial section[style*="wellen.jpg"][style]:not(.na-hero-overlay) {
+html.hero-split section[style*="wellen.jpg"][style]:not(.na-hero-overlay) {
   background:
     linear-gradient(100deg,
       var(--fade-c1, rgba(26, 48, 44, 0.94)) 0%,
@@ -41,6 +36,75 @@ html.hero-editorial section[style*="wellen.jpg"][style]:not(.na-hero-overlay) {
       var(--fade-c3, rgba(35, 66, 63, 0.30)) 58%,
       rgba(0, 0, 0, 0) 78%),
     url('img/wellen.jpg') center 65% / cover no-repeat !important;
+}
+
+/* ---------- Unterseiten-Heros folgen der gewählten Hero-Variante ----------
+   Panorama / Portal / Editorial: heller Hero (Creme, dunkle Schrift)
+   statt dunklem Overlay — die Startseiten-Designsprache läuft durch. */
+html.hero-panorama section[style*="wellen.jpg"][style]:not(.na-hero-overlay),
+html.hero-portal section[style*="wellen.jpg"][style]:not(.na-hero-overlay),
+html.hero-editorial section[style*="wellen.jpg"][style]:not(.na-hero-overlay) {
+  background: var(--k-page, #FAF7F1) !important;
+}
+
+/* Textfarben im hellen Hero drehen (Kicker / Headline / Fließtext / Hinweisbox) */
+html.hero-panorama section[style*="wellen.jpg"] [style*="color: rgb(200, 185, 143)"],
+html.hero-portal section[style*="wellen.jpg"] [style*="color: rgb(200, 185, 143)"],
+html.hero-editorial section[style*="wellen.jpg"] [style*="color: rgb(200, 185, 143)"] { color: var(--k-accent, #B0703C) !important; }
+
+html.hero-panorama section[style*="wellen.jpg"] [style*="color: rgb(246, 242, 232)"],
+html.hero-portal section[style*="wellen.jpg"] [style*="color: rgb(246, 242, 232)"],
+html.hero-editorial section[style*="wellen.jpg"] [style*="color: rgb(246, 242, 232)"] { color: var(--k-primary, #23423F) !important; }
+
+html.hero-panorama section[style*="wellen.jpg"] [style*="color: rgb(220, 228, 221)"],
+html.hero-portal section[style*="wellen.jpg"] [style*="color: rgb(220, 228, 221)"],
+html.hero-editorial section[style*="wellen.jpg"] [style*="color: rgb(220, 228, 221)"] { color: var(--k-body, #4C463D) !important; }
+
+html.hero-panorama section[style*="wellen.jpg"] [style*="color: rgb(228, 217, 184)"],
+html.hero-portal section[style*="wellen.jpg"] [style*="color: rgb(228, 217, 184)"],
+html.hero-editorial section[style*="wellen.jpg"] [style*="color: rgb(228, 217, 184)"] { color: #8A5A22 !important; }
+
+/* Panorama: auslaufendes Wellen-Band unter dem Unterseiten-Hero */
+html.hero-panorama section[style*="wellen.jpg"][style]:not(.na-hero-overlay)::after {
+  content: "";
+  display: block;
+  height: 190px;
+  background: url('img/wellen.jpg') center 32% / cover no-repeat;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 22%, #000 76%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, #000 22%, #000 76%, transparent);
+}
+
+/* Portal: kleiner Wellen-Bogen als Akzent rechts im Unterseiten-Hero */
+html.hero-portal section[style*="wellen.jpg"][style]:not(.na-hero-overlay) {
+  position: relative;
+  overflow: hidden;
+}
+html.hero-portal section[style*="wellen.jpg"][style]:not(.na-hero-overlay)::after {
+  content: "";
+  position: absolute;
+  right: clamp(24px, 6vw, 96px);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 150px;
+  height: 205px;
+  background: url('img/wellen.jpg') 70% 30% / cover no-repeat;
+  border-radius: 999px 999px 8px 8px;
+  box-shadow: 0 0 0 10px var(--k-page, #FAF7F1), 0 0 0 11px #C8B98F;
+}
+@media (max-width: 1100px) {
+  html.hero-portal section[style*="wellen.jpg"][style]:not(.na-hero-overlay)::after { display: none; }
+}
+/* Hat der Unterseiten-Hero rechts ein Bild/einen Platzhalter, wird DER zum
+   Portal-Bogen — der Deko-Bogen entfällt dort (Kollisionsvermeidung). */
+html.hero-portal section[style*="wellen.jpg"][style]:not(.na-hero-overlay):has([style*="aspect-ratio"])::after { display: none; }
+html.hero-portal section[style*="wellen.jpg"] [style*="aspect-ratio"] {
+  border-radius: 999px 999px 10px 10px !important;
+}
+
+/* Editorial: große Magazin-Headline auch auf Unterseiten */
+html.hero-editorial section[style*="wellen.jpg"] h1 {
+  font-size: clamp(42px, 5.4vw, 74px) !important;
+  line-height: 1.05 !important;
 }
 
 /* ---------- Qualifikationen: dicht gepackte Spalten statt Grid-Löcher ---------- */

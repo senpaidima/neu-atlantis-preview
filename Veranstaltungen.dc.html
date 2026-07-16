@@ -32,13 +32,13 @@
   </div>
   <div style="display:flex;flex-direction:column;gap:16px">
     <sc-for list="{{ events }}" as="ev" hint-placeholder-count="6">
-      <div class="m-col" style="background:#FCFAF5;border:1px solid #E5DECF;border-radius:6px;padding:26px 30px;display:grid;grid-template-columns:180px 1fr auto;gap:24px;align-items:center" style-hover="box-shadow:0 10px 28px rgba(51,65,60,0.1)">
+      <div class="m-col" style="background:#FCFAF5;border:1px solid #E5DECF;border-radius:6px;padding:26px 30px;display:grid;grid-template-columns:180px 1fr auto;gap:24px;align-items:center;transition:box-shadow 0.2s,transform 0.2s" style-hover="box-shadow:0 14px 34px rgba(51,65,60,0.12);transform:translateY(-3px)">
         <div style="display:flex;flex-direction:column;gap:3px">
           <span style="font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:600;color:#23423F;line-height:1.15">{{ ev.datum }}</span>
           <span style="font-size:13.5px;color:#8A7E68">{{ ev.zeitKurz }}</span>
         </div>
         <div style="display:flex;flex-direction:column;gap:5px">
-          <span style="font-size:12.5px;letter-spacing:0.14em;text-transform:uppercase;color:#B0703C;font-weight:700">{{ ev.kategorie }}</span>
+          <span style="display:flex;align-items:baseline;gap:7px;font-size:12.5px;letter-spacing:0.14em;text-transform:uppercase;color:#B0703C;font-weight:700"><span style="flex:none;color:#B0A17D;font-size:11px">✻</span>{{ ev.kategorie }}</span>
           <span style="font-size:18px;font-weight:700;color:#3A3733;line-height:1.3">{{ ev.titel }}</span>
           <span style="font-size:14.5px;color:#8A7E68">{{ ev.ortKurz }} · Leitung: {{ ev.leitung }}</span>
         </div>

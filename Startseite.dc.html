@@ -15,8 +15,8 @@
 <div style="font-family:'Alegreya Sans',sans-serif;color:#3A3733;background:#FAF7F1" data-screen-label="Startseite">
 <dc-import name="SiteHeader" active="start" hint-size="100%,130px"></dc-import>
 
-<!-- HERO -->
-<section style="position:relative;background:linear-gradient(155deg,rgba(30,54,50,0.90) 0%,rgba(42,75,71,0.78) 45%,rgba(59,89,82,0.55) 78%,rgba(83,105,96,0.45) 100%),url('img/wellen.jpg') center/cover no-repeat;overflow:hidden">
+<!-- HERO (Layout-Variante: Überlagert / Fade — umschaltbar via Panel) -->
+<section class="na-hero-overlay" style="position:relative;background:linear-gradient(155deg,rgba(30,54,50,0.90) 0%,rgba(42,75,71,0.78) 45%,rgba(59,89,82,0.55) 78%,rgba(83,105,96,0.45) 100%),url('img/wellen.jpg') center/cover no-repeat;overflow:hidden">
   <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 75% 110%,rgba(240,232,214,0.22),transparent 60%)"></div>
   <div class="m-col m-pad m-pady m-gap" style="position:relative;max-width:1160px;margin:0 auto;padding:110px 40px 120px;display:grid;grid-template-columns:1.5fr 1fr;gap:64px;align-items:center">
     <div style="display:flex;flex-direction:column;gap:26px">
@@ -44,6 +44,48 @@
   </div>
 </section>
 
+<!-- HERO (Layout-Variante: Split — Text links, Welle pur rechts) -->
+<section class="na-hero-split" style="display:none;grid-template-columns:1.05fr 1fr;align-items:stretch">
+  <div class="m-pad m-pady" style="background:#23423F;display:flex;flex-direction:column;justify-content:center;gap:26px;padding:96px 56px 96px 48px">
+    <span style="font-size:14px;letter-spacing:0.22em;text-transform:uppercase;color:#C8B98F">Ganzheitliche Lebensbegleitung</span>
+    <div class="m-hero" style="font-family:'Cormorant Garamond',serif;font-size:52px;line-height:1.12;font-weight:600;color:#F6F2E8;text-wrap:balance">Alles in deinem Leben ist ein Wegweiser</div>
+    <p style="margin:0;font-size:18.5px;line-height:1.65;color:#DCE4DD;max-width:520px">Ob körperliche oder seelische Erkrankung, berufliche Herausforderungen oder Probleme in Beziehungen – alles, was uns im Leben begegnet, ist ein Wegweiser. Wir begleiten dich dabei, seine Botschaft zu entschlüsseln.</p>
+    <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:6px">
+      <a href="Kontakt.dc.html" style="text-decoration:none;background:#C08A4E;color:#241A0E;font-weight:700;font-size:16px;padding:14px 28px;border-radius:3px" style-hover="background:#D09A5C">Gehe den ersten Schritt</a>
+      <a href="Veranstaltungen.dc.html" style="text-decoration:none;border:1px solid #9FB4AA;color:#EDF1EA;font-weight:500;font-size:16px;padding:14px 28px;border-radius:3px" style-hover="background:rgba(255,255,255,0.08)">Zu den Veranstaltungen</a>
+    </div>
+  </div>
+  <img class="na-split-img" src="img/wellen.jpg" alt="Wellen-Gemälde" style="width:100%;height:100%;object-fit:cover;display:block;min-height:520px">
+</section>
+
+<!-- HERO (Layout-Variante: Banner — Text auf Creme, Welle darunter als volles Band) -->
+<section class="na-hero-banner" style="display:none">
+  <div class="m-pad m-pady" style="max-width:880px;margin:0 auto;padding:76px 40px 56px;text-align:center;display:flex;flex-direction:column;gap:22px;align-items:center">
+    <span style="font-size:14px;letter-spacing:0.22em;text-transform:uppercase;color:#B0703C;font-weight:700">Ganzheitliche Lebensbegleitung</span>
+    <div class="m-hero" style="font-family:'Cormorant Garamond',serif;font-size:56px;line-height:1.1;font-weight:600;color:#23423F;text-wrap:balance">Alles in deinem Leben ist ein Wegweiser</div>
+    <p style="margin:0;font-size:19px;line-height:1.65;color:#4C463D;max-width:640px">Ob körperliche oder seelische Erkrankung, berufliche Herausforderungen oder Probleme in Beziehungen – alles, was uns im Leben begegnet, ist ein Wegweiser. Wir begleiten dich dabei, seine Botschaft zu entschlüsseln.</p>
+    <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:4px">
+      <a href="Kontakt.dc.html" style="text-decoration:none;background:#C08A4E;color:#241A0E;font-weight:700;font-size:16px;padding:14px 28px;border-radius:3px" style-hover="background:#D09A5C">Gehe den ersten Schritt</a>
+      <a href="Veranstaltungen.dc.html" style="text-decoration:none;border:1px solid #23423F;color:#23423F;font-weight:500;font-size:16px;padding:14px 28px;border-radius:3px" style-hover="background:rgba(35,66,63,0.06)">Zu den Veranstaltungen</a>
+    </div>
+  </div>
+  <img src="img/wellen.jpg" alt="Wellen-Gemälde" style="display:block;width:100%;height:min(52vw,540px);object-fit:cover">
+</section>
+
+<!-- TERMINE-LEISTE (sichtbar bei Split- & Banner-Hero, ersetzt die Termine-Karte im Hero) -->
+<section class="na-termine-bar" style="display:none;background:#F1EBDF;border-top:1px solid #E5DECF;border-bottom:1px solid #E5DECF">
+  <div class="m-pad" style="max-width:1160px;margin:0 auto;padding:22px 40px;display:flex;gap:10px 30px;flex-wrap:wrap;align-items:baseline">
+    <span style="font-size:12.5px;letter-spacing:0.18em;text-transform:uppercase;color:#B0703C;font-weight:700;flex:none">Nächste Termine</span>
+    <sc-for list="{{ termine }}" as="t" hint-placeholder-count="3">
+      <a href="Veranstaltungen.dc.html" style="text-decoration:none;display:flex;gap:9px;align-items:baseline">
+        <span style="font-size:13.5px;font-weight:700;color:#23423F;white-space:nowrap">{{ t.datum }}</span>
+        <span style="font-size:14.5px;color:#4C463D">{{ t.titel }} · {{ t.ort }}</span>
+      </a>
+    </sc-for>
+    <a href="Veranstaltungen.dc.html" style="text-decoration:none;color:#B0703C;font-weight:700;font-size:14.5px" style-hover="color:#8F5A2E">Alle →</a>
+  </div>
+</section>
+
 <!-- INTRO -->
 <section class="m-pad m-pady" style="max-width:860px;margin:0 auto;padding:96px 40px 72px;text-align:center;display:flex;flex-direction:column;gap:24px">
   <h1 class="m-h1" style="margin:0;font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:600;color:#23423F;line-height:1.2;text-wrap:balance">Ganzheitliche Lebensbegleitung, Seminare und Intensivcoachings</h1>
@@ -55,7 +97,7 @@
 <!-- ZITAT -->
 <section class="m-pad" style="max-width:760px;margin:0 auto;padding:0 40px 96px;text-align:center">
   <div style="width:56px;height:1px;background:#C08A4E;margin:0 auto 28px"></div>
-  <p style="margin:0;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:31px;line-height:1.45;color:#33514C">„Das Leben stellt uns nicht vor Hindernisse, sondern zeigt uns Wegweiser.“</p>
+  <p style="margin:0;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:31px;line-height:1.45;color:#33514C">„Das Leben stellt uns keineswegs vor Hindernisse, sondern zeigt uns Wegweiser.“</p>
   <p style="margin:18px 0 0;font-size:14px;letter-spacing:0.16em;text-transform:uppercase;color:#8A7E68">Ralf Baars</p>
 </section>
 
@@ -88,12 +130,12 @@
     <p style="margin:0;font-size:17.5px;line-height:1.75;color:#4C463D">Nach meiner Tätigkeit in eigener Naturheilpraxis erfüllte sich 2009 ein Herzensprojekt: Gemeinsam mit meiner damaligen Frau Petra-Susanne gründete ich das Zentrum für Lebensbegleitung und Naturheilkunde, das seit 2026 den Namenszusatz „Neu-Atlantis“ trägt. Ich freue mich schon sehr darauf, dir mehr darüber zu erzählen!</p>
     <div class="m-col" style="display:grid;grid-template-columns:1fr 1fr;gap:8px 24px;padding:20px 24px;background:#F1EBDF;border-radius:5px">
       <span style="grid-column:1/-1;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#8A7E68;font-weight:700;padding-bottom:4px">Qualifikationen</span>
-      <span style="font-size:15px;line-height:1.5;color:#4C463D">· Heilpraktiker für Psychotherapie</span>
-      <span style="font-size:15px;line-height:1.5;color:#4C463D">· Ausbildung im Familienstellen bei Bert Hellinger</span>
-      <span style="font-size:15px;line-height:1.5;color:#4C463D">· Weiterbildungen in Quantenheilung, Heilhypnose, Rückführungstherapie, craniosacraler Körpertherapie u. v. m.</span>
-      <span style="font-size:15px;line-height:1.5;color:#4C463D">· Weiterentwicklung des geistigen Familienstellens</span>
-      <span style="font-size:15px;line-height:1.5;color:#4C463D">· Über 20 Jahre Coachingerfahrung in eigener Praxis</span>
-      <span style="font-size:15px;line-height:1.5;color:#4C463D">· Supervision im geistigen Familienstellen</span>
+      <span style="display:flex;gap:10px;font-size:15px;line-height:1.5;color:#4C463D"><span style="flex:none;color:#B0A17D;font-size:13px;line-height:1.75">✻</span><span>Heilpraktiker für Psychotherapie</span></span>
+      <span style="display:flex;gap:10px;font-size:15px;line-height:1.5;color:#4C463D"><span style="flex:none;color:#B0A17D;font-size:13px;line-height:1.75">✻</span><span>Ausbildung im Familienstellen bei Bert Hellinger</span></span>
+      <span style="display:flex;gap:10px;font-size:15px;line-height:1.5;color:#4C463D"><span style="flex:none;color:#B0A17D;font-size:13px;line-height:1.75">✻</span><span>Weiterbildungen in Quantenheilung, Heilhypnose, Rückführungstherapie, craniosacraler Körpertherapie u. v. m.</span></span>
+      <span style="display:flex;gap:10px;font-size:15px;line-height:1.5;color:#4C463D"><span style="flex:none;color:#B0A17D;font-size:13px;line-height:1.75">✻</span><span>Weiterentwicklung des geistigen Familienstellens</span></span>
+      <span style="display:flex;gap:10px;font-size:15px;line-height:1.5;color:#4C463D"><span style="flex:none;color:#B0A17D;font-size:13px;line-height:1.75">✻</span><span>Über 20 Jahre Coachingerfahrung in eigener Praxis</span></span>
+      <span style="display:flex;gap:10px;font-size:15px;line-height:1.5;color:#4C463D"><span style="flex:none;color:#B0A17D;font-size:13px;line-height:1.75">✻</span><span>Supervision im geistigen Familienstellen</span></span>
     </div>
     <a href="Ueber-uns.dc.html" style="text-decoration:none;color:#B0703C;font-weight:700;font-size:16px" style-hover="color:#8F5A2E">Mehr erfahren →</a>
   </div>

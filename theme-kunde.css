@@ -41,6 +41,9 @@ html.theme-kunde.variant-blau {
   --k-body-strong: #333B40;
   --k-dark-gradient: linear-gradient(150deg, #2B5361, #3D6B7C);
   --k-hero-bg: linear-gradient(155deg, rgba(30, 52, 64, 0.92) 0%, rgba(43, 83, 97, 0.80) 45%, rgba(62, 104, 122, 0.60) 78%, rgba(82, 128, 143, 0.50) 100%), url('img/wellen.jpg') center/cover no-repeat;
+  --fade-c1: rgba(23, 46, 60, 0.94);
+  --fade-c2: rgba(30, 58, 74, 0.86);
+  --fade-c3: rgba(37, 73, 84, 0.30);
 }
 
 /* ---------- Variante 2: SAND — Braun/Gold dominant, Petrolblau als Akzent ---------- */
@@ -66,6 +69,9 @@ html.theme-kunde.variant-sand {
   --k-body-strong: #3B3428;
   --k-dark-gradient: linear-gradient(150deg, #6E4C25, #8A6A3F);
   --k-hero-bg: linear-gradient(155deg, rgba(74, 50, 21, 0.92) 0%, rgba(110, 76, 37, 0.80) 45%, rgba(138, 106, 63, 0.62) 78%, rgba(176, 160, 125, 0.50) 100%), url('img/wellen.jpg') center/cover no-repeat;
+  --fade-c1: rgba(64, 42, 15, 0.94);
+  --fade-c2: rgba(90, 62, 27, 0.86);
+  --fade-c3: rgba(110, 76, 37, 0.30);
 }
 
 /* ---------- Variante 3: HELL — Hellblau/Mittelblau, luftig & leicht ---------- */
@@ -91,6 +97,9 @@ html.theme-kunde.variant-hell {
   --k-body-strong: #24404D;
   --k-dark-gradient: linear-gradient(150deg, #3A6172, #54809A);
   --k-hero-bg: linear-gradient(155deg, rgba(37, 73, 84, 0.88) 0%, rgba(58, 97, 114, 0.72) 45%, rgba(120, 165, 198, 0.48) 78%, rgba(159, 195, 225, 0.36) 100%), url('img/wellen.jpg') center/cover no-repeat;
+  --fade-c1: rgba(37, 73, 84, 0.90);
+  --fade-c2: rgba(47, 93, 116, 0.76);
+  --fade-c3: rgba(120, 165, 198, 0.26);
 }
 
 /* ---------- Variante 4: GOLD — Gold/Sand-Flächen, Petrol-Text, Braun-CTAs ---------- */
@@ -116,6 +125,9 @@ html.theme-kunde.variant-gold {
   --k-body-strong: #362F22;
   --k-dark-gradient: linear-gradient(150deg, #A89872, #C0B292);
   --k-hero-bg: linear-gradient(155deg, rgba(107, 93, 60, 0.55) 0%, rgba(140, 124, 88, 0.45) 45%, rgba(176, 160, 125, 0.40) 78%, rgba(200, 188, 155, 0.38) 100%), url('img/wellen.jpg') center/cover no-repeat;
+  --fade-c1: rgba(200, 188, 155, 0.90);
+  --fade-c2: rgba(190, 176, 140, 0.72);
+  --fade-c3: rgba(176, 160, 125, 0.26);
 }
 /* Weißes Footer-Logo auf Gold abdunkeln */
 html.theme-kunde.variant-gold img[src*="logo-weiss"] { filter: brightness(0.25); }
@@ -144,6 +156,9 @@ html.theme-kunde.variant-mittelblau {
   --k-body-strong: #24404D;
   --k-dark-gradient: linear-gradient(150deg, #254954, #3A6D89);
   --k-hero-bg: linear-gradient(155deg, rgba(37, 73, 84, 0.92) 0%, rgba(58, 109, 137, 0.78) 45%, rgba(120, 165, 198, 0.55) 78%, rgba(159, 195, 225, 0.45) 100%), url('img/wellen.jpg') center/cover no-repeat;
+  --fade-c1: rgba(30, 58, 74, 0.94);
+  --fade-c2: rgba(37, 73, 84, 0.84);
+  --fade-c3: rgba(58, 109, 137, 0.30);
 }
 
 /* ============================================================

@@ -1,0 +1,115 @@
+/* ============================================================
+   Layout-Varianten (umschaltbar über das Design-Panel)
+   <html> trägt die Klassen:
+     Hero:       (keine) = Überlagert | hero-split | hero-fade | hero-banner
+     Navigation: (keine) = Flach      | nav-drop   | nav-gruppe
+   Die var(--k-...)-Fallbacks sorgen dafür, dass Dropdowns &
+   Fade-Verläufe automatisch zur aktiven Farbwelt passen.
+   ============================================================ */
+
+/* ---------- Hero-Umschaltung (Startseite) ---------- */
+.na-hero-split, .na-hero-banner, .na-termine-bar { display: none; }
+
+html.hero-split .na-hero-overlay,
+html.hero-banner .na-hero-overlay { display: none !important; }
+
+html.hero-split .na-hero-split { display: grid !important; }
+html.hero-banner .na-hero-banner { display: block !important; }
+
+html.hero-split .na-termine-bar,
+html.hero-banner .na-termine-bar { display: block !important; }
+
+/* Fade: Welle als Vollbild, Verlauf nur hinter dem Text links.
+   Gilt auf der Startseite und auf allen Unterseiten-Heros.
+   Bei Split/Banner bekommen die Unterseiten ebenfalls den Fade,
+   damit die Welle dort auch nicht überlagert wirkt. */
+/* [style] doppelt angehängt = höhere Spezifität als die
+   --k-hero-bg-Regel in theme-kunde.css (die später geladen wird) */
+html.hero-fade section[style*="wellen.jpg"][style],
+html.hero-split section[style*="wellen.jpg"][style]:not(.na-hero-overlay):not(.na-hero-split):not(.na-hero-banner),
+html.hero-banner section[style*="wellen.jpg"][style]:not(.na-hero-overlay):not(.na-hero-split):not(.na-hero-banner) {
+  background:
+    linear-gradient(100deg,
+      var(--fade-c1, rgba(26, 48, 44, 0.94)) 0%,
+      var(--fade-c2, rgba(28, 52, 48, 0.86)) 34%,
+      var(--fade-c3, rgba(35, 66, 63, 0.30)) 58%,
+      rgba(0, 0, 0, 0) 78%),
+    url('img/wellen.jpg') center 65% / cover no-repeat !important;
+}
+
+/* Split-Hero mobil: eine Spalte, Bild oben */
+@media (max-width: 760px) {
+  html.hero-split .na-hero-split { grid-template-columns: 1fr !important; }
+  .na-hero-split .na-split-img { min-height: 240px !important; height: 42vh !important; order: -1; }
+  .na-hero-split > div { padding: 48px 20px !important; }
+}
+
+/* ---------- Navigations-Umschaltung ---------- */
+html.nav-drop .na-nav-flat { display: none !important; }
+html.nav-drop .na-nav-drop { display: flex !important; }
+
+html.nav-gruppe .na-nav-flat { display: none !important; }
+html.nav-gruppe .na-nav-gruppe { display: flex !important; }
+
+/* ---------- Dropdown-Menü ---------- */
+.na-dd { position: relative; display: inline-flex; }
+
+.na-dd-menu {
+  position: absolute;
+  top: 100%;
+  left: -14px;
+  z-index: 800;
+  display: none;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 235px;
+  background: #FFFFFF;
+  border: 1px solid var(--k-border, #E5DECF);
+  border-radius: 6px;
+  box-shadow: 0 16px 38px rgba(20, 40, 36, 0.18);
+  padding: 8px;
+  margin-top: 6px;
+}
+
+/* unsichtbare Brücke, damit das Menü beim Überfahren nicht zuklappt */
+.na-dd-menu::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 0;
+  right: 0;
+  height: 10px;
+}
+
+.na-dd:hover .na-dd-menu,
+.na-dd:focus-within .na-dd-menu { display: flex; }
+
+.na-dd-menu a {
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--k-primary, #23423F);
+  padding: 9px 12px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.na-dd-menu a:hover {
+  background: var(--k-surface, #F1EBDF);
+  color: var(--k-accent, #B0703C);
+}
+
+/* eingerückter Unterpunkt (Weiterbildung unter Aufstellungsarbeit) */
+.na-dd-menu a.na-dd-sub {
+  padding-left: 30px;
+  position: relative;
+  font-size: 14.5px;
+}
+.na-dd-menu a.na-dd-sub::before {
+  content: "↳";
+  position: absolute;
+  left: 13px;
+  color: var(--k-muted, #8A7E68);
+}
+
+.na-caret { font-size: 11px; opacity: 0.7; }

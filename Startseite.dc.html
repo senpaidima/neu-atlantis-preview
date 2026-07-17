@@ -44,18 +44,26 @@
   </div>
 </section>
 
-<!-- HERO (Layout-Variante: Split — Text links, Welle pur rechts) -->
-<section class="na-hero-split" style="display:none;grid-template-columns:1.05fr 1fr;align-items:stretch">
-  <div class="m-pad m-pady" style="background:#23423F;display:flex;flex-direction:column;justify-content:center;gap:26px;padding:96px 56px 96px 48px">
-    <span style="font-size:14px;letter-spacing:0.22em;text-transform:uppercase;color:#C8B98F">Ganzheitliche Lebensbegleitung</span>
-    <div class="m-hero" style="font-family:'Cormorant Garamond',serif;font-size:52px;line-height:1.12;font-weight:600;color:#F6F2E8;text-wrap:balance">Alles in deinem Leben ist ein Wegweiser</div>
-    <p style="margin:0;font-size:18.5px;line-height:1.65;color:#DCE4DD;max-width:520px">Ob körperliche oder seelische Erkrankung, berufliche Herausforderungen oder Probleme in Beziehungen – alles, was uns im Leben begegnet, ist ein Wegweiser. Wir begleiten dich dabei, seine Botschaft zu entschlüsseln.</p>
-    <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:6px">
-      <a href="Kontakt.dc.html" style="text-decoration:none;background:#C08A4E;color:#241A0E;font-weight:700;font-size:16px;padding:14px 28px;border-radius:3px" style-hover="background:#D09A5C">Gehe den ersten Schritt</a>
-      <a href="Veranstaltungen.dc.html" style="text-decoration:none;border:1px solid #9FB4AA;color:#EDF1EA;font-weight:500;font-size:16px;padding:14px 28px;border-radius:3px" style-hover="background:rgba(255,255,255,0.08)">Zu den Veranstaltungen</a>
+<!-- HERO (Layout-Variante: Ralf — Ralf-Porträt in der Düne, ohne Termin-Karte) -->
+<section class="na-hero-ralf" style="display:none;background:#FAF7F1;overflow:hidden">
+  <div class="na-ralf-grid m-col m-pad m-pady m-gap" style="max-width:1160px;margin:0 auto;padding:96px 40px 100px;display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:center">
+    <div style="display:flex;flex-direction:column;gap:26px">
+      <span style="font-size:14px;letter-spacing:0.22em;text-transform:uppercase;color:#B0703C;font-weight:700">Ganzheitliche Lebensbegleitung</span>
+      <div class="m-hero" style="font-family:'Cormorant Garamond',serif;font-size:56px;line-height:1.1;font-weight:600;color:#23423F;text-wrap:balance">Alles in deinem Leben ist ein Wegweiser</div>
+      <p style="margin:0;font-size:18.5px;line-height:1.65;color:#4C463D;max-width:540px">Ob körperliche oder seelische Erkrankung, berufliche Herausforderungen oder Probleme in Beziehungen – alles, was uns im Leben begegnet, ist ein Wegweiser. Wir begleiten dich dabei, seine Botschaft zu entschlüsseln.</p>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:6px">
+        <a href="Kontakt.dc.html" style="text-decoration:none;background:#C08A4E;color:#241A0E;font-weight:700;font-size:16px;padding:14px 28px;border-radius:3px" style-hover="background:#D09A5C">Gehe den ersten Schritt</a>
+        <a href="Veranstaltungen.dc.html" style="text-decoration:none;border:1px solid #23423F;color:#23423F;font-weight:500;font-size:16px;padding:14px 28px;border-radius:3px" style-hover="background:rgba(35,66,63,0.06)">Zu den Veranstaltungen</a>
+      </div>
     </div>
+    <figure class="na-ralf-figure" style="position:relative;margin:0;justify-self:end;width:100%;max-width:600px">
+      <span style="position:absolute;top:-24px;right:-8px;font-size:30px;color:#B0A17D">✻</span>
+      <div class="na-ralf-frame">
+        <img class="na-ralf-img" src="img/ralf-duene.jpg" alt="Ralf Baars sitzt schreibend in den Dünen">
+      </div>
+      <figcaption style="margin-top:14px;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#B0703C;font-weight:700;display:flex;align-items:center;gap:12px"><span style="flex:none;width:34px;height:1px;background:#C8B98F"></span>Ralf Baars · Gründer &amp; Begleiter</figcaption>
+    </figure>
   </div>
-  <img class="na-split-img" src="img/wellen.jpg" alt="Wellen-Gemälde" style="width:100%;height:100%;object-fit:cover;display:block;min-height:520px">
 </section>
 
 <!-- HERO (Layout-Variante: Panorama — Welle läuft weich in die Seite aus, Termine als Reiseroute) -->
@@ -114,62 +122,6 @@
       <img src="img/wellen.jpg" alt="Wellen-Gemälde" style="display:block;width:100%;aspect-ratio:4/5.3;object-fit:cover;border-radius:999px 999px 10px 10px">
       <div style="position:absolute;inset:-16px;border:1px solid #C8B98F;border-radius:999px 999px 14px 14px;pointer-events:none"></div>
       <span style="position:absolute;top:-8px;right:-26px;font-size:30px;color:#B0A17D">✻</span>
-    </div>
-  </div>
-</section>
-
-<!-- HERO (Layout-Variante: Editorial — Magazin-Headline, Welle als Panorama, nummeriertes Programm) -->
-<section class="na-hero-editorial" style="display:none;background:#FAF7F1">
-  <div class="m-pad" style="max-width:1240px;margin:0 auto;padding:60px 40px 88px;display:flex;flex-direction:column;gap:0">
-    <div style="display:flex;align-items:center;gap:18px;padding-bottom:26px">
-      <span style="font-size:13.5px;letter-spacing:0.22em;text-transform:uppercase;color:#B0703C;font-weight:700;white-space:nowrap">Ganzheitliche Lebensbegleitung</span>
-      <div style="flex:1;height:1px;background:#E5DECF"></div>
-      <span style="font-size:16px;color:#B0A17D">✻</span>
-    </div>
-    <h1 class="m-hero" style="margin:0;font-family:'Cormorant Garamond',serif;font-size:clamp(46px,6.6vw,92px);line-height:1.04;font-weight:600;color:#23423F;max-width:1120px">Alles in deinem Leben<br>ist ein <em style="font-style:italic;color:#B0703C">Wegweiser</em></h1>
-    <div class="na-ed-grid" style="display:grid;grid-template-columns:1.55fr 1fr;gap:60px;margin-top:48px;align-items:start">
-      <img src="img/wellen.jpg" alt="Wellen-Gemälde" style="display:block;width:100%;height:min(38vw,480px);object-fit:cover;border-radius:6px">
-      <div style="display:flex;flex-direction:column;gap:20px">
-        <p style="margin:0;font-size:17.5px;line-height:1.7;color:#4C463D">Ob körperliche oder seelische Erkrankung, berufliche Herausforderungen oder Probleme in Beziehungen – alles, was uns im Leben begegnet, ist ein Wegweiser. Wir begleiten dich dabei, seine Botschaft zu entschlüsseln.</p>
-        <div style="display:flex;gap:14px;flex-wrap:wrap">
-          <a href="Kontakt.dc.html" style="text-decoration:none;background:#C08A4E;color:#241A0E;font-weight:700;font-size:15.5px;padding:13px 24px;border-radius:3px" style-hover="background:#D09A5C">Gehe den ersten Schritt</a>
-          <a href="Veranstaltungen.dc.html" style="text-decoration:none;border:1px solid #23423F;color:#23423F;font-weight:500;font-size:15.5px;padding:13px 24px;border-radius:3px" style-hover="background:rgba(35,66,63,0.06)">Veranstaltungen</a>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:2px;margin-top:6px">
-          <span style="font-size:12.5px;letter-spacing:0.18em;text-transform:uppercase;color:#B0703C;font-weight:700;padding-bottom:8px;border-bottom:1px solid #E5DECF">Programm</span>
-          <div class="na-ed-programm" style="display:flex;flex-direction:column">
-            <sc-for list="{{ termine }}" as="t" hint-placeholder-count="4">
-              <a class="na-ed-item" href="Veranstaltungen.dc.html" style="display:flex;gap:16px;align-items:baseline;padding:12px 2px;border-bottom:1px solid #E5DECF;text-decoration:none">
-                <span style="display:flex;flex-direction:column;gap:2px">
-                  <span style="font-size:13px;font-weight:700;color:#B0703C;letter-spacing:0.04em">{{ t.datum }}</span>
-                  <span style="font-size:15.5px;font-weight:500;color:#23423F;line-height:1.35">{{ t.titel }}</span>
-                  <span style="font-size:13px;color:#8A7E68">{{ t.ort }}</span>
-                </span>
-              </a>
-            </sc-for>
-          </div>
-          <a href="Veranstaltungen.dc.html" style="text-decoration:none;color:#B0703C;font-weight:700;font-size:15px;padding-top:12px" style-hover="color:#8F5A2E">Alle Termine ansehen →</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TERMINE-LEISTE (sichtbar bei Split- & Banner-Hero, ersetzt die Termine-Karte im Hero) -->
-<section class="na-termine-bar" style="display:none;background:#F1EBDF;border-top:1px solid #E5DECF;border-bottom:1px solid #E5DECF">
-  <div class="m-pad" style="max-width:1160px;margin:0 auto;padding:34px 40px 38px;display:flex;flex-direction:column;gap:18px">
-    <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap">
-      <span style="font-size:12.5px;letter-spacing:0.18em;text-transform:uppercase;color:#B0703C;font-weight:700">Nächste Termine</span>
-      <a href="Veranstaltungen.dc.html" style="text-decoration:none;color:#B0703C;font-weight:700;font-size:15px" style-hover="color:#8F5A2E">Alle Termine ansehen →</a>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px">
-      <sc-for list="{{ termine }}" as="t" hint-placeholder-count="5">
-        <a href="Veranstaltungen.dc.html" style="text-decoration:none;background:#FCFAF5;border:1px solid #E5DECF;border-radius:5px;padding:16px 18px;display:flex;flex-direction:column;gap:6px;transition:box-shadow 0.2s,transform 0.2s" style-hover="box-shadow:0 10px 26px rgba(51,65,60,0.12);transform:translateY(-2px)">
-          <span style="font-size:13.5px;font-weight:700;color:#B0703C;letter-spacing:0.04em">{{ t.datum }}</span>
-          <span style="font-size:15.5px;font-weight:500;color:#23423F;line-height:1.35">{{ t.titel }}</span>
-          <span style="font-size:13.5px;color:#8A7E68">{{ t.ort }}</span>
-        </a>
-      </sc-for>
     </div>
   </div>
 </section>

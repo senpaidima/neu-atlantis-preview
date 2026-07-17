@@ -1,34 +1,52 @@
 /* ============================================================
    Layout-Varianten (umschaltbar über das Design-Panel)
    <html> trägt die Klassen:
-     Hero:       (keine) = Überlagert | hero-split | hero-fade | hero-banner
-     Navigation: (keine) = Flach      | nav-drop   | nav-gruppe
+     Hero:       (keine) = Überlagert | hero-ralf | hero-fade | hero-panorama | hero-portal
+     Navigation: (keine) = Flach      | nav-drop  | nav-gruppe | nav-sitemap
    Die var(--k-...)-Fallbacks sorgen dafür, dass Dropdowns &
    Fade-Verläufe automatisch zur aktiven Farbwelt passen.
    ============================================================ */
 
 /* ---------- Hero-Umschaltung (Startseite) ---------- */
-.na-hero-split, .na-hero-panorama, .na-hero-portal, .na-hero-editorial, .na-termine-bar { display: none; }
+.na-hero-ralf, .na-hero-panorama, .na-hero-portal { display: none; }
 
-html.hero-split .na-hero-overlay,
+html.hero-ralf .na-hero-overlay,
 html.hero-panorama .na-hero-overlay,
-html.hero-portal .na-hero-overlay,
-html.hero-editorial .na-hero-overlay { display: none !important; }
+html.hero-portal .na-hero-overlay { display: none !important; }
 
-html.hero-split .na-hero-split { display: grid !important; }
+html.hero-ralf .na-hero-ralf { display: block !important; }
 html.hero-panorama .na-hero-panorama { display: block !important; }
 html.hero-portal .na-hero-portal { display: block !important; }
-html.hero-editorial .na-hero-editorial { display: block !important; }
 
-/* Termin-Karten-Leiste nur beim Split-Hero */
-html.hero-split .na-termine-bar { display: block !important; }
+/* ---------- Ralf-Hero: Foto weich ins Creme auslaufen lassen ----------
+   Maske liegt auf dem Rahmen (nicht auf dem <img>), damit der
+   Duotone-Verlauf im ::after mit ausgeblendet wird. Anzeige max. 600px
+   breit — das 646px-Foto wird nie hochskaliert. */
+.na-ralf-frame {
+  position: relative;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 13%), linear-gradient(to top, transparent 0, #000 15%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to right, transparent 0, #000 13%), linear-gradient(to top, transparent 0, #000 15%);
+  mask-composite: intersect;
+}
+.na-ralf-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(35, 66, 63, 0.14), transparent 45%);
+  pointer-events: none;
+}
+.na-ralf-img {
+  display: block;
+  width: 100%;
+  filter: saturate(0.92) contrast(1.02);
+}
 
 /* Fade: Welle als Vollbild, Verlauf nur hinter dem Text links.
-   Gilt auf der Startseite und (bei Fade & Split) auf den Unterseiten. */
+   Gilt auf der Startseite und auf den Unterseiten. */
 /* [style] doppelt angehängt = höhere Spezifität als die
    --k-hero-bg-Regel in theme-kunde.css (die später geladen wird) */
-html.hero-fade section[style*="wellen.jpg"][style],
-html.hero-split section[style*="wellen.jpg"][style]:not(.na-hero-overlay) {
+html.hero-fade section[style*="wellen.jpg"][style] {
   background:
     linear-gradient(100deg,
       var(--fade-c1, rgba(26, 48, 44, 0.94)) 0%,
@@ -39,32 +57,33 @@ html.hero-split section[style*="wellen.jpg"][style]:not(.na-hero-overlay) {
 }
 
 /* ---------- Unterseiten-Heros folgen der gewählten Hero-Variante ----------
-   Panorama / Portal / Editorial: heller Hero (Creme, dunkle Schrift)
+   Ralf / Panorama / Portal: heller Hero (Creme, dunkle Schrift)
    statt dunklem Overlay — die Startseiten-Designsprache läuft durch. */
+html.hero-ralf section[style*="wellen.jpg"][style]:not(.na-hero-overlay),
 html.hero-panorama section[style*="wellen.jpg"][style]:not(.na-hero-overlay),
-html.hero-portal section[style*="wellen.jpg"][style]:not(.na-hero-overlay),
-html.hero-editorial section[style*="wellen.jpg"][style]:not(.na-hero-overlay) {
+html.hero-portal section[style*="wellen.jpg"][style]:not(.na-hero-overlay) {
   background: var(--k-page, #FAF7F1) !important;
 }
 
 /* Textfarben im hellen Hero drehen (Kicker / Headline / Fließtext / Hinweisbox) */
+html.hero-ralf section[style*="wellen.jpg"] [style*="color: rgb(200, 185, 143)"],
 html.hero-panorama section[style*="wellen.jpg"] [style*="color: rgb(200, 185, 143)"],
-html.hero-portal section[style*="wellen.jpg"] [style*="color: rgb(200, 185, 143)"],
-html.hero-editorial section[style*="wellen.jpg"] [style*="color: rgb(200, 185, 143)"] { color: var(--k-accent, #B0703C) !important; }
+html.hero-portal section[style*="wellen.jpg"] [style*="color: rgb(200, 185, 143)"] { color: var(--k-accent, #B0703C) !important; }
 
+html.hero-ralf section[style*="wellen.jpg"] [style*="color: rgb(246, 242, 232)"],
 html.hero-panorama section[style*="wellen.jpg"] [style*="color: rgb(246, 242, 232)"],
-html.hero-portal section[style*="wellen.jpg"] [style*="color: rgb(246, 242, 232)"],
-html.hero-editorial section[style*="wellen.jpg"] [style*="color: rgb(246, 242, 232)"] { color: var(--k-primary, #23423F) !important; }
+html.hero-portal section[style*="wellen.jpg"] [style*="color: rgb(246, 242, 232)"] { color: var(--k-primary, #23423F) !important; }
 
+html.hero-ralf section[style*="wellen.jpg"] [style*="color: rgb(220, 228, 221)"],
 html.hero-panorama section[style*="wellen.jpg"] [style*="color: rgb(220, 228, 221)"],
-html.hero-portal section[style*="wellen.jpg"] [style*="color: rgb(220, 228, 221)"],
-html.hero-editorial section[style*="wellen.jpg"] [style*="color: rgb(220, 228, 221)"] { color: var(--k-body, #4C463D) !important; }
+html.hero-portal section[style*="wellen.jpg"] [style*="color: rgb(220, 228, 221)"] { color: var(--k-body, #4C463D) !important; }
 
+html.hero-ralf section[style*="wellen.jpg"] [style*="color: rgb(228, 217, 184)"],
 html.hero-panorama section[style*="wellen.jpg"] [style*="color: rgb(228, 217, 184)"],
-html.hero-portal section[style*="wellen.jpg"] [style*="color: rgb(228, 217, 184)"],
-html.hero-editorial section[style*="wellen.jpg"] [style*="color: rgb(228, 217, 184)"] { color: #8A5A22 !important; }
+html.hero-portal section[style*="wellen.jpg"] [style*="color: rgb(228, 217, 184)"] { color: #8A5A22 !important; }
 
-/* Panorama: auslaufendes Wellen-Band unter dem Unterseiten-Hero */
+/* Ralf & Panorama: auslaufendes Wellen-Band unter dem Unterseiten-Hero */
+html.hero-ralf section[style*="wellen.jpg"][style]:not(.na-hero-overlay)::after,
 html.hero-panorama section[style*="wellen.jpg"][style]:not(.na-hero-overlay)::after {
   content: "";
   display: block;
@@ -101,12 +120,6 @@ html.hero-portal section[style*="wellen.jpg"] [style*="aspect-ratio"] {
   border-radius: 999px 999px 10px 10px !important;
 }
 
-/* Editorial: große Magazin-Headline auch auf Unterseiten */
-html.hero-editorial section[style*="wellen.jpg"] h1 {
-  font-size: clamp(42px, 5.4vw, 74px) !important;
-  line-height: 1.05 !important;
-}
-
 /* ---------- Qualifikationen: dicht gepackte Spalten statt Grid-Löcher ---------- */
 .na-qualis { columns: 2; column-gap: 30px; }
 .na-qualis > span { break-inside: avoid; -webkit-column-break-inside: avoid; }
@@ -132,25 +145,17 @@ details > summary::before {
 }
 details[open] > summary::before { transform: rotate(90deg); }
 
-/* Editorial: nummeriertes Programm (01, 02, 03 … in Cormorant-Ziffern) */
-.na-ed-programm { counter-reset: naprog; }
-.na-ed-item::before {
-  counter-increment: naprog;
-  content: counter(naprog, decimal-leading-zero);
-  font-family: 'Cormorant Garamond', 'Source Serif 4', serif;
-  font-size: 27px;
-  font-weight: 500;
-  line-height: 1;
-  color: #C8B98F;
-  min-width: 36px;
-  flex: none;
-}
-
 /* Mobile-Umbrüche der neuen Hero-Layouts */
 @media (max-width: 760px) {
-  html.hero-split .na-hero-split { grid-template-columns: 1fr !important; }
-  .na-hero-split .na-split-img { min-height: 240px !important; height: 42vh !important; order: -1; }
-  .na-hero-split > div { padding: 48px 20px !important; }
+  html.hero-ralf .na-ralf-grid { grid-template-columns: 1fr !important; padding: 56px 20px 64px !important; gap: 40px !important; }
+  .na-ralf-figure { justify-self: center !important; max-width: 652px !important; }
+  /* Mobil nur nach unten auslaufen — seitlich bleibt das Foto voll */
+  .na-ralf-frame {
+    -webkit-mask-image: linear-gradient(to top, transparent 0, #000 15%);
+    -webkit-mask-composite: source-over;
+    mask-image: linear-gradient(to top, transparent 0, #000 15%);
+    mask-composite: add;
+  }
 
   .na-route { grid-template-columns: 1fr 1fr !important; }
   .na-route-line { display: none; }
@@ -159,8 +164,6 @@ details[open] > summary::before { transform: rotate(90deg); }
 
   html.hero-portal .na-portal-grid { grid-template-columns: 1fr !important; padding: 48px 20px 56px !important; gap: 40px !important; }
   html.hero-portal .na-portal-grid > div:last-child { max-width: 320px; }
-
-  html.hero-editorial .na-ed-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
 }
 
 /* ---------- Navigations-Umschaltung ---------- */

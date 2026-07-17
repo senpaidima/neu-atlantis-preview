@@ -230,17 +230,4 @@ html.step1 [data-screen-label="Sitemap"] a[href*="Wissenswertes"] { display: non
   color: var(--k-accent, #B0703C);
 }
 
-/* eingerückter Unterpunkt (Weiterbildung unter Aufstellungsarbeit) */
-.na-dd-menu a.na-dd-sub {
-  padding-left: 30px;
-  position: relative;
-  font-size: 14.5px;
-}
-.na-dd-menu a.na-dd-sub::before {
-  content: "↳";
-  position: absolute;
-  left: 13px;
-  color: var(--k-muted, #8A7E68);
-}
-
 .na-caret { font-size: 11px; opacity: 0.7; }

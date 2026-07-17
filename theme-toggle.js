@@ -23,11 +23,14 @@
       options: [
         { id: "overlay",   label: "Überlagert",   sub: "Welle hinter Farbverlauf (aktuell)",        dot1: "#3D615A", dot2: "#8FB0A8", cls: "" },
         { id: "ralf",      label: "Ralf ✻ Neu",   sub: "Ralf-Porträt in der Düne · ohne Termin-Karte", dot1: "#23423F", dot2: "#C8B98F", cls: "hero-ralf" },
+        { id: "ralfpan",   label: "Ralf Panorama ✻ Neu", sub: "Ralf in voller Breite · Termin-Route",  dot1: "#8FB0A8", dot2: "#C8B98F", cls: "hero-ralfpan" },
+        { id: "ralfkopf",  label: "Ralf im Hero ✻ Neu",  sub: "Ralf statt Termin-Karte · Welle bleibt", dot1: "#2A4B47", dot2: "#D5CDBB", cls: "hero-ralfkopf" },
+        { id: "ralfzitat", label: "Ralf im Hero + Zitat-Welle ✻ Neu", sub: "Ralf statt Termin-Karte · Welle als Zitat-Balken", dot1: "#2A4B47", dot2: "#9FC3E1", cls: "hero-ralfkopf hero-zitatwelle" },
         { id: "fade",      label: "Fade",         sub: "Welle pur, Verlauf nur hinterm Text",       dot1: "#2E524E", dot2: "#D5E9EF", cls: "hero-fade" },
         { id: "panorama",  label: "Panorama ✻ Unsere Empfehlung", sub: "Welle läuft weich aus · Termin-Route", dot1: "#9FC3E1", dot2: "#C8B98F", cls: "hero-panorama" },
         { id: "portal",    label: "Portal-Bogen", sub: "Welle im Rundbogen · kompakte Liste",       dot1: "#B0A17D", dot2: "#23423F", cls: "hero-portal" }
       ],
-      allClasses: ["hero-split", "hero-fade", "hero-banner", "hero-panorama", "hero-portal", "hero-editorial", "hero-ralf"]
+      allClasses: ["hero-split", "hero-fade", "hero-banner", "hero-panorama", "hero-portal", "hero-editorial", "hero-ralf", "hero-ralfpan", "hero-ralfkopf", "hero-zitatwelle"]
     },
     {
       key: "na-nav",

@@ -54,19 +54,41 @@
     }
   ];
 
+  /* Vom Kunden festgelegte Basis-Variante (Feedback Heidi, 08/2026):
+     Farbwelt „Unsere Empfehlung“ · Hero „Ralf im Hero“ · Nav „Sitemap-Struktur V09“ · Vollausbau.
+     Wer noch nichts gewählt hat, startet hier — das Panel bleibt vollständig nutzbar. */
+  var BASIS = { "na-farbwelt": "empfehlung", "na-hero": "ralfkopf", "na-nav": "sitemap", "na-umfang": "voll" };
+
   function findOption(dim, id) {
-    for (var i = 0; i < dim.options.length; i++) if (dim.options[i].id === id) return dim.options[i];
+    var i;
+    for (i = 0; i < dim.options.length; i++) if (dim.options[i].id === id) return dim.options[i];
+    var basis = BASIS[dim.key];
+    for (i = 0; i < dim.options.length; i++) if (dim.options[i].id === basis) return dim.options[i];
     return dim.options[0];
   }
+
+  /* Einmalige Umstellung auf die vom Kunden festgelegte Basis: wer noch auf den
+     alten Defaults („Überlagert“ + „Flach“) stand, wird einmal mitgenommen.
+     Danach greift das Flag und jede bewusste Wahl bleibt wieder bestehen. */
+  function basisUmstellung() {
+    try {
+      if (localStorage.getItem("na-basis-2026-08") === "1") return;
+      if (localStorage.getItem("na-hero") === "overlay") localStorage.removeItem("na-hero");
+      if (localStorage.getItem("na-nav") === "flach") localStorage.removeItem("na-nav");
+      localStorage.setItem("na-basis-2026-08", "1");
+    } catch (e) { /* localStorage gesperrt — dann gilt einfach die Basis */ }
+  }
+  basisUmstellung();
 
   function current(dim) {
     try {
       var v = localStorage.getItem(dim.key);
+      if (v === null) return BASIS[dim.key] || dim.options[0].id; // noch nichts gewählt
       if (dim.key === "na-farbwelt" && v === "kunde") v = "kunde-blau"; // Migration
       if (dim.key === "na-hero" && v === "banner") v = "panorama"; // Banner-Variante wurde ersetzt
       if (dim.key === "na-hero" && (v === "split" || v === "editorial")) v = "ralf"; // vom Kunden gestrichen
       return findOption(dim, v).id;
-    } catch (e) { return dim.options[0].id; }
+    } catch (e) { return BASIS[dim.key] || dim.options[0].id; }
   }
 
   function applyAll() {

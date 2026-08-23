@@ -9,13 +9,13 @@
   → Faktor 1,09. 18px Mulish entspricht optisch ~19,7px Alegreya Sans.
 
   WICHTIG — dieses Skript ist NICHT idempotent (18→20 zweimal ergibt 22).
-  Immer aus dem sauberen Stand fahren:
+  Immer vom unskalierten Stand aus fahren. Der liegt auf dem Tag `typo-base`:
 
-      git checkout -- "*.dc.html"
+      git checkout typo-base -- "*.dc.html"
       node tools/typo-scale.mjs
 
-  Zum Nachjustieren nur die Tabellen unten ändern und beides erneut laufen
-  lassen.
+  Zum Nachjustieren ("noch einen Tick größer") nur die Tabellen unten ändern
+  und beide Befehle erneut laufen lassen.
 */
 
 import { readFileSync, writeFileSync, readdirSync } from "node:fs";
@@ -74,8 +74,13 @@ const UEBERSCHRIFT_AB = 22;
 
 const zahl = (n) => (Number.isInteger(n) ? String(n) : String(n));
 
-/** Zeichenbereiche der <nav>…</nav>-Blöcke — dort wird nichts angefasst. */
-function navBereiche(html) {
+/* Geschützte Zeichenbereiche — hier wird nichts angefasst:
+   - <nav>…</nav>: Menü-Links sollen ihre Größe behalten, die Leiste bricht
+     sonst früher um
+   - ab class="m-headrow" bis Dateiende: Logo-Zeile samt Claim. Der Claim
+     („Zentrum für Lebensbegleitung…“) ist Wortmarke, kein Kasten-Kicker —
+     größer gesetzt überstrahlt er das Logo. */
+function schutzBereiche(html) {
   const bereiche = [];
   const re = /<nav\b/gi;
   let m;
@@ -83,6 +88,8 @@ function navBereiche(html) {
     const ende = html.indexOf("</nav>", m.index);
     bereiche.push([m.index, ende === -1 ? html.length : ende + 6]);
   }
+  const kopf = html.indexOf('class="m-headrow"');
+  if (kopf !== -1) bereiche.push([kopf, html.length]);
   return bereiche;
 }
 
@@ -101,8 +108,10 @@ const istDisplay = (style) => /font-family\s*:\s*'?Cormorant/i.test(style);
 function styleUmschreiben(tagName, klassen, style, statistik) {
   let neu = style;
 
-  // Hero-/Headline-Klassen haben eigene Mobile-Overrides in mobile.css
-  if (/\b(m-hero|m-h1|m-h2)\b/.test(klassen)) return style;
+  // Hero-/Headline-Klassen haben eigene Mobile-Overrides in mobile.css.
+  // na-wortmarke = der Claim unter dem Logo (Kopf wie Fuß): Wortmarke, kein
+  // Kasten-Kicker — größer gesetzt überstrahlt er das Logo.
+  if (/\b(m-hero|m-h1|m-h2|na-wortmarke)\b/.test(klassen)) return style;
   if (istDisplay(style)) return style;
   if (istButton(style)) return style;
 
@@ -154,7 +163,7 @@ for (const datei of dateien) {
   const markup = schnitt === -1 ? original : original.slice(0, schnitt);
   const rest = schnitt === -1 ? "" : original.slice(schnitt);
 
-  const navs = navBereiche(markup);
+  const schutz = schutzBereiche(markup);
   const statistik = { fliess: 0, versalien: 0, sperrung: 0, hinweis: 0 };
 
   // Ganze Tags matchen, damit class und style zusammen bewertet werden
@@ -162,7 +171,7 @@ for (const datei of dateien) {
 
   const bearbeitet = markup.replace(tagRe, (treffer, tagName, attrs, pos) => {
     if (!attrs.includes("style=")) return treffer;
-    if (imBereich(pos, navs)) return treffer;
+    if (imBereich(pos, schutz)) return treffer;
 
     const klassen = (attrs.match(/\bclass\s*=\s*"([^"]*)"/) || ["", ""])[1];
 

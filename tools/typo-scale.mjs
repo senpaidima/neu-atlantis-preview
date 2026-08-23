@@ -8,14 +8,17 @@
   "Alegreya Sans". Gemessene x-Höhe: Mulish 0.500em, Alegreya Sans 0.458em
   → Faktor 1,09. 18px Mulish entspricht optisch ~19,7px Alegreya Sans.
 
-  WICHTIG — dieses Skript ist NICHT idempotent (18→20 zweimal ergibt 22).
-  Immer vom unskalierten Stand aus fahren. Der liegt auf dem Tag `typo-base`:
+  Das Skript ist idempotent und beliebig oft wiederholbar: beim ersten Lauf
+  merkt es sich den Ausgangswert am Element (data-fs-base / data-ls-base) und
+  rechnet danach immer von dort aus, nie vom bereits skalierten Wert.
 
-      git checkout typo-base -- "*.dc.html"
+  Zum Nachjustieren ("noch einen Tick größer") also nur die Tabellen unten
+  ändern und neu laufen lassen:
+
       node tools/typo-scale.mjs
 
-  Zum Nachjustieren ("noch einen Tick größer") nur die Tabellen unten ändern
-  und beide Befehle erneut laufen lassen.
+  Kein Zurücksetzen nötig — deshalb überlebt das auch neue Texte, die
+  zwischenzeitlich in die Seiten geschrieben wurden.
 */
 
 import { readFileSync, writeFileSync, readdirSync } from "node:fs";
@@ -105,45 +108,57 @@ const istDisplay = (style) => /font-family\s*:\s*'?Cormorant/i.test(style);
 
 /* ------------------------------------------------------------ Kernfunktion */
 
-function styleUmschreiben(tagName, klassen, style, statistik) {
-  let neu = style;
+/* Bearbeitet ein Element. `merker` enthält die beim ersten Lauf gesicherten
+   Ausgangswerte — ist einer gesetzt, wird von ihm aus gerechnet statt vom
+   aktuellen (bereits skalierten) Wert. Das macht das Skript idempotent.
+   Rückgabe: neuer style + die zu schreibenden Merker. */
+function styleUmschreiben(tagName, klassen, style, merker, statistik) {
+  const unveraendert = { style, merker: {} };
 
   // Hero-/Headline-Klassen haben eigene Mobile-Overrides in mobile.css.
   // na-wortmarke = der Claim unter dem Logo (Kopf wie Fuß): Wortmarke, kein
   // Kasten-Kicker — größer gesetzt überstrahlt er das Logo.
-  if (/\b(m-hero|m-h1|m-h2|na-wortmarke)\b/.test(klassen)) return style;
-  if (istDisplay(style)) return style;
-  if (istButton(style)) return style;
+  if (/\b(m-hero|m-h1|m-h2|na-wortmarke)\b/.test(klassen)) return unveraendert;
+  if (istDisplay(style)) return unveraendert;
+  if (istButton(style)) return unveraendert;
 
   const versalien = /text-transform\s*:\s*uppercase/i.test(style);
   const tabelle = versalien ? VERSAL : FLIESS;
+  const neueMerker = {};
+  let neu = style;
 
   neu = neu.replace(/font-size\s*:\s*([0-9.]+)px/gi, (treffer, wert) => {
-    const alt = parseFloat(wert);
-    if (alt >= UEBERSCHRIFT_AB) return treffer;
-    const ziel = tabelle[alt];
+    const basis = merker.fs !== undefined ? merker.fs : parseFloat(wert);
+    if (basis >= UEBERSCHRIFT_AB) return treffer;
+    const ziel = tabelle[basis];
     if (ziel === undefined) return treffer;
+    neueMerker.fs = basis;
     statistik[versalien ? "versalien" : "fliess"]++;
     return `font-size:${zahl(ziel)}px`;
   });
 
   if (versalien) {
     neu = neu.replace(/letter-spacing\s*:\s*([0-9.]+)em/gi, (treffer, wert) => {
-      const ziel = SPERRUNG[parseFloat(wert)];
+      const basis = merker.ls !== undefined ? merker.ls : parseFloat(wert);
+      const ziel = SPERRUNG[basis];
       if (ziel === undefined) return treffer;
+      neueMerker.ls = basis;
       statistik.sperrung++;
       return `letter-spacing:${zahl(ziel)}em`;
     });
   }
 
   // Hinweis-Absätze: nur <p>, damit Meta-Spans ({{ t.ort }}) grau bleiben
-  if (tagName.toLowerCase() === "p" && neu.includes(HINWEIS_ALT)) {
-    neu = neu.replace(HINWEIS_ALT, HINWEIS_NEU);
+  const istHinweis =
+    tagName.toLowerCase() === "p" && (merker.hinweis || neu.includes(HINWEIS_ALT));
+  if (istHinweis) {
+    neu = neu.replace(/color\s*:\s*#[0-9A-Fa-f]{3,8}/, `color:${HINWEIS_NEU}`);
     if (!/font-weight\s*:/i.test(neu)) neu += ";font-weight:500";
+    neueMerker.hinweis = true;
     statistik.hinweis++;
   }
 
-  return neu;
+  return { style: neu, merker: neueMerker };
 }
 
 /* ----------------------------------------------------------------- Ablauf */
@@ -175,14 +190,34 @@ for (const datei of dateien) {
 
     const klassen = (attrs.match(/\bclass\s*=\s*"([^"]*)"/) || ["", ""])[1];
 
+    // Ausgangswerte aus einem früheren Lauf, falls vorhanden
+    const merker = {};
+    const fs = attrs.match(/\bdata-fs-base\s*=\s*"([0-9.]+)"/);
+    const ls = attrs.match(/\bdata-ls-base\s*=\s*"([0-9.]+)"/);
+    if (fs) merker.fs = parseFloat(fs[1]);
+    if (ls) merker.ls = parseFloat(ls[1]);
+    if (/\bdata-hinweis\b/.test(attrs)) merker.hinweis = true;
+
+    let neueMerker = {};
     // nur das echte style-Attribut, nicht style-hover
-    return treffer.replace(
+    let neueAttrs = attrs.replace(
       /(\s)style\s*=\s*"([^"]*)"/g,
       (_treffer, ws, style) => {
-        const neu = styleUmschreiben(tagName, klassen, style, statistik);
-        return `${ws}style="${neu}"`;
+        const r = styleUmschreiben(tagName, klassen, style, merker, statistik);
+        neueMerker = r.merker;
+        return `${ws}style="${r.style}"`;
       }
     );
+
+    // Ausgangswerte am Element festhalten, damit ein erneuter Lauf von dort
+    // aus rechnet statt vom bereits skalierten Wert
+    neueAttrs = neueAttrs.replace(/\s+data-(fs-base|ls-base|hinweis)(="[^"]*")?/g, "");
+    let zusatz = "";
+    if (neueMerker.fs !== undefined) zusatz += ` data-fs-base="${zahl(neueMerker.fs)}"`;
+    if (neueMerker.ls !== undefined) zusatz += ` data-ls-base="${zahl(neueMerker.ls)}"`;
+    if (neueMerker.hinweis) zusatz += " data-hinweis";
+
+    return `<${tagName}${neueAttrs}${zusatz}>`;
   });
 
   const ergebnis = bearbeitet + rest;

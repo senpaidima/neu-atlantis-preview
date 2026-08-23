@@ -17,9 +17,9 @@
 
 <section style="background:linear-gradient(155deg,rgba(36,66,62,0.94),rgba(61,97,90,0.88) 70%,rgba(82,117,104,0.82)),url('img/wellen.jpg') center/cover no-repeat">
   <div class="m-pad" style="max-width:1160px;margin:0 auto;padding:72px 40px;display:flex;flex-direction:column;gap:16px">
-    <span style="font-size:14px;letter-spacing:0.22em;text-transform:uppercase;color:#C8B98F">Veranstaltungskalender</span>
+    <span style="font-size:16.5px;letter-spacing:0.16em;text-transform:uppercase;color:#C8B98F">Veranstaltungskalender</span>
     <h1 class="m-hero" style="margin:0;font-family:'Cormorant Garamond',serif;font-size:48px;line-height:1.12;font-weight:600;color:#F6F2E8">Veranstaltungen 2026</h1>
-    <p style="margin:0;font-size:17.5px;line-height:1.65;color:#DCE4DD;max-width:680px">Seminare, Themenabende und Einzeltermine. Für alle Veranstaltungen ist aufgrund der begrenzten Teilnehmerzahl eine Anmeldung erforderlich.</p>
+    <p style="margin:0;font-size:19.5px;line-height:1.65;color:#DCE4DD;max-width:680px">Seminare, Themenabende und Einzeltermine. Für alle Veranstaltungen ist aufgrund der begrenzten Teilnehmerzahl eine Anmeldung erforderlich.</p>
   </div>
 </section>
 
@@ -27,13 +27,13 @@
 <section class="m-pad m-pady" style="max-width:1160px;margin:0 auto;padding:64px 40px 110px;display:{{ listDisplay }};flex-direction:column;gap:32px">
   <div style="display:flex;flex-direction:column;gap:12px">
     <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
-      <span style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#8A7E68;font-weight:700;min-width:38px">Art</span>
+      <span style="font-size:14px;letter-spacing:0.11em;text-transform:uppercase;color:#8A7E68;font-weight:700;min-width:38px">Art</span>
       <sc-for list="{{ filters }}" as="f" hint-placeholder-count="4">
         <button onClick="{{ f.onClick }}" style="cursor:pointer;font-family:'Alegreya Sans',sans-serif;font-size:15px;font-weight:700;padding:9px 20px;border-radius:99px;border:1px solid {{ f.borderColor }};background:{{ f.bg }};color:{{ f.color }}">{{ f.label }}</button>
       </sc-for>
     </div>
     <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
-      <span style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#8A7E68;font-weight:700;min-width:38px">Ort</span>
+      <span style="font-size:14px;letter-spacing:0.11em;text-transform:uppercase;color:#8A7E68;font-weight:700;min-width:38px">Ort</span>
       <sc-for list="{{ ortFilters }}" as="f" hint-placeholder-count="5">
         <button onClick="{{ f.onClick }}" style="cursor:pointer;font-family:'Alegreya Sans',sans-serif;font-size:13.5px;font-weight:700;padding:7px 16px;border-radius:99px;border:1px solid {{ f.borderColor }};background:{{ f.bg }};color:{{ f.color }}">{{ f.label }}</button>
       </sc-for>
@@ -44,12 +44,12 @@
       <div class="m-col" style="background:#FCFAF5;border:1px solid #E5DECF;border-radius:6px;padding:26px 30px;display:grid;grid-template-columns:180px 1fr auto;gap:24px;align-items:center;transition:box-shadow 0.2s,transform 0.2s" style-hover="box-shadow:0 14px 34px rgba(51,65,60,0.12);transform:translateY(-3px)">
         <div style="display:flex;flex-direction:column;gap:3px">
           <span style="font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:600;color:#23423F;line-height:1.15">{{ ev.datum }}</span>
-          <span style="font-size:13.5px;color:#8A7E68">{{ ev.zeitKurz }}</span>
+          <span style="font-size:15px;color:#8A7E68">{{ ev.zeitKurz }}</span>
         </div>
         <div style="display:flex;flex-direction:column;gap:5px">
-          <span style="display:flex;align-items:baseline;gap:7px;font-size:12.5px;letter-spacing:0.14em;text-transform:uppercase;color:#B0703C;font-weight:700"><span style="flex:none;color:#B0A17D;font-size:11px">✻</span>{{ ev.kategorie }}</span>
-          <span style="font-size:18px;font-weight:700;color:#3A3733;line-height:1.3">{{ ev.titel }}</span>
-          <span style="font-size:14.5px;color:#8A7E68">{{ ev.ortKurz }} · Leitung: {{ ev.leitung }}</span>
+          <span style="display:flex;align-items:baseline;gap:7px;font-size:14.5px;letter-spacing:0.11em;text-transform:uppercase;color:#B0703C;font-weight:700"><span style="flex:none;color:#B0A17D;font-size:11px">✻</span>{{ ev.kategorie }}</span>
+          <span style="font-size:20px;font-weight:700;color:#3A3733;line-height:1.3">{{ ev.titel }}</span>
+          <span style="font-size:16px;color:#8A7E68">{{ ev.ortKurz }} · Leitung: {{ ev.leitung }}</span>
         </div>
         <button onClick="{{ ev.onOpen }}" style="cursor:pointer;font-family:'Alegreya Sans',sans-serif;font-size:15px;font-weight:700;color:#F6F2E8;background:#23423F;border:none;border-radius:3px;padding:11px 22px;white-space:nowrap" style-hover="background:#2E524E">Details &amp; Anmeldung</button>
       </div>
@@ -63,18 +63,18 @@
   <div class="m-col m-gap" style="display:grid;grid-template-columns:1.55fr 1fr;gap:56px;align-items:start">
     <div style="display:flex;flex-direction:column;gap:26px">
       <div style="display:flex;flex-direction:column;gap:10px">
-        <span style="font-size:13px;letter-spacing:0.18em;text-transform:uppercase;color:#B0703C;font-weight:700">{{ sel.kategorie }}</span>
+        <span style="font-size:16px;letter-spacing:0.13em;text-transform:uppercase;color:#B0703C;font-weight:700">{{ sel.kategorie }}</span>
         <h2 class="m-h2" style="margin:0;font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:600;color:#23423F;line-height:1.15">{{ sel.titel }}</h2>
       </div>
       <sc-for list="{{ selParas }}" as="p" hint-placeholder-count="3">
-        <p style="margin:0;font-size:17px;line-height:1.75;color:#4C463D">{{ p }}</p>
+        <p style="margin:0;font-size:19px;line-height:1.75;color:#4C463D">{{ p }}</p>
       </sc-for>
       <sc-if value="{{ selMehr }}" hint-placeholder-val="{{ false }}">
         <a href="Aufstellungsarbeit.dc.html" style="text-decoration:none;color:#B0703C;font-weight:700;font-size:16px" style-hover="color:#8F5A2E">Mehr zum Thema „neues geistiges Familienstellen“ →</a>
       </sc-if>
       <sc-for list="{{ selBlocks }}" as="b" hint-placeholder-count="2">
         <div style="background:#F1EBDF;border-radius:5px;padding:22px 26px;display:flex;flex-direction:column;gap:8px">
-          <span style="font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#B0703C;font-weight:700">{{ b.h }}</span>
+          <span style="font-size:16px;letter-spacing:0.11em;text-transform:uppercase;color:#B0703C;font-weight:700">{{ b.h }}</span>
           <span style="font-size:16px;line-height:1.7;color:#4C463D">{{ b.text }}</span>
         </div>
       </sc-for>
@@ -84,8 +84,8 @@
     </div>
     <aside style="display:flex;flex-direction:column;gap:24px;position:sticky;top:24px">
       <div style="background:#23423F;border-radius:6px;padding:30px 30px;display:flex;flex-direction:column;gap:13px">
-        <span style="font-size:13px;letter-spacing:0.18em;text-transform:uppercase;color:#C8B98F;font-weight:700">Auf einen Blick</span>
-        <div style="display:flex;flex-direction:column;gap:9px;font-size:15.5px;line-height:1.5;color:#E4E9E3">
+        <span style="font-size:16px;letter-spacing:0.13em;text-transform:uppercase;color:#C8B98F;font-weight:700">Auf einen Blick</span>
+        <div style="display:flex;flex-direction:column;gap:9px;font-size:17px;line-height:1.5;color:#E4E9E3">
           <span><strong style="color:#C8B98F;font-weight:700">Datum:</strong> {{ sel.datum }}</span>
           <span><strong style="color:#C8B98F;font-weight:700">Zeit:</strong> {{ sel.zeit }}</span>
           <span><strong style="color:#C8B98F;font-weight:700">Leitung:</strong> {{ sel.leitung }}</span>
@@ -97,11 +97,11 @@
       <!-- ANMELDEFORMULAR -->
       <div style="background:#FCFAF5;border:1px solid #E5DECF;border-radius:6px;padding:30px;display:flex;flex-direction:column;gap:14px">
         <span style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:#23423F">Anmeldung</span>
-        <p style="margin:0;font-size:14px;line-height:1.6;color:#8A7E68">Bitte melde dich über dieses Anmeldeformular verbindlich zu deinem Seminar an. Die angegebenen Seminarzeiten sind Ca.-Zeiten – seelisch-geistige Prozesse lassen sich nicht mit Zentimetermaß und Stoppuhr messen.</p>
+        <p style="margin:0;font-size:15.5px;line-height:1.6;color:#B0703C;font-weight:500">Bitte melde dich über dieses Anmeldeformular verbindlich zu deinem Seminar an. Die angegebenen Seminarzeiten sind Ca.-Zeiten – seelisch-geistige Prozesse lassen sich nicht mit Zentimetermaß und Stoppuhr messen.</p>
         <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
           <div style="display:flex;flex-direction:column;gap:12px">
-            <div style="display:flex;gap:16px;font-size:15px;color:#4C463D;align-items:center;flex-wrap:wrap">
-              <span style="font-weight:700;font-size:13.5px;letter-spacing:0.08em;text-transform:uppercase;color:#8A7E68">Anrede*</span>
+            <div style="display:flex;gap:16px;font-size:16.5px;color:#4C463D;align-items:center;flex-wrap:wrap">
+              <span style="font-weight:700;font-size:16px;letter-spacing:0.08em;text-transform:uppercase;color:#8A7E68">Anrede*</span>
               <label style="display:flex;gap:6px;align-items:center;cursor:pointer"><input type="radio" name="anrede" value="Frau" onChange="{{ onField }}" style="accent-color:#23423F">Frau</label>
               <label style="display:flex;gap:6px;align-items:center;cursor:pointer"><input type="radio" name="anrede" value="Herr" onChange="{{ onField }}" style="accent-color:#23423F">Herr</label>
               <label style="display:flex;gap:6px;align-items:center;cursor:pointer"><input type="radio" name="anrede" value="Person" onChange="{{ onField }}" style="accent-color:#23423F">Person</label>
@@ -122,7 +122,7 @@
             </div>
             <textarea name="bemerkung" placeholder="Persönliche Bemerkungen" rows="3" onChange="{{ onField }}" style="font-family:'Alegreya Sans',sans-serif;font-size:15px;padding:11px 13px;border:1px solid #D8D0BE;border-radius:4px;background:#FFFFFF;color:#3A3733;resize:vertical"></textarea>
             <span style="font-size:13px;color:#8A7E68">* Pflichtfeld</span>
-            <label style="display:flex;gap:9px;align-items:flex-start;cursor:pointer;font-size:14.5px;line-height:1.5;color:#4C463D">
+            <label style="display:flex;gap:9px;align-items:flex-start;cursor:pointer;font-size:16px;line-height:1.5;color:#4C463D">
               <input type="checkbox" name="agb" onChange="{{ onAgb }}" style="accent-color:#23423F;margin-top:3px">
               <span>Ich bestätige, die AGB gelesen zu haben. <a href="AGB.dc.html" target="_blank" rel="noopener" style="color:#B0703C;font-weight:700">AGB lesen</a></span>
             </label>
@@ -135,7 +135,7 @@
         <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
           <div style="background:#E7EEE4;border:1px solid #7E9B84;border-radius:5px;padding:22px;display:flex;flex-direction:column;gap:8px">
             <span style="font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:600;color:#2E5237">Vielen Dank für deine Anmeldung!</span>
-            <span style="font-size:15px;line-height:1.6;color:#3E5A44">Wir haben deine verbindliche Buchung erhalten und melden uns in Kürze mit deiner Anmeldebestätigung bei dir. <em>(Prototyp: Es wurde keine echte Anmeldung versendet.)</em></span>
+            <span style="font-size:16.5px;line-height:1.6;color:#3E5A44">Wir haben deine verbindliche Buchung erhalten und melden uns in Kürze mit deiner Anmeldebestätigung bei dir. <em>(Prototyp: Es wurde keine echte Anmeldung versendet.)</em></span>
           </div>
         </sc-if>
       </div>

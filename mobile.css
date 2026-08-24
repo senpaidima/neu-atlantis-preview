@@ -1,7 +1,22 @@
 /* Mobile-Optimierung Neu-Atlantis — Utility-Overrides für Inline-Styles */
+
+/* Lange URLs in Datenschutz und Impressum sind ein einziges unbrechbares
+   Wort und sprengen sonst den Textblock, statt umzubrechen. */
+p, li, dd, td { overflow-wrap: break-word; }
+
 @media (max-width: 820px) {
   .m-col { grid-template-columns: 1fr !important; }
   .m-col2 { grid-template-columns: 1fr 1fr !important; }
+  /* Grid-Items haben von sich aus min-width:auto und schrumpfen deshalb nicht
+     unter ihren Inhalt — ein breites Kind schiebt sonst die ganze Seite raus. */
+  .m-col > *, .m-col2 > * { min-width: 0 !important; }
+  /* Lange Komposita in den Versalien-Labels („Weiterbildungsmöglichkeiten“)
+     sind ein einziges Wort und passen gesperrt nicht in den Kasten.
+     Silbentrennung bricht sie sauber; anywhere ist der Notnagel.
+     Beide Schreibweisen nötig: die DC-Runtime schreibt die Inline-Styles
+     beim Rendern mit Leerzeichen nach dem Doppelpunkt neu. */
+  [style*="text-transform:uppercase"],
+  [style*="text-transform: uppercase"] { hyphens: auto; overflow-wrap: anywhere; }
   .m-flexcol { flex-direction: column !important; align-items: stretch !important; }
   .m-pad { padding-left: 20px !important; padding-right: 20px !important; }
   .m-pady { padding-top: 60px !important; padding-bottom: 64px !important; }

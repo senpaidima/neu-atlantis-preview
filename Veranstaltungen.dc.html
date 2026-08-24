@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -70,12 +70,12 @@
         <p style="margin:0;font-size:19px;line-height:1.75;color:#4C463D" data-fs-base="17">{{ p }}</p>
       </sc-for>
       <sc-if value="{{ selMehr }}" hint-placeholder-val="{{ false }}">
-        <a href="Aufstellungsarbeit.dc.html" style="text-decoration:none;color:#B0703C;font-weight:700;font-size:16px" style-hover="color:#8F5A2E">Mehr zum Thema „neues geistiges Familienstellen“ →</a>
+        <a href="Aufstellungsarbeit.dc.html" style="text-decoration:none;color:#B0703C;font-weight:700;font-size:17.5px" style-hover="color:#8F5A2E" data-fs-base="16">Mehr zum Thema „neues geistiges Familienstellen“ →</a>
       </sc-if>
       <sc-for list="{{ selBlocks }}" as="b" hint-placeholder-count="2">
         <div style="background:#F1EBDF;border-radius:5px;padding:22px 26px;display:flex;flex-direction:column;gap:8px">
           <span style="font-size:16px;letter-spacing:0.11em;text-transform:uppercase;color:#B0703C;font-weight:700" data-fs-base="13" data-ls-base="0.14">{{ b.h }}</span>
-          <span style="font-size:16px;line-height:1.7;color:#4C463D">{{ b.text }}</span>
+          <span style="font-size:17.5px;line-height:1.7;color:#4C463D" data-fs-base="16">{{ b.text }}</span>
         </div>
       </sc-for>
       <sc-if value="{{ selRedak }}" hint-placeholder-val="{{ false }}">
@@ -121,7 +121,7 @@
               <input name="ort" placeholder="Ort*" onChange="{{ onField }}" style="font-family:'Alegreya Sans',sans-serif;font-size:15px;padding:11px 13px;border:1px solid #D8D0BE;border-radius:4px;background:#FFFFFF;color:#3A3733">
             </div>
             <textarea name="bemerkung" placeholder="Persönliche Bemerkungen" rows="3" onChange="{{ onField }}" style="font-family:'Alegreya Sans',sans-serif;font-size:15px;padding:11px 13px;border:1px solid #D8D0BE;border-radius:4px;background:#FFFFFF;color:#3A3733;resize:vertical"></textarea>
-            <span style="font-size:13px;color:#8A7E68">* Pflichtfeld</span>
+            <span style="font-size:14.5px;color:#8A7E68" data-fs-base="13">* Pflichtfeld</span>
             <label style="display:flex;gap:9px;align-items:flex-start;cursor:pointer;font-size:16px;line-height:1.5;color:#4C463D" data-fs-base="14.5">
               <input type="checkbox" name="agb" onChange="{{ onAgb }}" style="accent-color:#23423F;margin-top:3px">
               <span>Ich bestätige, die AGB gelesen zu haben. <a href="AGB.dc.html" target="_blank" rel="noopener" style="color:#B0703C;font-weight:700">AGB lesen</a></span>

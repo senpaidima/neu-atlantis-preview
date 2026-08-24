@@ -37,15 +37,18 @@ const FLIESS = {
   17.5: 19.5,
   17: 19,
   16.5: 18,
+  16: 17.5,
   15.5: 17,
   15: 16.5,
   14.5: 16,
   14: 15.5,
   13.5: 15,
+  13: 14.5,
 };
 
 // B — Versalien-Kicker in den Kästen (erkannt an text-transform:uppercase)
 const VERSAL = {
+  17: 19,
   14: 16.5,
   13.5: 16,
   13: 16,
@@ -64,7 +67,13 @@ const SPERRUNG = {
   0.16: 0.12,
   0.14: 0.11,
   0.12: 0.1,
+  0.1: 0.08,
 };
+
+/* Das Dekor-Sternchen ✻ trägt als einziges Element diese Farbe und soll
+   seine Größe behalten — es sitzt als Aufzählungszeichen neben dem Text,
+   mitwachsen lassen würde die Listen unruhig machen. */
+const DEKOR_FARBE = "#B0A17D";
 
 // C — Hinweistexte auffälliger: gedämpftes Grau → Marken-Akzent
 const HINWEIS_ALT = "#8A7E68";
@@ -113,14 +122,27 @@ const istDisplay = (style) => /font-family\s*:\s*'?Cormorant/i.test(style);
    aktuellen (bereits skalierten) Wert. Das macht das Skript idempotent.
    Rückgabe: neuer style + die zu schreibenden Merker. */
 function styleUmschreiben(tagName, klassen, style, merker, statistik) {
-  const unveraendert = { style, merker: {} };
+  /* Ausgeschlossenes Element. Trägt es noch einen Merker aus einem früheren
+     Lauf, wurde es vor Einführung dieser Ausnahme skaliert — dann den
+     Ausgangswert wiederherstellen. Sonst blieben solche Elemente für immer
+     auf dem alten Zwischenstand stehen, sobald eine Regel dazukommt. */
+  function ausgenommen() {
+    let s = style;
+    if (merker.fs !== undefined)
+      s = s.replace(/font-size\s*:\s*[0-9.]+px/i, `font-size:${zahl(merker.fs)}px`);
+    if (merker.ls !== undefined)
+      s = s.replace(/letter-spacing\s*:\s*[0-9.]+em/i, `letter-spacing:${zahl(merker.ls)}em`);
+    if (s !== style) statistik.zurueck++;
+    return { style: s, merker: {} };
+  }
 
   // Hero-/Headline-Klassen haben eigene Mobile-Overrides in mobile.css.
   // na-wortmarke = der Claim unter dem Logo (Kopf wie Fuß): Wortmarke, kein
   // Kasten-Kicker — größer gesetzt überstrahlt er das Logo.
-  if (/\b(m-hero|m-h1|m-h2|na-wortmarke)\b/.test(klassen)) return unveraendert;
-  if (istDisplay(style)) return unveraendert;
-  if (istButton(style)) return unveraendert;
+  if (/\b(m-hero|m-h1|m-h2|na-wortmarke)\b/.test(klassen)) return ausgenommen();
+  if (istDisplay(style)) return ausgenommen();
+  if (istButton(style)) return ausgenommen();
+  if (style.includes(DEKOR_FARBE)) return ausgenommen(); // Aufzählungs-✻
 
   const versalien = /text-transform\s*:\s*uppercase/i.test(style);
   const tabelle = versalien ? VERSAL : FLIESS;
@@ -167,7 +189,7 @@ const dateien = readdirSync(ROOT)
   .filter((f) => f.endsWith(".dc.html"))
   .sort();
 
-const gesamt = { fliess: 0, versalien: 0, sperrung: 0, hinweis: 0 };
+const gesamt = { fliess: 0, versalien: 0, sperrung: 0, hinweis: 0, zurueck: 0 };
 
 for (const datei of dateien) {
   const pfad = join(ROOT, datei);
@@ -179,7 +201,7 @@ for (const datei of dateien) {
   const rest = schnitt === -1 ? "" : original.slice(schnitt);
 
   const schutz = schutzBereiche(markup);
-  const statistik = { fliess: 0, versalien: 0, sperrung: 0, hinweis: 0 };
+  const statistik = { fliess: 0, versalien: 0, sperrung: 0, hinweis: 0, zurueck: 0 };
 
   // Ganze Tags matchen, damit class und style zusammen bewertet werden
   const tagRe = /<([a-zA-Z][\w-]*)((?:[^>"']|"[^"]*"|'[^']*')*)>/g;
@@ -224,13 +246,13 @@ for (const datei of dateien) {
   if (ergebnis !== original) writeFileSync(pfad, ergebnis, "utf8");
 
   const summe =
-    statistik.fliess + statistik.versalien + statistik.sperrung + statistik.hinweis;
+    statistik.fliess + statistik.versalien + statistik.sperrung + statistik.hinweis + statistik.zurueck;
   if (summe > 0) {
     console.log(
       `${datei.padEnd(30)} Fließtext ${String(statistik.fliess).padStart(3)} · ` +
         `Versalien ${String(statistik.versalien).padStart(2)} · ` +
         `Sperrung ${String(statistik.sperrung).padStart(2)} · ` +
-        `Hinweis ${statistik.hinweis}`
+        `Hinweis ${statistik.hinweis}` + (statistik.zurueck ? ` · zurückgerollt ${statistik.zurueck}` : "")
     );
   }
   for (const k of Object.keys(gesamt)) gesamt[k] += statistik[k];

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -38,7 +38,7 @@
       </div>
       <div style="display:flex;flex-direction:column;gap:4px;border-top:1px solid #35544F;padding-top:14px">
         <span style="font-size:16px;letter-spacing:0.12em;text-transform:uppercase;color:#C8B98F;font-weight:700" data-fs-base="13" data-ls-base="0.16">Telefonsprechzeiten</span>
-        <span style="font-size:16px;line-height:1.6;color:#E4E9E3">Dienstag: 20.00–21.00 Uhr<br>Donnerstag: 12.00–13.00 Uhr<br><span style="font-size:15.5px;color:#8FA79E" data-fs-base="14">(bis auf Weiteres nur nach persönlicher Absprache)</span></span>
+        <span style="font-size:17.5px;line-height:1.6;color:#E4E9E3" data-fs-base="16">Dienstag: 20.00–21.00 Uhr<br>Donnerstag: 12.00–13.00 Uhr<br><span style="font-size:15.5px;color:#8FA79E" data-fs-base="14">(bis auf Weiteres nur nach persönlicher Absprache)</span></span>
       </div>
     </div>
     <div class="m-col" style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
@@ -85,7 +85,7 @@
           <option value="sonstiges">Sonstiges</option>
         </select>
         <textarea name="nachricht" placeholder="Deine Nachricht*" rows="6" onChange="{{ onField }}" style="font-family:'Alegreya Sans',sans-serif;font-size:15px;padding:12px 14px;border:1px solid #D8D0BE;border-radius:4px;background:#FFFFFF;color:#3A3733;resize:vertical"></textarea>
-        <span style="font-size:13px;color:#8A7E68">* Pflichtfeld</span>
+        <span style="font-size:14.5px;color:#8A7E68" data-fs-base="13">* Pflichtfeld</span>
         <label style="display:flex;gap:9px;align-items:flex-start;cursor:pointer;font-size:16px;line-height:1.5;color:#4C463D" data-fs-base="14.5">
           <input type="checkbox" name="ds" onChange="{{ onDs }}" style="accent-color:#23423F;margin-top:3px">
           <span>Ich habe die <a href="Datenschutz.dc.html" style="color:#B0703C;font-weight:700">Datenschutzerklärung</a> gelesen und bin mit der Verarbeitung meiner Daten zur Bearbeitung meiner Anfrage einverstanden.</span>
@@ -114,7 +114,7 @@
       <sc-for list="{{ orte }}" as="o" hint-placeholder-count="5">
         <div style="background:#FCFAF5;border:1px solid #E5DECF;border-radius:5px;padding:22px 26px;display:flex;flex-direction:column;gap:4px">
           <span style="font-size:14.5px;letter-spacing:0.11em;text-transform:uppercase;color:#B0703C;font-weight:700" data-fs-base="12.5" data-ls-base="0.14">{{ o.stadt }}</span>
-          <span style="font-size:16px;font-weight:700;color:#23423F">{{ o.name }}</span>
+          <span style="font-size:17.5px;font-weight:700;color:#23423F" data-fs-base="16">{{ o.name }}</span>
           <span style="font-size:16.5px;line-height:1.5;color:#4C463D" data-fs-base="15">{{ o.adresse }}</span>
         </div>
       </sc-for>

@@ -67,15 +67,22 @@
     return dim.options[0];
   }
 
-  /* Einmalige Umstellung auf die vom Kunden festgelegte Basis: wer noch auf den
-     alten Defaults („Überlagert“ + „Flach“) stand, wird einmal mitgenommen.
-     Danach greift das Flag und jede bewusste Wahl bleibt wieder bestehen. */
+  /* Einmalige Umstellung auf die vom Kunden festgelegte Basis. Setzt jede
+     gespeicherte Wahl zurueck, nicht nur die alten Defaults — sonst sieht
+     wer vorher durchprobiert hat weiter seine letzte Auswahl statt der Basis.
+     Das Flag laesst das genau einmal je Browser passieren; danach bleibt
+     jede bewusste Wahl im Panel wieder bestehen.
+     Zaehlnummer erhoehen, wenn erneut auf eine neue Basis umgestellt wird. */
+  var BASIS_FLAG = "na-basis-2";
+
   function basisUmstellung() {
     try {
-      if (localStorage.getItem("na-basis-2026-08") === "1") return;
-      if (localStorage.getItem("na-hero") === "overlay") localStorage.removeItem("na-hero");
-      if (localStorage.getItem("na-nav") === "flach") localStorage.removeItem("na-nav");
-      localStorage.setItem("na-basis-2026-08", "1");
+      if (localStorage.getItem(BASIS_FLAG) === "1") return;
+      ["na-farbwelt", "na-hero", "na-nav", "na-umfang"].forEach(function (k) {
+        localStorage.removeItem(k);
+      });
+      localStorage.removeItem("na-basis-2026-08"); // Flag der ersten Runde
+      localStorage.setItem(BASIS_FLAG, "1");
     } catch (e) { /* localStorage gesperrt — dann gilt einfach die Basis */ }
   }
   basisUmstellung();

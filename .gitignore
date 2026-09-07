@@ -3,3 +3,4 @@
 .thumbnail/
 doc-extracted.txt
 *.stackdump
+.claude/

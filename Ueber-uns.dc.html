@@ -12,34 +12,38 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <style>body{margin:0;background:#FAF7F1}</style>
 </helmet>
-<div style="font-family:'Alegreya Sans',sans-serif;color:#3A3733;background:#FAF7F1" data-screen-label="Über uns">
+<div id="top" style="font-family:'Alegreya Sans',sans-serif;color:#3A3733;background:#FAF7F1" data-screen-label="Über uns">
 <dc-import name="SiteHeader" active="ueber" hint-size="100%,130px"></dc-import>
 
 <section style="background:linear-gradient(155deg,rgba(36,66,62,0.94),rgba(61,97,90,0.88) 70%,rgba(82,117,104,0.82)),url('img/wellen.jpg') center/cover no-repeat">
-  <div class="m-pad m-pady" style="max-width:860px;margin:0 auto;padding:88px 40px;display:flex;flex-direction:column;gap:18px">
-    <span style="font-size:16.5px;letter-spacing:0.16em;text-transform:uppercase;color:#C8B98F" data-fs-base="14" data-ls-base="0.22">Über uns</span>
-    <h1 class="m-hero" style="margin:0;font-family:'Cormorant Garamond',serif;font-size:48px;line-height:1.12;font-weight:600;color:#F6F2E8;text-wrap:balance">Zentrum für Lebensbegleitung und Naturheilkunde</h1>
-    <p style="margin:0;font-size:20px;line-height:1.7;color:#DCE4DD" data-fs-base="18">Das Zentrum für Lebensbegleitung und Naturheilkunde wurde 2009 in Hildesheim-Itzum gegründet. Ralf erhielt den Ruf, das Zentrum nach Helgoland zu verlegen – den Ort, vor dem einst Atlantis gelegen hat. Davon ist Ralf zutiefst überzeugt. Er erhielt dafür das letzte bebaubare Grundstück auf der Insel und bekam von der geistigen Welt den Namen Neu-Atlantis für sein Zentrum durchgesagt.</p>
-    <p style="margin:0;font-size:20px;line-height:1.7;color:#DCE4DD" data-fs-base="18">Heute ist Panten nahe Hamburg und Lübeck der neue Lebensmittelpunkt von Ralf und seiner Frau Simone. Die Naturheilpraxis auf Helgoland spielt jedoch immer noch eine wichtige Rolle.</p>
-    <div style="border:1.5px dashed #C8B98F;background:rgba(200,185,143,0.12);color:#E4D9B8;font-size:14px;line-height:1.5;padding:9px 13px;border-radius:4px">✎ Redaktion: Jahr der Verlegung nach Helgoland („20XX“) bitte ergänzen.</div>
+  <div class="m-col m-pad m-pady m-gap" style="max-width:1160px;margin:0 auto;padding:88px 40px;display:grid;grid-template-columns:1.5fr 1fr;gap:64px;align-items:center">
+    <div style="display:flex;flex-direction:column;gap:18px">
+      <span style="font-size:16.5px;letter-spacing:0.16em;text-transform:uppercase;color:#C8B98F" data-fs-base="14" data-ls-base="0.22">Über uns</span>
+      <h1 class="m-hero" style="margin:0;font-family:'Cormorant Garamond',serif;font-size:48px;line-height:1.12;font-weight:600;color:#F6F2E8;text-wrap:balance">Zentrum für Lebensbegleitung und Naturheilkunde</h1>
+      <p style="margin:0;font-size:20px;line-height:1.7;color:#DCE4DD" data-fs-base="18">Das Zentrum für Lebensbegleitung und Naturheilkunde wurde 2009 in Hildesheim-Itzum gegründet. 20XX erhielt ich den Ruf, das Zentrum nach Helgoland zu verlegen, den Ort, vor dem einst Atlantis gelegen hat. Davon bin ich zutiefst überzeugt. Ich erhielt dafür das letzte bebaubare Grundstück auf der Insel und bekam von der geistigen Welt den Namen Neu-Atlantis für mein Zentrum durchgesagt.</p>
+      <p style="margin:0;font-size:20px;line-height:1.7;color:#DCE4DD" data-fs-base="18">Heute ist Panten nahe Hamburg und Lübeck der neue Lebensmittelpunkt von meiner Frau Simone und mir. Die Naturheilpraxis auf Helgoland spielt jedoch immer noch eine wichtige Rolle.</p>
+      <div style="border:1.5px dashed #C8B98F;background:rgba(200,185,143,0.12);color:#E4D9B8;font-size:14px;line-height:1.5;padding:9px 13px;border-radius:4px">✎ Redaktion: Text laut Manuskript noch nicht final – Jahr der Verlegung nach Helgoland („20XX“) folgt von Ralf.</div>
+    </div>
+    <img src="img/ralf-felsen.jpg" alt="Ralf Baars auf dem roten Felsen von Helgoland" style="display:block;width:100%;aspect-ratio:4/3;object-fit:cover;object-position:center 40%;border-radius:6px;box-shadow:0 20px 50px rgba(15,32,28,0.35)">
   </div>
 </section>
 
 <!-- RALF -->
-<section class="m-pad m-pady m-col m-gap" style="max-width:1160px;margin:0 auto;padding:96px 40px;display:grid;grid-template-columns:0.85fr 1.35fr;gap:64px;align-items:start">
-  <div style="display:flex;flex-direction:column;gap:14px;position:sticky;top:24px">
+<section id="ralf" class="m-pad m-pady m-col m-gap" style="max-width:1160px;margin:0 auto;padding:96px 40px;display:grid;grid-template-columns:0.85fr 1.35fr;gap:64px;align-items:start">
+  <div style="display:flex;flex-direction:column;gap:14px;position:sticky;top:120px">
     <div style="display:flex;align-items:center;justify-content:center">
       <img src="img/ralf-portrait.png" alt="Ralf Baars" style="width:100%;max-width:380px;height:auto;display:block">
     </div>
-    <span style="font-family:'Cormorant Garamond',serif;font-size:27px;font-weight:600;color:#23423F">Ralf Baars</span>
-    <span style="font-size:16px;letter-spacing:0.11em;text-transform:uppercase;color:#8A7E68;margin-top:-8px" data-fs-base="13.5" data-ls-base="0.14">Heilpraktiker</span>
   </div>
   <div style="display:flex;flex-direction:column;gap:18px">
-    <p style="margin:0;font-size:19.5px;line-height:1.75;color:#4C463D" data-fs-base="17.5">Ob Krankheit, Leid, Schmerz, Angst, Herausforderungen im Privat- oder Berufsleben – alles, was uns im Leben begegnet, ist ein Wegweiser. Doch nur selten verstehen wir seine ursächliche Botschaft.</p>
-    <p style="margin:0;font-size:19.5px;line-height:1.75;color:#4C463D" data-fs-base="17.5">Ich bin gern für dich da, um diese Informationen zu entschlüsseln und dich auf deinem ganz persönlichen Erkenntnisweg zu begleiten. Gemeinsam finden wir deinen nächsten fälligen Schritt, der die Tür in ein für dich stimmiges und erfülltes Leben öffnet.</p>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <h2 class="m-h2" style="margin:0;font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;color:#23423F">Ralf Baars</h2>
+      <span style="font-size:16px;letter-spacing:0.11em;text-transform:uppercase;color:#8A7E68" data-fs-base="13.5" data-ls-base="0.14">Heilpraktiker</span>
+    </div>
+    <p style="margin:0;font-size:19.5px;line-height:1.75;color:#4C463D" data-fs-base="17.5">Für mich ist wirklich alles, was uns im Leben begegnet, ein Wegweiser – und damit eine Möglichkeit, hinzuschauen und „Knoten“ aufzulösen, die uns daran hindern, das Leben zu führen, das wir uns wirklich wünschen. Gemeinsam finden wir den nächsten Schritt.</p>
     <p style="margin:0;font-size:19.5px;line-height:1.75;color:#4C463D" data-fs-base="17.5">Warum ich mir da so sicher bin? Weil ich selbst viele Jahre durch eigene Erkrankung bis an den Klippenrand gekommen bin – und immer wieder dachte ‚noch weiter schaffe ich nicht‘. Doch erst, als ich wirklich auf Messers Schneide zwischen Leben und Tod stand und schon weit auf meinem Erkenntnisweg war, durfte sich mein Krankheitssymptom als Wegweiser auflösen. Mehr noch: Seitdem besitze ich einen inneren Sensor, der in meiner Arbeit sehr hilfreich ist.</p>
     <div class="m-innerpad" style="display:flex;flex-direction:column;gap:8px;padding:24px 28px;background:#F1EBDF;border-radius:5px">
-      <span style="font-size:16px;letter-spacing:0.11em;text-transform:uppercase;color:#8A7E68;font-weight:700;padding-bottom:6px" data-fs-base="13" data-ls-base="0.14">Qualifikationen</span>
+      <h3 style="margin:0;font-size:16px;letter-spacing:0.11em;text-transform:uppercase;color:#8A7E68;font-weight:700;padding-bottom:6px" data-fs-base="13" data-ls-base="0.14">Qualifikationen</h3>
       <span style="display:flex;gap:10px;font-size:17px;line-height:1.55;color:#4C463D" data-fs-base="15.5"><span style="flex:none;color:#B0A17D;font-size:13.5px;line-height:1.8">✻</span><span>Heilpraktiker für Psychotherapie</span></span>
       <span style="display:flex;gap:10px;font-size:17px;line-height:1.55;color:#4C463D" data-fs-base="15.5"><span style="flex:none;color:#B0A17D;font-size:13.5px;line-height:1.8">✻</span><span>Ausbildung im Familienstellen bei Bert Hellinger</span></span>
       <span style="display:flex;gap:10px;font-size:17px;line-height:1.55;color:#4C463D" data-fs-base="15.5"><span style="flex:none;color:#B0A17D;font-size:13.5px;line-height:1.8">✻</span><span>Weiterbildung in Quantenheilung</span></span>
@@ -48,66 +52,93 @@
       <span style="display:flex;gap:10px;font-size:17px;line-height:1.55;color:#4C463D" data-fs-base="15.5"><span style="flex:none;color:#B0A17D;font-size:13.5px;line-height:1.8">✻</span><span>Weiterbildung in craniosacraler Körpertherapie</span></span>
       <span style="display:flex;gap:10px;font-size:17px;line-height:1.55;color:#4C463D" data-fs-base="15.5"><span style="flex:none;color:#B0A17D;font-size:13.5px;line-height:1.8">✻</span><span>Weiterentwicklung des geistigen Familienstellens</span></span>
       <span style="display:flex;gap:10px;font-size:17px;line-height:1.55;color:#4C463D" data-fs-base="15.5"><span style="flex:none;color:#B0A17D;font-size:13.5px;line-height:1.8">✻</span><span>Supervision für Interessierte im geistigen Familienstellen</span></span>
-      <span style="display:flex;gap:10px;font-size:17px;line-height:1.55;color:#4C463D" data-fs-base="15.5"><span style="flex:none;color:#B0A17D;font-size:13.5px;line-height:1.8">✻</span><span>Über 20 Jahre Coachingerfahrung in eigener Praxis u. v. m.</span></span>
+      <span style="display:flex;gap:10px;font-size:17px;line-height:1.55;color:#4C463D" data-fs-base="15.5"><span style="flex:none;color:#B0A17D;font-size:13.5px;line-height:1.8">✻</span><span>Über 20 Jahre Erfahrung in der Lebensbegleitung in eigener Praxis</span></span>
+      <span style="font-size:16.5px;color:#8A7E68;padding-left:23px" data-fs-base="15">u. v. m.</span>
     </div>
   </div>
 </section>
 
 <!-- SIMONE -->
-<section style="background:#F1EBDF;border-top:1px solid #E5DECF;border-bottom:1px solid #E5DECF">
-  <div class="m-pad m-col m-gap" style="max-width:1160px;margin:0 auto;padding:72px 40px;display:grid;grid-template-columns:200px 1fr;gap:48px;align-items:center">
-    <div style="aspect-ratio:4/5;border-radius:6px;background:linear-gradient(165deg,#DCD5C3,#B4C1B5);display:flex;align-items:center;justify-content:center;text-align:center">
-      <span style="font-size:13.5px;letter-spacing:0.1em;text-transform:uppercase;color:#54625A" data-fs-base="11.5" data-ls-base="0.12">Foto (folgt)</span>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:10px">
-      <span style="font-family:'Cormorant Garamond',serif;font-size:27px;font-weight:600;color:#23423F">Simone Lackner-Baars</span>
+<section id="simone" style="background:#F1EBDF;border-top:1px solid #E5DECF;border-bottom:1px solid #E5DECF">
+  <div class="m-pad" style="max-width:1160px;margin:0 auto;padding:72px 40px;display:flex;flex-direction:column;gap:14px">
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <h2 class="m-h2" style="margin:0;font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;color:#23423F">Simone Lackner-Baars</h2>
       <span style="font-size:16px;letter-spacing:0.11em;text-transform:uppercase;color:#8A7E68" data-fs-base="13.5" data-ls-base="0.14">Entspannungstrainerin</span>
-      <div style="border:1.5px dashed #C08A4E;background:#FBF3E7;color:#8A5A22;font-size:14px;line-height:1.5;padding:10px 14px;border-radius:4px;max-width:640px">✎ Redaktion: Infos zu Simone folgen – bzw. Klärung, ob sie auf der Website bleibt.</div>
     </div>
+    <div style="border:1.5px dashed #C08A4E;background:#FBF3E7;color:#8A5A22;font-size:14px;line-height:1.5;padding:10px 14px;border-radius:4px;max-width:640px">✎ Redaktion: Infos zu Simone folgen – bzw. Klärung, ob sie auf der Website bleibt (laut Manuskript noch offen).</div>
   </div>
 </section>
 
 <!-- KLIENTENSTIMMEN -->
-<section id="klientenstimmen" class="m-pad m-pady" style="max-width:960px;margin:0 auto;padding:96px 40px 110px;display:flex;flex-direction:column;gap:40px">
+<section id="klientenstimmen" class="m-pad m-pady" style="max-width:960px;margin:0 auto;padding:96px 40px 110px;display:flex;flex-direction:column;gap:32px">
   <h2 class="m-h2" style="margin:0;font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;color:#23423F;text-align:center">Klientenstimmen</h2>
-  <figure style="margin:0;background:#FCFAF5;border:1px solid #E5DECF;border-radius:6px;padding:40px 44px;display:flex;flex-direction:column;gap:16px">
+
+  <figure id="stimme-elke" style="margin:0;background:#FCFAF5;border:1px solid #E5DECF;border-radius:6px;padding:40px 44px;display:flex;flex-direction:column;gap:16px">
     <span style="font-family:'Cormorant Garamond',serif;font-size:44px;line-height:0.5;color:#C08A4E;padding-top:12px">„</span>
     <blockquote style="margin:0;font-size:18px;line-height:1.75;color:#4C463D;font-style:italic;display:flex;flex-direction:column;gap:12px" data-fs-base="16.5">
       <span>Die Intensivjourney (Intensivcoaching) war für mich eine wunderbar begleitete Reise zu mir, bei der ich die Tiefe meiner Seele kennenlernen durfte. Dank der intensiven Arbeit mit Dir ist es gelungen, schmerzvolle, belastende Themen loszulassen.</span>
       <span>Dein Angebot, diese Behandlung auf Helgoland durchzuführen, hatte für mich einen einmaligen Reiz, sie bot die Möglichkeit, mit ‚schwerem Gepäck‘ anzureisen und die Insel mit ‚leichterem Gepäck‘ wieder zu verlassen. Dieses Angebot habe ich genutzt und die Woche nur mir und meiner Heilung gewidmet, Ablenkungen habe ich stark reduziert.</span>
-      <span>Neben den täglichen Sitzungen mit Dir gehörten Spaziergänge und das Erkunden der Insel, die Robben beobachten oder einfach aufs brausende Meer schauen und sich den Wind um die Ohren blasen zu lassen, genauso dazu, wie Emotionen, die hochkamen, zuzulassen und Gedanken und Impulse zu notieren. Jede Sitzung bekam so ihre Zeit zu wirken und verarbeitet zu werden. Jeder Tag brachte neue Impulse, die in die Behandlung einfließen konnten.</span>
-      <span>Die von Dir empfohlenen Übungen und Rituale konnte ich sehr einfach umsetzen, so dass ich viele Dinge loslassen konnte und bei der Abreise das Gefühl hatte, etwas hinter mir zu lassen und mit Blick nach vorne auf die Weite des Horizonts des Meeres in ein neues, friedvolleres Leben aufzubrechen. Ich kann dieses Angebot nur weiterempfehlen.</span>
+      <span>Neben den täglichen Sitzungen mit Dir, gehörten Spaziergänge und das Erkunden der Insel, die Robben beobachten oder einfach aufs brausende Meer schauen und sich den Wind um die Ohren blasen zu lassen, genauso dazu, wie Emotionen, die hochkamen, zuzulassen und Gedanken, Impulse zu notieren. Jede Sitzung bekam so ihre Zeit zu wirken und verarbeitet zu werden. Jeder Tag brachte neue Impulse, die in die Behandlung einfließen konnten.</span>
+      <span>Die von Dir empfohlenen Übungen und Rituale konnte ich sehr einfach umsetzen, so dass ich viele Dinge loslassen konnte und bei der Abreise das Gefühl hatte, etwas hinter mir zu lassen und mit Blick nach vorne auf die Weite des Horizonts des Meeres in ein neues, friedvolleres Leben aufzubrechen.</span>
+      <span>Ich kann dieses Angebot nur weiterempfehlen.</span>
     </blockquote>
     <figcaption style="font-size:16.5px;letter-spacing:0.08em;text-transform:uppercase;color:#8A7E68;font-weight:700" data-fs-base="14" data-ls-base="0.1">Elke aus Hamburg</figcaption>
   </figure>
+
   <div class="m-col" style="display:grid;grid-template-columns:1fr 1fr;gap:26px">
-    <figure style="margin:0;background:#FCFAF5;border:1px solid #E5DECF;border-radius:6px;padding:32px;display:flex;flex-direction:column;gap:14px">
+    <figure id="stimme-b" style="margin:0;background:#FCFAF5;border:1px solid #E5DECF;border-radius:6px;padding:32px;display:flex;flex-direction:column;gap:14px">
       <span style="font-family:'Cormorant Garamond',serif;font-size:40px;line-height:0.5;color:#C08A4E;padding-top:10px">„</span>
       <blockquote style="margin:0;font-size:17.5px;line-height:1.7;color:#4C463D;font-style:italic" data-fs-base="16">Ich habe schon einige gute Familiensteller erlebt und war von Ralfs Präsenz und seiner Intuition sehr beeindruckt. Er bringt Familienstellen von diesem Leben in andere Zeiten und mehrere Dimensionen und damit ins nächste Level. Daher löst sich in einem Wochenende so viel mehr als man sich vorstellen kann. Aber auch die Einzelsitzungen mit ihm sind ganz besonders. Er macht es einem ganz leicht, wieder in traumatisierende Situationen zu gehen und löst diese mit großer Klarheit auf. Unbedingt empfehlenswert.</blockquote>
       <figcaption style="margin-top:auto;font-size:16.5px;letter-spacing:0.08em;text-transform:uppercase;color:#8A7E68;font-weight:700" data-fs-base="14" data-ls-base="0.1">B. aus Hamburg</figcaption>
     </figure>
-    <figure style="margin:0;background:#FCFAF5;border:1px solid #E5DECF;border-radius:6px;padding:32px;display:flex;flex-direction:column;gap:14px">
+    <figure id="stimme-angelika" style="margin:0;background:#FCFAF5;border:1px solid #E5DECF;border-radius:6px;padding:32px;display:flex;flex-direction:column;gap:14px">
       <span style="font-family:'Cormorant Garamond',serif;font-size:40px;line-height:0.5;color:#C08A4E;padding-top:10px">„</span>
       <blockquote style="margin:0;font-size:17.5px;line-height:1.7;color:#4C463D;font-style:italic" data-fs-base="16">Es ist durch die Arbeit mit dir eine große Kraft, Klarheit, Besonnenheit, Zuversicht, Einsicht, Mut eröffnet worden, die mich sehr stabil durch die nicht gerade leichter gewordenen Begebenheiten in meinem Leben tragen. Dafür von Herzen DANKE!</blockquote>
       <figcaption style="margin-top:auto;font-size:16.5px;letter-spacing:0.08em;text-transform:uppercase;color:#8A7E68;font-weight:700" data-fs-base="14" data-ls-base="0.1">Angelika</figcaption>
     </figure>
   </div>
-  <div style="border:1.5px dashed #C08A4E;background:#FBF3E7;color:#8A5A22;font-size:14px;line-height:1.5;padding:10px 14px;border-radius:4px">✎ Redaktion: Zwei weitere Klientenstimmen (Britta aus Braunschweig, Heidi aus Hamburg) liegen noch als Blindtext vor – finale Texte folgen.</div>
+
+  <figure id="stimme-britta" style="margin:0;background:#FCFAF5;border:1px solid #E5DECF;border-radius:6px;padding:40px 44px;display:flex;flex-direction:column;gap:16px">
+    <span style="font-family:'Cormorant Garamond',serif;font-size:44px;line-height:0.5;color:#C08A4E;padding-top:12px">„</span>
+    <blockquote style="margin:0;font-size:18px;line-height:1.75;color:#4C463D;font-style:italic;display:flex;flex-direction:column;gap:12px" data-fs-base="16.5">
+      <span>Ich bin 2018 über eine Freundin zur Aufstellungsarbeit mit Ralf gekommen.</span>
+      <span>Zu dieser Zeit kannte ich Aufstellungen bereits und habe sie als ein wundersames Instrument zur Darstellung von Zusammenhängen, Verhältnissen und unserer verschiedenen Rollen in der Gesellschaft erlebt („Systeme“).</span>
+      <span>Grundsätzlich bekommt man eine Einsicht in die hintergründigen/unterbewussten Gefühle und Gedanken der Beteiligten, die oft ehrlicher und ungefilterter sind, als wenn man Probleme oder Konflikte verbal von Angesicht zu Angesicht löst. Zumal wenn die/der Stellvertreter*In im Anschluss noch eine Rückmeldung geben kann.</span>
+      <span>Oft führen die Einsichten schon zu einem besseren und nachsichtigeren Verhältnis zu der betreffenden Person oder es lösen sich Konflikte scheinbar von selbst oder die betreffende Person meldet sich nach X Jahren.</span>
+      <span>Es ist auch immer wieder erstaunlich, wie Stellvertreter*Innen Sachverhalte „imitieren“, von denen sie eigentlich nichts wissen können. Ich habe zum Beispiel eine behinderte Schwester und in einer Aufstellung hat eine Person, die nicht mal wusste, dass meine Schwester behindert ist, die Behinderung 1 zu 1 imitiert (richtiges Bein, richtiger Gang etc.). All diese Erlebnisse lassen mich daran glauben, dass doch irgendwie alles mit allem zusammenhängt.</span>
+      <span>Dies schließt den Bogen zu: Hier wird nicht mehr mit „Anliegen“, sondern nach Impuls gearbeitet, dadurch ist das Feld offener: Die Ursachensuche ist dann nicht mehr „nur“ auf das Familienproblem beschränkt, sondern kann sich ZEIGEN und ggf. gelöst werden.</span>
+      <span>Dieses Feld der „ungeahnten Möglichkeiten“ hilft oft, wenn nichts mehr hilft (welcher Mensch denkt an Ahnenreihen oder Vorleben, wenn er z. B. Herzprobleme hat?).</span>
+      <span>Nach meinem Empfinden finden in Ralfs Aufstellungen (und 1-zu-1-Sitzungen) großartige Seelenheilungen statt, die unsere Welt ein kleines bisschen besser macht. Denn jede Aufstellung dient nicht nur dem Impulsgeber, sondern auch der „großen“ Sache. Und ganz „nebenbei“ profitieren die Kursteilnehmer auch immer von Ralfs wedischem und systemischen Einsichten, die er in jedem Kurs teilt.</span>
+      <span>Ich fühle mich auf jeden Fall gut aufgestellt und abgeholt 😉</span>
+    </blockquote>
+    <figcaption style="font-size:16.5px;letter-spacing:0.08em;text-transform:uppercase;color:#8A7E68;font-weight:700" data-fs-base="14" data-ls-base="0.1">Britta aus Braunschweig</figcaption>
+  </figure>
+
+  <figure id="stimme-heidi" style="margin:0;background:#FCFAF5;border:1px solid #E5DECF;border-radius:6px;padding:40px 44px;display:flex;flex-direction:column;gap:16px">
+    <span style="font-family:'Cormorant Garamond',serif;font-size:44px;line-height:0.5;color:#C08A4E;padding-top:12px">„</span>
+    <blockquote style="margin:0;font-size:18px;line-height:1.75;color:#4C463D;font-style:italic;display:flex;flex-direction:column;gap:12px" data-fs-base="16.5">
+      <span>„Ich kann es halten.“ Es waren nur vier Worte, doch sie veränderten vor ca. 15 Jahren mein Leben auf wundersame Weise. Als Ralf sie aussprach, stand ich ihm gerade das erste Mal persönlich gegenüber. Am Ende seines Spezialworkshops „Quantenheilung (RB)“ auf der Lebensfreude-Messe in Hamburg. Ich war eigens für diesen Workshop zur Messe gefahren. Was ich damals merkwürdig von mir fand. Heute weiß ich, warum.</span>
+      <span>Viele Jahre war ich von einem Arzt, Heilpraktiker und Heiler zum anderen gerannt, hatte dieses und jenes ausprobiert und kurzfristig auch immer wieder Erleichterung erfahren. Doch wirklich tiefgreifend verändert hatte sich in meinem Leben nichts. Ich hatte Ängste und fühlte mich einsam, selbst wenn ich unter Freunden war. Ich hatte Allergien, die mich einschränkten, war permanent müde und empfand das Leben als anstrengend. Ich war auf der Suche und wusste nicht, wonach.</span>
+      <span>Ich glaube, Ralf hatte und hat es nicht immer leicht mit mir. Ich war und bin eine Skeptikerin. Jemand, der für alles eine handfeste Erklärung braucht(e). Und dann stand ich das erste Mal selbst als Stellvertretung in einer Aufstellung und konnte spüren, dass ich ‚bewegt wurde‘. Von etwas, das Ralf Quantenfeld und Geistige Welt nannte. Das hörte sich irgendwie vertraut an. Vielleicht, weil mich die Quantenphysik schon seit Jahren faszinierte. Und dennoch war ich sehr erstaunt, als ich plötzlich Gefühle spürte und Bewegungsimpulse hatte, die ich mir nicht erklären konnte. Das Beste daran: Ich muss nichts können, nichts bewusst lernen, nur ich selbst sein. Mehr noch. Ralf gibt mir – und allen anderen Menschen, mit denen er zu tun hat – immer das Gefühl, wichtig und besonders zu sein. Die Abläufe seiner Seminare, aber auch persönliche Gespräche mit ihm, sind geprägt von aufrichtiger Wertschätzung und Authentizität.</span>
+      <span>Und so empfinde ich tiefe Dankbarkeit für Ralfs Dasein und dafür, dass er sich der Aufgabe, Menschen in der Tiefe ihrer Seele auf ihrem Lebensweg zu begleiten, voll und ganz zur Verfügung stellt. Danke Ralf! Von Herzen.</span>
+    </blockquote>
+    <figcaption style="font-size:16.5px;letter-spacing:0.08em;text-transform:uppercase;color:#8A7E68;font-weight:700" data-fs-base="14" data-ls-base="0.1">Heidi aus Hamburg</figcaption>
+  </figure>
 
   <!-- SEMINARADRESSEN -->
-  <div style="display:flex;flex-direction:column;gap:22px;padding-top:40px">
+  <div id="adressen" style="display:flex;flex-direction:column;gap:22px;padding-top:40px">
     <h2 class="m-h2" style="margin:0;font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;color:#23423F;text-align:center">Seminaradressen</h2>
     <div class="m-col" style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
       <div style="background:#F1EBDF;border-radius:5px;padding:24px 28px;display:flex;flex-direction:column;gap:5px">
-        <span style="font-size:16px;letter-spacing:0.11em;text-transform:uppercase;color:#B0703C;font-weight:700" data-fs-base="13" data-ls-base="0.14">Praxis Helgoland</span>
+        <h3 style="margin:0;font-size:16px;letter-spacing:0.11em;text-transform:uppercase;color:#B0703C;font-weight:700" data-fs-base="13" data-ls-base="0.14">Praxis Helgoland</h3>
         <span style="font-size:17.5px;line-height:1.55;color:#3A3733" data-fs-base="16">Neu-Atlantis · Zentrum für Lebensbegleitung &amp; Naturheilkunde<br>Gätkestraße 510m, 27498 Helgoland</span>
       </div>
       <div style="background:#F1EBDF;border-radius:5px;padding:24px 28px;display:flex;flex-direction:column;gap:5px">
-        <span style="font-size:16px;letter-spacing:0.11em;text-transform:uppercase;color:#B0703C;font-weight:700" data-fs-base="13" data-ls-base="0.14">Praxis Mölln</span>
+        <h3 style="margin:0;font-size:16px;letter-spacing:0.11em;text-transform:uppercase;color:#B0703C;font-weight:700" data-fs-base="13" data-ls-base="0.14">Praxis Mölln</h3>
         <span style="font-size:17.5px;line-height:1.55;color:#3A3733" data-fs-base="16">Neu-Atlantis · Zentrum für Lebensbegleitung &amp; Naturheilkunde<br>Scharr 1, 23896 Panten (Ortsteil Hammer)</span>
       </div>
     </div>
-    <p style="margin:0;font-size:16.5px;color:#B0703C;text-align:center;font-weight:500" data-fs-base="15" data-hinweis>Alle Veranstaltungsorte findest du unter <a href="Kontakt.dc.html" style="color:#B0703C;font-weight:700">Kontakt</a>.</p>
+    <p style="margin:0;font-size:16.5px;color:#B0703C;text-align:center;font-weight:500" data-fs-base="15" data-hinweis>Alle Veranstaltungsorte findest du unter <a href="Kontakt.dc.html#orte" style="color:#B0703C;font-weight:700">Kontakt</a>.</p>
   </div>
 </section>
 

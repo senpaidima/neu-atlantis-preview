@@ -12,6 +12,7 @@
 <link href="mobile.css" rel="stylesheet">
 <link href="layout-variants.css" rel="stylesheet">
 <script src="theme-toggle.js" defer></script>
+<script src="site.js" defer></script>
 <style>body{margin:0}</style>
 </helmet>
 <div style="font-family:'Alegreya Sans',sans-serif">
@@ -19,7 +20,7 @@
     <span>Kostenfreie Telefonsprechzeiten: Di 20.00–21.00 Uhr · Do 12.00–13.00 Uhr (n. V.) · 04725 800 61 69</span>
     <a href="mailto:info@neu-atlantis.de" style="color:#D9E2DD;text-decoration:none">info@neu-atlantis.de</a>
   </div>
-  <div class="m-headrow" style="background:#FAF7F1;border-bottom:1px solid #E5DECF;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:16px 40px;flex-wrap:wrap">
+  <div class="m-headrow na-sticky" style="background:#FAF7F1;border-bottom:1px solid #E5DECF;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:16px 40px;flex-wrap:wrap">
     <a href="Startseite.dc.html" style="text-decoration:none;display:flex;flex-direction:column;gap:6px;align-items:flex-start">
       <img class="m-logo" src="img/logo.png" alt="Neu-Atlantis" style="height:72px;width:auto;display:block">
       <span class="na-wortmarke" style="font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:#244955">Zentrum für Lebensbegleitung &amp; Naturheilkunde</span>
@@ -40,13 +41,13 @@
         <a href="Aufstellungsarbeit.dc.html" style="text-decoration:none;font-size:15.5px;font-weight:500;color:{{ cAuf }};border-bottom:{{ bAuf }};padding:4px 0" style-hover="color:#B0703C">Aufstellungsarbeit <span class="na-caret">▾</span></a>
         <span class="na-dd-menu">
           <a href="Aufstellungsarbeit.dc.html">Geistiges Familienstellen</a>
+          <a href="Steinorakel.dc.html">Schamanisches Steinorakel</a>
           <a href="Weiterbildung.dc.html">Weiterbildung</a>
-          <a href="Steinorakel.dc.html">Schamanisches Stein-Orakel</a>
         </span>
       </span>
       <a href="Individuelle-Begleitung.dc.html" style="text-decoration:none;font-size:15.5px;font-weight:500;color:{{ cBegl }};border-bottom:{{ bBegl }};padding:4px 0" style-hover="color:#B0703C">Individuelle Begleitung</a>
       <a href="Intensivcoaching.dc.html" style="text-decoration:none;font-size:15.5px;font-weight:500;color:{{ cCoach }};border-bottom:{{ bCoach }};padding:4px 0" style-hover="color:#B0703C">Intensivcoaching</a>
-      <a href="Spezialangebote.dc.html" style="text-decoration:none;font-size:15.5px;font-weight:500;color:{{ cSpez }};border-bottom:{{ bSpez }};padding:4px 0" style-hover="color:#B0703C">Spezialangebote</a>
+      <a href="Spezialangebote.dc.html" style="text-decoration:none;font-size:15.5px;font-weight:500;color:{{ cSpez }};border-bottom:{{ bSpez }};padding:4px 0" style-hover="color:#B0703C">Spezielle Angebote</a>
       <a href="Veranstaltungen.dc.html" style="text-decoration:none;font-size:15.5px;font-weight:500;color:{{ cVer }};border-bottom:{{ bVer }};padding:4px 0" style-hover="color:#B0703C">Veranstaltungen</a>
       <a href="Ueber-uns.dc.html" style="text-decoration:none;font-size:15.5px;font-weight:500;color:{{ cUeber }};border-bottom:{{ bUeber }};padding:4px 0" style-hover="color:#B0703C">Über uns</a>
       <a href="Wissenswertes.dc.html" style="text-decoration:none;font-size:15.5px;font-weight:500;color:{{ cWissen }};border-bottom:{{ bWissen }};padding:4px 0" style-hover="color:#B0703C">Wissenswertes</a>
@@ -60,11 +61,11 @@
         <a href="Aufstellungsarbeit.dc.html" style="text-decoration:none;font-size:15.5px;font-weight:500;color:{{ cAng }};border-bottom:{{ bAng }};padding:4px 0" style-hover="color:#B0703C">Angebote <span class="na-caret">▾</span></a>
         <span class="na-dd-menu">
           <a href="Aufstellungsarbeit.dc.html">Aufstellungsarbeit</a>
-          <a href="Weiterbildung.dc.html">Weiterbildung</a>
           <a href="Individuelle-Begleitung.dc.html">Individuelle Begleitung</a>
           <a href="Intensivcoaching.dc.html">Intensivcoaching</a>
-          <a href="Spezialangebote.dc.html">Spezialangebote</a>
+          <a href="Spezialangebote.dc.html">Spezielle Angebote</a>
           <a href="Steinorakel.dc.html">Kostenloses Steinorakel</a>
+          <a href="Weiterbildung.dc.html">Weiterbildung</a>
         </span>
       </span>
       <a href="Veranstaltungen.dc.html" style="text-decoration:none;font-size:15.5px;font-weight:500;color:{{ cVer }};border-bottom:{{ bVer }};padding:4px 0" style-hover="color:#B0703C">Veranstaltungen</a>
@@ -76,13 +77,7 @@
     <!-- Nav-Variante 4: SITEMAP-STRUKTUR V09 (3 Gruppen wie Kunden-Sitemap, umschaltbar via Panel) -->
     <nav class="m-nav na-nav-sitemap" style="display:none;align-items:center;gap:22px;flex-wrap:wrap">
       <a href="Startseite.dc.html" style="text-decoration:none;font-size:15.5px;font-weight:500;color:{{ cStart }};border-bottom:{{ bStart }};padding:4px 0" style-hover="color:#B0703C">Start</a>
-      <span class="na-dd">
-        <a href="Aufstellungsarbeit.dc.html" style="text-decoration:none;font-size:15.5px;font-weight:500;color:{{ cAuf }};border-bottom:{{ bAuf }};padding:4px 0" style-hover="color:#B0703C">Geistiges Familienstellen <span class="na-caret">▾</span></a>
-        <span class="na-dd-menu">
-          <a href="Aufstellungsarbeit.dc.html">Aufstellungsarbeit</a>
-          <a href="Weiterbildung.dc.html">Weiterbildung</a>
-        </span>
-      </span>
+      <a href="Aufstellungsarbeit.dc.html" style="text-decoration:none;font-size:15.5px;font-weight:500;color:{{ cAuf }};border-bottom:{{ bAuf }};padding:4px 0" style-hover="color:#B0703C">Geistiges Familienstellen</a>
       <span class="na-dd">
         <a href="Individuelle-Begleitung.dc.html" style="text-decoration:none;font-size:15.5px;font-weight:500;color:{{ cEinzel }};border-bottom:{{ bEinzel }};padding:4px 0" style-hover="color:#B0703C">Einzelbegleitung <span class="na-caret">▾</span></a>
         <span class="na-dd-menu">
@@ -93,9 +88,10 @@
       <span class="na-dd">
         <a href="Spezialangebote.dc.html" style="text-decoration:none;font-size:15.5px;font-weight:500;color:{{ cSpez }};border-bottom:{{ bSpez }};padding:4px 0" style-hover="color:#B0703C">Spezielle Angebote <span class="na-caret">▾</span></a>
         <span class="na-dd-menu">
-          <a href="Spezialangebote.dc.html">Wir Männer &amp; Beziehungen</a>
-          <a href="Spezialangebote.dc.html#ritualarbeit">Ritualarbeit</a>
-          <a href="Steinorakel.dc.html">Schamanisches Stein-Orakel</a>
+          <a href="Wir-Maenner.dc.html">Wir Männer &amp; erfüllte Beziehungen</a>
+          <a href="Ritualarbeit.dc.html">Ritualarbeit im Jahreskreis</a>
+          <a href="Steinorakel.dc.html">Schamanisches Steinorakel</a>
+          <a href="Weiterbildung.dc.html">Weiterbildung</a>
         </span>
       </span>
       <a href="Veranstaltungen.dc.html" style="text-decoration:none;font-size:15.5px;font-weight:500;color:{{ cVer }};border-bottom:{{ bVer }};padding:4px 0" style-hover="color:#B0703C">Veranstaltungen</a>
@@ -114,7 +110,7 @@ class Component extends DCLogic {
       ["Aufstellungsarbeit", "Aufstellungsarbeit.dc.html", "aufstellung"],
       ["Individuelle Begleitung", "Individuelle-Begleitung.dc.html", "begleitung"],
       ["Intensivcoaching", "Intensivcoaching.dc.html", "coaching"],
-      ["Spezialangebote", "Spezialangebote.dc.html", "spezial"],
+      ["Spezielle Angebote", "Spezialangebote.dc.html", "spezial"],
       ["Veranstaltungen", "Veranstaltungen.dc.html", "veranstaltungen"],
       ["Über uns", "Ueber-uns.dc.html", "ueber"],
       ["Wissenswertes", "Wissenswertes.dc.html", "wissen"]

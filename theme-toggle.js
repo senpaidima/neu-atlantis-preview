@@ -48,16 +48,18 @@
       title: "Umfang",
       options: [
         { id: "voll",  label: "Vollausbau",                sub: "Alle Seiten inkl. Wissenswertes",              dot1: "#23423F", dot2: "#C8B98F", cls: "" },
-        { id: "step1", label: "Step 1 (ohne Wissenswertes)", sub: "Solange Inhalte fehlen — später nachrüstbar", dot1: "#8A7E68", dot2: "#F1EBDF", cls: "step1" }
+        { id: "step1", label: "Step 1 (ohne Wissenswertes) ✻ Basis", sub: "Solange Inhalte fehlen — später nachrüstbar", dot1: "#8A7E68", dot2: "#F1EBDF", cls: "step1" }
       ],
       allClasses: ["step1"]
     }
   ];
 
-  /* Vom Kunden festgelegte Basis-Variante (Feedback Heidi, 08/2026):
-     Farbwelt „Unsere Empfehlung“ · Hero „Ralf im Hero“ · Nav „Sitemap-Struktur V09“ · Vollausbau.
+  /* Vom Kunden festgelegte Basis-Variante (Feedback Heidi, 08/2026 + 09/2026):
+     Farbwelt „Unsere Empfehlung“ · Hero „Ralf im Hero“ · Nav „Sitemap-Struktur V09“ ·
+     Umfang „Step 1“ (Wissenswertes geht erst in 3–6 Monaten online, die Rundbrief-
+     Anmeldung hängt bis dahin an „Kontakt“).
      Wer noch nichts gewählt hat, startet hier — das Panel bleibt vollständig nutzbar. */
-  var BASIS = { "na-farbwelt": "empfehlung", "na-hero": "ralfkopf", "na-nav": "sitemap", "na-umfang": "voll" };
+  var BASIS = { "na-farbwelt": "empfehlung", "na-hero": "ralfkopf", "na-nav": "sitemap", "na-umfang": "step1" };
 
   function findOption(dim, id) {
     var i;
@@ -73,7 +75,7 @@
      Das Flag laesst das genau einmal je Browser passieren; danach bleibt
      jede bewusste Wahl im Panel wieder bestehen.
      Zaehlnummer erhoehen, wenn erneut auf eine neue Basis umgestellt wird. */
-  var BASIS_FLAG = "na-basis-2";
+  var BASIS_FLAG = "na-basis-3";
 
   function basisUmstellung() {
     try {
@@ -82,6 +84,7 @@
         localStorage.removeItem(k);
       });
       localStorage.removeItem("na-basis-2026-08"); // Flag der ersten Runde
+      localStorage.removeItem("na-basis-2");       // Flag der zweiten Runde
       localStorage.setItem(BASIS_FLAG, "1");
     } catch (e) { /* localStorage gesperrt — dann gilt einfach die Basis */ }
   }

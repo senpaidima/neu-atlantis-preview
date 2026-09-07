@@ -258,3 +258,54 @@ html.step1 [data-screen-label="Sitemap"] a[href*="Wissenswertes"] { display: non
 }
 
 .na-caret { font-size: 11px; opacity: 0.7; }
+
+/* ---------- Seitenhelfer (site.js) ----------
+   Sticky-Menüleiste: der Kopf mit Logo + Navigation bleibt beim Scrollen
+   stehen, die Info-Leiste darüber scrollt weg. Schatten erst, wenn gescrollt. */
+/* Sticky muss am Import-Host haengen: position:sticky klebt nur innerhalb des
+   Eltern-Kastens, und der Kopf-Wrapper ist selbst nur so hoch wie der Kopf. */
+.sc-host[data-sc-name="SiteHeader"] { position: sticky; top: 0; z-index: 900; }
+.na-sticky { transition: box-shadow 0.2s ease; }
+html.is-scrolled .na-sticky { box-shadow: 0 6px 24px rgba(20, 40, 36, 0.12); }
+/* Beim Scrollen weicht die Info-Leiste, damit nur Logo + Menue kleben (spart Hoehe) */
+html.is-scrolled .sc-host[data-sc-name="SiteHeader"] .m-topbar { display: none !important; }
+/* Anker-Ziele nicht unter der klebenden Leiste verschwinden lassen */
+[id] { scroll-margin-top: 120px; }
+
+/* „Nach oben“-Button — unten links, damit er dem Design-Panel rechts nicht in die Quere kommt */
+#na-top {
+  position: fixed;
+  left: 18px;
+  bottom: 18px;
+  z-index: 950;
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--k-dark-bg, #23423F);
+  color: var(--k-ondark-1, #F6F2E8);
+  box-shadow: 0 8px 24px rgba(15, 32, 28, 0.28);
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease, background 0.2s ease;
+}
+#na-top.is-visible { opacity: 1; transform: none; pointer-events: auto; }
+#na-top:hover { background: var(--k-accent, #B0703C); }
+@media (max-width: 820px) {
+  /* Mobil bricht das Menue mehrzeilig um und wuerde klebend den halben
+     Bildschirm belegen — dort uebernimmt der „Nach oben“-Button. */
+  .sc-host[data-sc-name="SiteHeader"] { position: static; }
+  #na-top { left: 12px; bottom: 12px; width: 42px; height: 42px; }
+  [id] { scroll-margin-top: 16px; }
+}
+
+/* Video-Sektion Startseite */
+.na-video { position: relative; border-radius: 8px; overflow: hidden; background: #1C332F; box-shadow: 0 20px 50px rgba(15, 32, 28, 0.28); }
+.na-video video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+
+/* Lagekarte Kontakt (Inline-SVG) */
+.na-map { width: 100%; height: auto; display: block; }
+.na-map text { font-family: 'Alegreya Sans', sans-serif; }

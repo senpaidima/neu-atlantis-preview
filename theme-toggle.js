@@ -47,11 +47,10 @@
       key: "na-karte",
       title: "Karte & Datenschutz",
       options: [
-        { id: "skizze",  label: "Lagekarte (Skizze)",             sub: "Selbst gezeichnet · kein Banner, keine Datenübertragung", dot1: "#EFEBDF", dot2: "#C08A4E", cls: "" },
-        { id: "maps2k",  label: "Google Maps · Zwei-Klick ✻ Basis", sub: "Echte Karte nach Klick „Karte laden“ · kein Banner",     dot1: "#D5E9EF", dot2: "#23423F", cls: "karte-maps" },
-        { id: "consent", label: "Google Maps · Consent-Banner",   sub: "Banner auf allen Seiten · Karte nach Zustimmung",        dot1: "#23423F", dot2: "#C8B98F", cls: "karte-maps consent" }
+        { id: "skizze",  label: "Lagekarte (Skizze)",             sub: "Selbst gezeichnet · keine Datenübertragung", dot1: "#EFEBDF", dot2: "#C08A4E", cls: "" },
+        { id: "maps2k",  label: "Google Maps · Zwei-Klick ✻ Basis", sub: "Echte Karte nach Klick „Karte laden“ · kein Banner nötig", dot1: "#D5E9EF", dot2: "#23423F", cls: "karte-maps" }
       ],
-      allClasses: ["karte-maps", "consent"]
+      allClasses: ["karte-maps"]
     },
     {
       key: "na-umfang",

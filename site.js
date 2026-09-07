@@ -42,13 +42,9 @@
     window.addEventListener("hashchange", function () { openHash(4); });
     openHash(12);
 
-    /* ---- 4) Google Maps & Consent-Banner (Design-Panel: „Karte & Datenschutz“) ----
-       Die Karte wird nie ungefragt geladen. Zwei Wege: Klick auf „Karte laden“ (Zwei-Klick)
-       oder Zustimmung im Banner (nur bei html.consent). Die Entscheidung liegt in localStorage. */
-    var html = document.documentElement;
-    var CONSENT_KEY = "na-consent";
-    function consent() { try { return localStorage.getItem(CONSENT_KEY); } catch (e) { return null; } }
-    function setConsent(v) { try { localStorage.setItem(CONSENT_KEY, v); } catch (e) {} syncConsent(); }
+    /* ---- 4) Google Maps als Zwei-Klick-Lösung (Design-Panel: „Karte & Datenschutz“) ----
+       Die Karte wird nie ungefragt geladen: erst der Klick auf „Karte laden“ setzt das iframe ein.
+       Der Klick ist die Einwilligung — ein Cookie-Banner ist dafür nicht nötig. */
 
     function loadMaps() {
       var boxes = document.querySelectorAll(".na-map-google[data-src]");
@@ -73,61 +69,6 @@
       if (t) { e.preventDefault(); loadMaps(); }
     });
 
-    var banner = null;
-    function buildBanner() {
-      var b = document.createElement("div");
-      b.id = "na-consent";
-      b.setAttribute("role", "dialog");
-      b.setAttribute("aria-label", "Datenschutz-Hinweis");
-      b.innerHTML =
-        '<div class="na-consent-inner">' +
-          '<div class="na-consent-text">' +
-            '<strong>Datenschutz-Hinweis</strong>' +
-            '<span>Diese Website nutzt keine Tracking-Cookies. Auf der Kontaktseite kann eine Karte von Google Maps angezeigt werden. Dafür werden Daten wie deine IP-Adresse an Google übertragen. Möchtest du solche externen Inhalte erlauben? Deine Wahl kannst du jederzeit im Seitenfuß ändern. <a href="Datenschutz.dc.html">Datenschutzerklärung</a></span>' +
-          '</div>' +
-          '<div class="na-consent-actions">' +
-            '<button type="button" data-consent="essential">Nur notwendige</button>' +
-            '<button type="button" data-consent="all" class="is-primary">Externe Inhalte erlauben</button>' +
-          '</div>' +
-        '</div>';
-      b.addEventListener("click", function (e) {
-        var btn = e.target.closest ? e.target.closest("[data-consent]") : null;
-        if (btn) setConsent(btn.getAttribute("data-consent"));
-      });
-      document.body.appendChild(b);
-      return b;
-    }
-    function ensureFooterLink() {
-      if (document.getElementById("na-consent-link")) return;
-      var sitemap = document.querySelector('footer a[href*="Sitemap"]');
-      if (!sitemap) return;
-      var a = document.createElement("a");
-      a.id = "na-consent-link";
-      a.href = "#";
-      a.textContent = "Datenschutz-Einstellungen";
-      a.style.cssText = sitemap.style.cssText;
-      a.addEventListener("click", function (e) {
-        e.preventDefault();
-        try { localStorage.removeItem(CONSENT_KEY); } catch (err) {}
-        syncConsent();
-      });
-      sitemap.parentNode.appendChild(a);
-    }
-    function syncConsent() {
-      var mode = html.classList.contains("consent");
-      var choice = consent();
-      html.classList.toggle("consent-media", mode && choice === "all");
-      if (mode && choice === "all") loadMaps();
-      if (mode) { ensureFooterLink(); if (!banner) banner = buildBanner(); }
-      var link = document.getElementById("na-consent-link");
-      if (link) link.style.display = mode ? "" : "none";
-      var open = mode && !choice;
-      if (banner) banner.classList.toggle("is-open", open);
-      html.classList.toggle("na-consent-open", open);
-    }
-    document.addEventListener("na-theme-applied", syncConsent);
-    setTimeout(syncConsent, 0);
-    var tries = 0, t = setInterval(function () { syncConsent(); if (++tries > 12) clearInterval(t); }, 500); // Footer kommt asynchron
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();

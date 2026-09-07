@@ -312,34 +312,7 @@ html.is-scrolled .sc-host[data-sc-name="SiteHeader"] .m-topbar { display: none !
 
 /* ---------- Karte & Datenschutz (Design-Panel) ----------
    (keine Klasse)  = gezeichnete Lagekarte, keine Datenübertragung
-   karte-maps      = Google Maps, lädt erst nach Klick „Karte laden“
-   karte-maps + consent = zusätzlich Consent-Banner auf allen Seiten; „Externe Inhalte erlauben“ lädt die Karte direkt */
+   karte-maps      = Google Maps, lädt erst nach Klick „Karte laden“ (Zwei-Klick, kein Banner) */
 html.karte-maps .na-map-skizze { display: none !important; }
 html.karte-maps .na-map-google { display: flex !important; }
 
-#na-consent {
-  position: fixed;
-  left: 0; right: 0; bottom: 0;
-  z-index: 9500;
-  display: none;
-  padding: 14px 18px 18px;
-  background: rgba(35, 66, 63, 0.97);
-  color: #DCE4DD;
-  font-family: 'Alegreya Sans', sans-serif;
-  box-shadow: 0 -10px 40px rgba(15, 32, 28, 0.35);
-}
-#na-consent.is-open { display: block; }
-.na-consent-inner { max-width: 1160px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
-.na-consent-text { display: flex; flex-direction: column; gap: 4px; flex: 1 1 480px; font-size: 15.5px; line-height: 1.55; }
-.na-consent-text strong { color: #F6F2E8; font-size: 17px; }
-.na-consent-text a { color: #C8B98F; font-weight: 700; }
-.na-consent-actions { display: flex; gap: 10px; flex-wrap: wrap; }
-.na-consent-actions button {
-  cursor: pointer; font-family: inherit; font-size: 15.5px; font-weight: 700;
-  padding: 12px 20px; border-radius: 3px; border: 1px solid #9FB4AA; background: transparent; color: #EDF1EA;
-}
-.na-consent-actions button:hover { background: rgba(255, 255, 255, 0.08); }
-.na-consent-actions button.is-primary { background: #C08A4E; border-color: #C08A4E; color: #241A0E; }
-.na-consent-actions button.is-primary:hover { background: #D09A5C; }
-/* Solange der Banner offen ist, weichen die schwebenden Knöpfe */
-html.na-consent-open #na-top, html.na-consent-open #na-theme-toggle, html.na-consent-open #na-theme-panel { display: none !important; }

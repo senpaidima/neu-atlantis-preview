@@ -65,6 +65,7 @@
       <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap">
         <h3 style="margin:0;font-size:16px;letter-spacing:0.12em;text-transform:uppercase;color:#8A7E68;font-weight:700" data-fs-base="13" data-ls-base="0.16">Standort Mölln – zwischen Hamburg und Lübeck</h3>
       </div>
+      <div class="na-map-skizze" style="display:flex;flex-direction:column;gap:14px">
       <svg class="na-map" viewBox="0 0 600 340" role="img" aria-label="Lagekarte: Die Praxis in Panten bei Mölln liegt zwischen Hamburg und Lübeck">
         <defs>
           <linearGradient id="na-see" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#D5E9EF"/><stop offset="1" stop-color="#E4F0F3"/></linearGradient>
@@ -106,6 +107,20 @@
         <text x="425" y="158" font-size="11" fill="#B0703C" text-anchor="middle">Panten (OT Hammer)</text>
       </svg>
       <span style="font-size:15.5px;color:#4C463D;line-height:1.6" data-fs-base="14">Meine Praxis in Panten (Ortsteil Hammer) bei Mölln liegt mitten im Einzugsgebiet von Hamburg und Lübeck – über die A24 bzw. A1 in rund einer halben bis dreiviertel Stunde erreichbar. Öffne die Route bequem in Google Maps – datenschutzfreundlich ohne eingebettete Karte.</span>
+      </div>
+      <!-- Variante „Google Maps“ (Design-Panel: Karte & Consent). Die Karte wird nie ungefragt geladen:
+           entweder nach Klick auf „Karte laden“ (Zwei-Klick) oder nach Einwilligung im Consent-Banner. -->
+      <div class="na-map-google" data-src="https://www.google.com/maps?q=Scharr+1,+23896+Panten&amp;z=9&amp;hl=de&amp;output=embed" style="display:none;flex-direction:column;gap:14px">
+        <div class="na-map-frame" style="position:relative;aspect-ratio:16/10;border-radius:5px;overflow:hidden;background:linear-gradient(165deg,#E9E4D6,#D5DDD5);border:1px solid #E5DECF">
+          <div class="na-map-ph" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;padding:24px">
+            <span style="font-size:26px;color:#B0A17D;line-height:1">✻</span>
+            <span style="font-size:16px;letter-spacing:0.12em;text-transform:uppercase;color:#8A7E68;font-weight:700" data-fs-base="13" data-ls-base="0.16">Google Maps</span>
+            <span style="font-size:16px;color:#4C463D;line-height:1.6;max-width:380px" data-fs-base="14.5">Die Karte wird erst nach deinem Klick geladen. Dabei werden Daten (z. B. deine IP-Adresse) an Google übertragen. Details in der <a href="Datenschutz.dc.html" style="color:#B0703C;font-weight:700">Datenschutzerklärung</a>.</span>
+            <button type="button" class="na-map-load" style="cursor:pointer;font-family:'Alegreya Sans',sans-serif;font-size:15.5px;font-weight:700;color:#F6F2E8;background:#23423F;border:none;border-radius:3px;padding:12px 22px" style-hover="background:#2E524E">Karte laden</button>
+          </div>
+        </div>
+        <span style="font-size:15.5px;color:#4C463D;line-height:1.6" data-fs-base="14">Meine Praxis in Panten (Ortsteil Hammer) bei Mölln liegt mitten im Einzugsgebiet von Hamburg und Lübeck – über die A24 bzw. A1 in rund einer halben bis dreiviertel Stunde erreichbar.</span>
+      </div>
       <div style="display:flex;gap:12px;flex-wrap:wrap">
         <a href="https://www.google.com/maps/search/?api=1&amp;query=Scharr+1%2C+23896+Panten" target="_blank" rel="noopener" style="text-decoration:none;font-family:'Alegreya Sans',sans-serif;background:#23423F;color:#F6F2E8;font-weight:700;font-size:14.5px;padding:11px 20px;border-radius:3px" style-hover="background:#2E524E">Route Praxis Mölln →</a>
         <a href="https://www.google.com/maps/search/?api=1&amp;query=G%C3%A4tkestra%C3%9Fe+510m%2C+27498+Helgoland" target="_blank" rel="noopener" style="text-decoration:none;font-family:'Alegreya Sans',sans-serif;border:1px solid #23423F;color:#23423F;font-weight:700;font-size:16px;padding:11px 20px;border-radius:3px" style-hover="background:rgba(35,66,63,0.06)" data-fs-base="14.5">Route Praxis Helgoland →</a>

@@ -44,6 +44,16 @@
       allClasses: ["nav-drop", "nav-gruppe", "nav-sitemap"]
     },
     {
+      key: "na-karte",
+      title: "Karte & Datenschutz",
+      options: [
+        { id: "skizze",  label: "Lagekarte (Skizze)",             sub: "Selbst gezeichnet · kein Banner, keine Datenübertragung", dot1: "#EFEBDF", dot2: "#C08A4E", cls: "" },
+        { id: "maps2k",  label: "Google Maps · Zwei-Klick",       sub: "Echte Karte nach Klick „Karte laden“ · kein Banner",     dot1: "#D5E9EF", dot2: "#23423F", cls: "karte-maps" },
+        { id: "consent", label: "Google Maps · Consent-Banner",   sub: "Banner auf allen Seiten · Karte nach Zustimmung",        dot1: "#23423F", dot2: "#C8B98F", cls: "karte-maps consent" }
+      ],
+      allClasses: ["karte-maps", "consent"]
+    },
+    {
       key: "na-umfang",
       title: "Umfang",
       options: [
@@ -59,7 +69,7 @@
      Umfang „Step 1“ (Wissenswertes geht erst in 3–6 Monaten online, die Rundbrief-
      Anmeldung hängt bis dahin an „Kontakt“).
      Wer noch nichts gewählt hat, startet hier — das Panel bleibt vollständig nutzbar. */
-  var BASIS = { "na-farbwelt": "empfehlung", "na-hero": "ralfkopf", "na-nav": "sitemap", "na-umfang": "step1" };
+  var BASIS = { "na-farbwelt": "empfehlung", "na-hero": "ralfkopf", "na-nav": "sitemap", "na-karte": "consent", "na-umfang": "step1" };
 
   function findOption(dim, id) {
     var i;
@@ -80,7 +90,7 @@
   function basisUmstellung() {
     try {
       if (localStorage.getItem(BASIS_FLAG) === "1") return;
-      ["na-farbwelt", "na-hero", "na-nav", "na-umfang"].forEach(function (k) {
+      ["na-farbwelt", "na-hero", "na-nav", "na-karte", "na-umfang"].forEach(function (k) {
         localStorage.removeItem(k);
       });
       localStorage.removeItem("na-basis-2026-08"); // Flag der ersten Runde
@@ -108,6 +118,7 @@
       var opt = findOption(dim, current(dim));
       if (opt.cls) opt.cls.split(" ").forEach(function (c) { el.classList.add(c); });
     });
+    try { document.dispatchEvent(new CustomEvent("na-theme-applied")); } catch (e) {}
     var panel = document.getElementById("na-theme-panel");
     if (panel) {
       DIMENSIONS.forEach(function (dim) {
